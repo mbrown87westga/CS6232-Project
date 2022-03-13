@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS6232-G2 Furniture Rental", "CS6232-G2 Furniture Rental\CS6232-G2 Furniture Rental.csproj", "{BE0BDBBE-FBC7-4E89-BBBC-C3BB13637DCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE0BDBBE-FBC7-4E89-BBBC-C3BB13637DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0BDBBE-FBC7-4E89-BBBC-C3BB13637DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0BDBBE-FBC7-4E89-BBBC-C3BB13637DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0BDBBE-FBC7-4E89-BBBC-C3BB13637DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB4269D1-82C9-4729-80C1-414CC273F19B}
+	EndGlobalSection
+EndGlobal
