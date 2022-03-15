@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CS6232_G2_Furniture_Rental
 {
-    public partial class Form1 : Form
+    public partial class MainMenuForm : Form
     {
-        public Form1()
+        public MainMenuForm()
         {
             InitializeComponent();
         }
