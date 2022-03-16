@@ -25,5 +25,18 @@ namespace FurnitureRentalDomain.Helpers
           return Gender.Unknown;
       }
     }
+
+    public static string ToString(this Gender thisGender)
+    {
+      switch (thisGender)
+      {
+        case Gender.Female:
+          return "f";
+        case Gender.Male:
+          return "m";
+        default:
+          return "?";
+      }
+    }
   }
 }
