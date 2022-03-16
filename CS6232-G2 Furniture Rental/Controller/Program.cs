@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CS6232_G2_Furniture_Rental.View;
 
 namespace CS6232_G2_Furniture_Rental
 {
@@ -16,7 +17,7 @@ namespace CS6232_G2_Furniture_Rental
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenuForm());
+            Application.Run(new LoginForm());
         }
     }
 }
