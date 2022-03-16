@@ -45,5 +45,11 @@
     <Compile Include="EmployeeDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FurnitureRentalDomain\FurnitureRentalDomain.csproj">
+      <Project>{649FA81E-6A8F-467D-9BB9-329D9A44C5DB}</Project>
+      <Name>FurnitureRentalDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
