@@ -49,6 +49,10 @@
       <Project>{95F68369-E5E9-40DC-A6BF-AE801C19DC5C}</Project>
       <Name>FurnitureRentalData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FurnitureRentalDomain\FurnitureRentalDomain.csproj">
+      <Project>{649FA81E-6A8F-467D-9BB9-329D9A44C5DB}</Project>
+      <Name>FurnitureRentalDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

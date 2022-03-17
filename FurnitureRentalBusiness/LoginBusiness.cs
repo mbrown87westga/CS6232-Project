@@ -1,4 +1,5 @@
 ﻿using FurnitureRentalData;
+using FurnitureRentalDomain;
 
 namespace FurnitureRentalBusiness
 {
@@ -59,6 +60,15 @@ namespace FurnitureRentalBusiness
     public bool IsLoggedIn()
     {
       return _loggedInUser != null;
+    }
+    
+    /// <summary>
+    /// returns the logged in user
+    /// </summary>
+    /// <returns>the user</returns>
+    public Employee GetLoggedInUser()
+    {
+      return _dal.GetEmployee(_loggedInUser);
     }
   }
 }
