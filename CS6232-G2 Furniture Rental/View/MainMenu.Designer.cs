@@ -1,5 +1,5 @@
 ﻿
-namespace CS6232_G2_Furniture_Rental
+namespace CS6232_G2_Furniture_Rental.View
 {
     partial class MainMenuForm
     {
@@ -35,6 +35,7 @@ namespace CS6232_G2_Furniture_Rental
             this.rentalsButton = new System.Windows.Forms.Button();
             this.returnsButton = new System.Windows.Forms.Button();
             this.adminButton = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // employeeLabel
@@ -96,11 +97,24 @@ namespace CS6232_G2_Furniture_Rental
             this.adminButton.Text = "&Admin";
             this.adminButton.UseVisualStyleBackColor = true;
             // 
+            // logoutButton
+            // 
+            this.logoutButton.AutoSize = true;
+            this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutButton.Location = new System.Drawing.Point(303, 48);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(75, 27);
+            this.logoutButton.TabIndex = 6;
+            this.logoutButton.Text = "Log&out";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(432, 450);
+            this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.adminButton);
             this.Controls.Add(this.returnsButton);
             this.Controls.Add(this.rentalsButton);
@@ -109,6 +123,7 @@ namespace CS6232_G2_Furniture_Rental
             this.Controls.Add(this.employeeLabel);
             this.Name = "MainMenuForm";
             this.Text = "Furniture Rental Main Menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenuForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +137,7 @@ namespace CS6232_G2_Furniture_Rental
         private System.Windows.Forms.Button rentalsButton;
         private System.Windows.Forms.Button returnsButton;
         private System.Windows.Forms.Button adminButton;
+        private System.Windows.Forms.Button logoutButton;
     }
 }
 
