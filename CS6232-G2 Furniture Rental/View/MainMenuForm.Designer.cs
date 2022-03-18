@@ -86,6 +86,7 @@
             this.adminButton.TabIndex = 2;
             this.adminButton.Text = "&Admin";
             this.adminButton.UseVisualStyleBackColor = true;
+            this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
             // logoutButton
             // 
@@ -105,6 +106,7 @@
             this.employeeIDLabel.Name = "employeeIDLabel";
             this.employeeIDLabel.Size = new System.Drawing.Size(247, 23);
             this.employeeIDLabel.TabIndex = 1;
+            this.employeeIDLabel.Click += new System.EventHandler(this.employeeIDLabel_Click);
             // 
             // MainMenuForm
             // 
@@ -119,6 +121,7 @@
             this.Controls.Add(this.membersButton);
             this.Controls.Add(this.employeeLabel);
             this.Name = "MainMenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Furniture Rental Main Menu";
             this.Activated += new System.EventHandler(this.MainMenuForm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenuForm_FormClosed);

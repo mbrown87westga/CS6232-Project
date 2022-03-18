@@ -6,11 +6,17 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// The Main Menu form
+    /// </summary>
     public partial class MainMenuForm : Form
     {
         private static LoginBusiness _business;
         private static Employee _employee;
 
+        /// <summary>
+        /// Main Menu form constructor
+        /// </summary>
         public MainMenuForm()
         {
             _business = new LoginBusiness();
@@ -30,11 +36,6 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void MainMenuForm_Activated(object sender, EventArgs e)
         {
-            this.SetMainMenuDisplay();
-        }
-
-        private void SetMainMenuDisplay()
-        {
             _employee = _business.GetLoggedInUser();
 
             this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
@@ -49,6 +50,16 @@ namespace CS6232_G2_Furniture_Rental.View
             }
 
             this.adminButton.Enabled = _employee.IsAdmin;
+        }
+
+        private void employeeIDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adminButton_Click(object sender, EventArgs e)
+        {
+            this.HideThisAndShowForm<AdminMenuForm>();
         }
     }
 }
