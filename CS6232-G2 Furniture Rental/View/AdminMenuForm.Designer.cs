@@ -46,13 +46,13 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // employeeLabel
             // 
-            this.employeeLabel.AutoSize = true;
             this.employeeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.employeeLabel.Location = new System.Drawing.Point(71, 50);
             this.employeeLabel.Name = "employeeLabel";
             this.employeeLabel.Size = new System.Drawing.Size(74, 17);
             this.employeeLabel.TabIndex = 2;
-            this.employeeLabel.Text = "Employee:";
+            this.employeeLabel.Text = "Admin:";
+            this.employeeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // EmployeeMaintenanceButton
             // 
@@ -61,8 +61,9 @@ namespace CS6232_G2_Furniture_Rental.View
             this.EmployeeMaintenanceButton.Name = "EmployeeMaintenanceButton";
             this.EmployeeMaintenanceButton.Size = new System.Drawing.Size(120, 45);
             this.EmployeeMaintenanceButton.TabIndex = 4;
-            this.EmployeeMaintenanceButton.Text = "&Employee\r\nMaintenance";
+            this.EmployeeMaintenanceButton.Text = "&Employees";
             this.EmployeeMaintenanceButton.UseVisualStyleBackColor = true;
+            this.EmployeeMaintenanceButton.Click += new System.EventHandler(this.EmployeeMaintenanceButton_Click);
             // 
             // reportsButton
             // 
@@ -101,7 +102,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Activated += new System.EventHandler(this.AdminMenuForm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminMenuForm_FormClosed);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

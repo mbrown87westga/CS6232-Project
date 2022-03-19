@@ -86,7 +86,7 @@
             this.adminButton.TabIndex = 2;
             this.adminButton.Text = "&Admin";
             this.adminButton.UseVisualStyleBackColor = true;
-            this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
+            this.adminButton.Click += new System.EventHandler(this.AdminButton_Click);
             // 
             // logoutButton
             // 
@@ -97,7 +97,7 @@
             this.logoutButton.TabIndex = 6;
             this.logoutButton.Text = "Log&out";
             this.logoutButton.UseVisualStyleBackColor = true;
-            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            this.logoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // employeeIDLabel
             // 
@@ -106,7 +106,7 @@
             this.employeeIDLabel.Name = "employeeIDLabel";
             this.employeeIDLabel.Size = new System.Drawing.Size(247, 23);
             this.employeeIDLabel.TabIndex = 1;
-            this.employeeIDLabel.Click += new System.EventHandler(this.employeeIDLabel_Click);
+            this.employeeIDLabel.Click += new System.EventHandler(this.EmployeeIDLabel_Click);
             // 
             // MainMenuForm
             // 

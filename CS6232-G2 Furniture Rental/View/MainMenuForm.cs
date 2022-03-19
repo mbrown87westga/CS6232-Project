@@ -24,7 +24,7 @@ namespace CS6232_G2_Furniture_Rental.View
             InitializeComponent();
         }
 
-        private void logoutButton_Click(object sender, EventArgs e)
+        private void LogoutButton_Click(object sender, EventArgs e)
         {
             this.HideThisAndShowForm<LoginForm>();
         }
@@ -52,12 +52,12 @@ namespace CS6232_G2_Furniture_Rental.View
             this.adminButton.Enabled = _employee.IsAdmin;
         }
 
-        private void employeeIDLabel_Click(object sender, EventArgs e)
+        private void EmployeeIDLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void adminButton_Click(object sender, EventArgs e)
+        private void AdminButton_Click(object sender, EventArgs e)
         {
             this.HideThisAndShowForm<AdminMenuForm>();
         }

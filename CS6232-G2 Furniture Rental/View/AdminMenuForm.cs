@@ -33,5 +33,10 @@ namespace CS6232_G2_Furniture_Rental.View
 
             this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
         }
+
+        private void EmployeeMaintenanceButton_Click(object sender, System.EventArgs e)
+        {
+            this.HideThisAndShowForm<EmployeeMaintenanceForm>();
+        }
     }
 }
