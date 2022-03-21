@@ -26,6 +26,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
+            _business.Logout();
             this.HideThisAndShowForm<LoginForm>();
         }
 

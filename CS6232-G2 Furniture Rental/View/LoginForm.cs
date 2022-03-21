@@ -31,8 +31,8 @@ namespace CS6232_G2_Furniture_Rental.View
 
     private void loginButton_Click(object sender, EventArgs e)
     {
-      var username = this.employeeIdTextBox.Text;
-      var password = this.passwordTextBox.Text;
+      var username = employeeIdTextBox.Text;
+      var password = passwordTextBox.Text;
 
       if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
       {
@@ -40,6 +40,8 @@ namespace CS6232_G2_Furniture_Rental.View
       }
       else if (_business.Login(username, password))
       {
+        employeeIdTextBox.Clear();
+        passwordTextBox.Clear();
         this.HideThisAndShowForm<MainMenuForm>();
       }
       else
