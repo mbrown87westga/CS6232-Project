@@ -1,10 +1,6 @@
 ﻿using FurnitureRentalDomain;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FurnitureRentalDomain.Helpers;
 
 namespace FurnitureRentalData
@@ -85,6 +81,53 @@ namespace FurnitureRentalData
           }
         }
       }
+    }
+
+    public int AddEmployee(Employee newEmployee)
+    {
+        string insertStatement =
+            "INSERT INTO Employee " +
+            "(birthdate, firstName, lastName, phone, address1, address2, city, state, zipcode, userName, password, isAdmin, sex) " +
+            "VALUES (@birthdate, @firstName, @lastName, @phone, @address1, @address2, @city, @state, @zipcode, @userName, @password, @isAdmin, @sex)";
+
+        using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+        {
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue("@birthdate", newEmployee.Birthdate);
+            insertCommand.Parameters.AddWithValue("@firstName", newEmployee.FirstName);
+            insertCommand.Parameters.AddWithValue("@lastName", newEmployee.LastName);
+            insertCommand.Parameters.AddWithValue("@phone", newEmployee.Phone);
+            insertCommand.Parameters.AddWithValue("@address1", newEmployee.Address1);
+            if (newEmployee.Address2 is null)
+            {
+                insertCommand.Parameters.AddWithValue("@address2", DBNull.Value);
+            }
+            else
+            {
+                insertCommand.Parameters.AddWithValue("@address2", newEmployee.Address2);
+            }
+            insertCommand.Parameters.AddWithValue("@city", newEmployee.City);
+            insertCommand.Parameters.AddWithValue("@state", newEmployee.State);
+            insertCommand.Parameters.AddWithValue("@zipcode", newEmployee.Zipcode);
+            insertCommand.Parameters.AddWithValue("@userName", newEmployee.UserName);
+            insertCommand.Parameters.AddWithValue("@password", newEmployee.Password);
+            insertCommand.Parameters.AddWithValue("@isAdmin", newEmployee.IsAdmin);
+            insertCommand.Parameters.AddWithValue("@sex", GenderHelper.ToString(newEmployee.Sex));
+
+            connection.Open();
+
+            using (insertCommand)
+            {
+                insertCommand.ExecuteNonQuery();
+                string selectStatement =
+                    "SELECT IDENT_CURRENT('Employee') FROM EMPLOYEE";
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    int employeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                    return employeeID;
+                }
+            }
+        }
     }
   }
 }

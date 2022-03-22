@@ -43,6 +43,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             System.Windows.Forms.Label userNameLabel;
             System.Windows.Forms.Label zipcodeLabel;
             this.address1TextBox = new System.Windows.Forms.TextBox();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.address2TextBox = new System.Windows.Forms.TextBox();
             this.birthdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.cityTextBox = new System.Windows.Forms.TextBox();
@@ -59,7 +60,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.reenterPasswordTextBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             address1Label = new System.Windows.Forms.Label();
             address2Label = new System.Windows.Forms.Label();
             birthdateLabel = new System.Windows.Forms.Label();
@@ -73,6 +74,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             userNameLabel = new System.Windows.Forms.Label();
             zipcodeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // address1Label
@@ -203,6 +205,10 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(200, 23);
             this.address1TextBox.TabIndex = 5;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
             // 
             // address2TextBox
             // 
@@ -343,6 +349,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.addButton.TabIndex = 27;
             this.addButton.Text = "&Add";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // clearButton
             // 
@@ -353,11 +360,11 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.clearButton.TabIndex = 28;
             this.clearButton.Text = "&Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
-            // employeeBindingSource
+            // addErrorProvider
             // 
-            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
+            this.addErrorProvider.ContainerControl = this;
             // 
             // AddEmployeeUserControl
             // 
@@ -396,6 +403,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.Size = new System.Drawing.Size(812, 534);
             this.Load += new System.EventHandler(this.AddEmployeeUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,5 +429,6 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private System.Windows.Forms.TextBox reenterPasswordTextBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.ErrorProvider addErrorProvider;
     }
 }
