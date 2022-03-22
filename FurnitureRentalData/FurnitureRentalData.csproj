@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="FurnitureRentalDbConnection.cs" />
     <Compile Include="EmployeeDal.cs" />
+    <Compile Include="MemberDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
