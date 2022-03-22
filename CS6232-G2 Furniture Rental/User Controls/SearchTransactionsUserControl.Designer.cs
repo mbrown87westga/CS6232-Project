@@ -40,10 +40,11 @@
       this.memberComboBox = new System.Windows.Forms.ComboBox();
       this.button1 = new System.Windows.Forms.Button();
       this.clearButton = new System.Windows.Forms.Button();
+      this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.rentalTransactionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.rentalTimestampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.dueDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+      this.Employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
       beginDateLabel = new System.Windows.Forms.Label();
       endDateLabel = new System.Windows.Forms.Label();
       memberIdLabel = new System.Windows.Forms.Label();
@@ -130,7 +131,8 @@
       this.resultsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rentalTransactionIDDataGridViewTextBoxColumn,
             this.rentalTimestampDataGridViewTextBoxColumn,
-            this.dueDateTimeDataGridViewTextBoxColumn});
+            this.dueDateTimeDataGridViewTextBoxColumn,
+            this.Employee});
       this.resultsDataGridView.DataSource = this.rentalTransactionBindingSource;
       this.resultsDataGridView.Location = new System.Drawing.Point(215, 38);
       this.resultsDataGridView.Name = "resultsDataGridView";
@@ -167,6 +169,10 @@
       this.clearButton.UseVisualStyleBackColor = true;
       this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
       // 
+      // rentalTransactionBindingSource
+      // 
+      this.rentalTransactionBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalTransaction);
+      // 
       // rentalTransactionIDDataGridViewTextBoxColumn
       // 
       this.rentalTransactionIDDataGridViewTextBoxColumn.DataPropertyName = "RentalTransactionID";
@@ -185,9 +191,11 @@
       this.dueDateTimeDataGridViewTextBoxColumn.HeaderText = "Due Date";
       this.dueDateTimeDataGridViewTextBoxColumn.Name = "dueDateTimeDataGridViewTextBoxColumn";
       // 
-      // rentalTransactionBindingSource
+      // Employee
       // 
-      this.rentalTransactionBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalTransaction);
+      this.Employee.DataPropertyName = "Employee";
+      this.Employee.HeaderText = "Employee";
+      this.Employee.Name = "Employee";
       // 
       // SearchTransactionsUserControl
       // 
@@ -219,13 +227,14 @@
         private System.Windows.Forms.DateTimePicker endDateDateTimePicker;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView resultsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rentalTransactionIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rentalTimestampDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dueDateTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource rentalTransactionBindingSource;
         private System.Windows.Forms.ComboBox memberComboBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rentalTransactionIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rentalTimestampDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dueDateTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Employee;
     }
 }
