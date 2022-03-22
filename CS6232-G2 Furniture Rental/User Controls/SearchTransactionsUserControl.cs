@@ -63,5 +63,11 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         {
             this.GetMemberData();
         }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            _transactionList = new List<RentalTransaction>();
+            this.resultsDataGridView.DataSource = _transactionList;
+        }
     }
 }

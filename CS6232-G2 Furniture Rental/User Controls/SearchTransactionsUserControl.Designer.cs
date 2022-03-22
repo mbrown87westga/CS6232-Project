@@ -37,13 +37,13 @@
       this.endDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
       this.searchButton = new System.Windows.Forms.Button();
       this.resultsDataGridView = new System.Windows.Forms.DataGridView();
+      this.memberComboBox = new System.Windows.Forms.ComboBox();
+      this.button1 = new System.Windows.Forms.Button();
+      this.clearButton = new System.Windows.Forms.Button();
       this.rentalTransactionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.rentalTimestampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.dueDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.memberComboBox = new System.Windows.Forms.ComboBox();
-      this.button1 = new System.Windows.Forms.Button();
-      this.button2 = new System.Windows.Forms.Button();
       beginDateLabel = new System.Windows.Forms.Label();
       endDateLabel = new System.Windows.Forms.Label();
       memberIdLabel = new System.Windows.Forms.Label();
@@ -137,6 +137,36 @@
       this.resultsDataGridView.Size = new System.Drawing.Size(567, 469);
       this.resultsDataGridView.TabIndex = 52;
       // 
+      // memberComboBox
+      // 
+      this.memberComboBox.DisplayMember = "memberID";
+      this.memberComboBox.FormattingEnabled = true;
+      this.memberComboBox.Location = new System.Drawing.Point(99, 15);
+      this.memberComboBox.Name = "memberComboBox";
+      this.memberComboBox.Size = new System.Drawing.Size(107, 21);
+      this.memberComboBox.TabIndex = 53;
+      // 
+      // button1
+      // 
+      this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.button1.Location = new System.Drawing.Point(626, 513);
+      this.button1.Name = "button1";
+      this.button1.Size = new System.Drawing.Size(75, 23);
+      this.button1.TabIndex = 54;
+      this.button1.Text = "TODO";
+      this.button1.UseVisualStyleBackColor = true;
+      // 
+      // clearButton
+      // 
+      this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.clearButton.Location = new System.Drawing.Point(707, 513);
+      this.clearButton.Name = "clearButton";
+      this.clearButton.Size = new System.Drawing.Size(75, 23);
+      this.clearButton.TabIndex = 55;
+      this.clearButton.Text = "Clear";
+      this.clearButton.UseVisualStyleBackColor = true;
+      this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+      // 
       // rentalTransactionIDDataGridViewTextBoxColumn
       // 
       this.rentalTransactionIDDataGridViewTextBoxColumn.DataPropertyName = "RentalTransactionID";
@@ -159,38 +189,11 @@
       // 
       this.rentalTransactionBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalTransaction);
       // 
-      // memberComboBox
-      // 
-      this.memberComboBox.DisplayMember = "memberID";
-      this.memberComboBox.FormattingEnabled = true;
-      this.memberComboBox.Location = new System.Drawing.Point(99, 15);
-      this.memberComboBox.Name = "memberComboBox";
-      this.memberComboBox.Size = new System.Drawing.Size(107, 21);
-      this.memberComboBox.TabIndex = 53;
-      // 
-      // button1
-      // 
-      this.button1.Location = new System.Drawing.Point(626, 513);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(75, 23);
-      this.button1.TabIndex = 54;
-      this.button1.Text = "TODO";
-      this.button1.UseVisualStyleBackColor = true;
-      // 
-      // button2
-      // 
-      this.button2.Location = new System.Drawing.Point(707, 513);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(75, 23);
-      this.button2.TabIndex = 55;
-      this.button2.Text = "TODO";
-      this.button2.UseVisualStyleBackColor = true;
-      // 
       // SearchTransactionsUserControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(this.button2);
+      this.Controls.Add(this.clearButton);
       this.Controls.Add(this.button1);
       this.Controls.Add(this.memberComboBox);
       this.Controls.Add(this.resultsDataGridView);
@@ -223,6 +226,6 @@
         private System.Windows.Forms.BindingSource rentalTransactionBindingSource;
         private System.Windows.Forms.ComboBox memberComboBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button clearButton;
     }
 }
