@@ -1,42 +1,44 @@
 ﻿namespace CS6232_G2_Furniture_Rental.View
 {
-  partial class MembersManagementForm
-  {
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
-    private System.ComponentModel.IContainer components = null;
-
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+    partial class MembersManagementForm
     {
-      if (disposing && (components != null))
-      {
-        components.Dispose();
-      }
-      base.Dispose(disposing);
-    }
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-    #region Windows Form Designer generated code
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
-    private void InitializeComponent()
-    {
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
       this.EmployeeLabel = new System.Windows.Forms.Label();
       this.employeeNameIdLabel = new System.Windows.Forms.Label();
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.addTabPage = new System.Windows.Forms.TabPage();
+      this.addMemberUserControl1 = new CS6232_G2_Furniture_Rental.User_Controls.AddMemberUserControl();
       this.updateTabPage = new System.Windows.Forms.TabPage();
       this.searchTabPage = new System.Windows.Forms.TabPage();
-      this.addMemberUserControl1 = new CS6232_G2_Furniture_Rental.User_Controls.AddMemberUserControl();
+      this.searchTransactionsUserControl = new CS6232_G2_Furniture_Rental.User_Controls.SearchTransactionsUserControl();
       this.tabControl1.SuspendLayout();
       this.addTabPage.SuspendLayout();
+      this.searchTabPage.SuspendLayout();
       this.SuspendLayout();
       // 
       // EmployeeLabel
@@ -83,6 +85,14 @@
       this.addTabPage.Text = "Add";
       this.addTabPage.UseVisualStyleBackColor = true;
       // 
+      // addMemberUserControl1
+      // 
+      this.addMemberUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.addMemberUserControl1.Location = new System.Drawing.Point(3, 3);
+      this.addMemberUserControl1.Name = "addMemberUserControl1";
+      this.addMemberUserControl1.Size = new System.Drawing.Size(787, 393);
+      this.addMemberUserControl1.TabIndex = 0;
+      // 
       // updateTabPage
       // 
       this.updateTabPage.Location = new System.Drawing.Point(4, 22);
@@ -95,6 +105,7 @@
       // 
       // searchTabPage
       // 
+      this.searchTabPage.Controls.Add(this.searchTransactionsUserControl);
       this.searchTabPage.Location = new System.Drawing.Point(4, 22);
       this.searchTabPage.Name = "searchTabPage";
       this.searchTabPage.Size = new System.Drawing.Size(793, 399);
@@ -102,13 +113,13 @@
       this.searchTabPage.Text = "Transaction Search";
       this.searchTabPage.UseVisualStyleBackColor = true;
       // 
-      // addMemberUserControl1
+      // searchTransactionsUserControl
       // 
-      this.addMemberUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.addMemberUserControl1.Location = new System.Drawing.Point(3, 3);
-      this.addMemberUserControl1.Name = "addMemberUserControl1";
-      this.addMemberUserControl1.Size = new System.Drawing.Size(787, 393);
-      this.addMemberUserControl1.TabIndex = 0;
+      this.searchTransactionsUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.searchTransactionsUserControl.Location = new System.Drawing.Point(0, 0);
+      this.searchTransactionsUserControl.Name = "searchTransactionsUserControl";
+      this.searchTransactionsUserControl.Size = new System.Drawing.Size(793, 399);
+      this.searchTransactionsUserControl.TabIndex = 0;
       // 
       // MembersManagementForm
       // 
@@ -120,21 +131,25 @@
       this.Controls.Add(this.EmployeeLabel);
       this.Name = "MembersManagementForm";
       this.Text = "Member Management";
+      this.Activated += new System.EventHandler(this.MembersManagementForm_Activated);
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MembersManagementForm_FormClosed);
       this.tabControl1.ResumeLayout(false);
       this.addTabPage.ResumeLayout(false);
+      this.searchTabPage.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label EmployeeLabel;
+        private System.Windows.Forms.Label employeeNameIdLabel;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage addTabPage;
+        private System.Windows.Forms.TabPage updateTabPage;
+        private System.Windows.Forms.TabPage searchTabPage;
+        private User_Controls.AddMemberUserControl addMemberUserControl1;
+        private User_Controls.SearchTransactionsUserControl searchTransactionsUserControl;
     }
-
-    #endregion
-
-    private System.Windows.Forms.Label EmployeeLabel;
-    private System.Windows.Forms.Label employeeNameIdLabel;
-    private System.Windows.Forms.TabControl tabControl1;
-    private System.Windows.Forms.TabPage addTabPage;
-    private System.Windows.Forms.TabPage updateTabPage;
-    private System.Windows.Forms.TabPage searchTabPage;
-    private User_Controls.AddMemberUserControl addMemberUserControl1;
-  }
 }
