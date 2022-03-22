@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FurnitureRentalData;
 using FurnitureRentalDomain;
 
@@ -21,6 +22,18 @@ namespace FurnitureRentalBusiness
             }
 
             return _dal.AddMember(newMember);
+        }
+
+        public IEnumerable<Member> GetMembers()
+        {
+            return _dal.GetMembers();
+        }
+
+        public IEnumerable<RentalTransaction> GetMemberTransactionsByDateRange(int memberId, DateTime begin, DateTime end)
+        {
+            //TODO: validation for id
+            //TODO: validation to make sure begin < end
+            return _dal.GetMemberTransactionsByDateRange(memberId, begin, end);
         }
     }
 }
