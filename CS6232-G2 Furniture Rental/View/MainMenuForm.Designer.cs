@@ -56,6 +56,7 @@
             this.membersButton.TabIndex = 3;
             this.membersButton.Text = "&Members";
             this.membersButton.UseVisualStyleBackColor = true;
+            this.membersButton.Click += new System.EventHandler(this.membersButton_Click);
             // 
             // rentalsButton
             // 

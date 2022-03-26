@@ -44,7 +44,10 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Helpers\GenderHelper.cs" />
+    <Compile Include="Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentalItem.cs" />
+    <Compile Include="RentalTransaction.cs" />
     <Compile Include="USStates.cs" />
   </ItemGroup>
   <ItemGroup />
