@@ -34,10 +34,12 @@
       this.addTabPage = new System.Windows.Forms.TabPage();
       this.addMemberUserControl1 = new CS6232_G2_Furniture_Rental.User_Controls.AddMemberUserControl();
       this.updateTabPage = new System.Windows.Forms.TabPage();
+      this.editMemberUserControl1 = new CS6232_G2_Furniture_Rental.User_Controls.EditMemberUserControl();
       this.searchTabPage = new System.Windows.Forms.TabPage();
       this.searchTransactionsUserControl = new CS6232_G2_Furniture_Rental.User_Controls.SearchTransactionsUserControl();
       this.tabControl1.SuspendLayout();
       this.addTabPage.SuspendLayout();
+      this.updateTabPage.SuspendLayout();
       this.searchTabPage.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -95,6 +97,7 @@
       // 
       // updateTabPage
       // 
+      this.updateTabPage.Controls.Add(this.editMemberUserControl1);
       this.updateTabPage.Location = new System.Drawing.Point(4, 22);
       this.updateTabPage.Name = "updateTabPage";
       this.updateTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -102,6 +105,14 @@
       this.updateTabPage.TabIndex = 1;
       this.updateTabPage.Text = "Update";
       this.updateTabPage.UseVisualStyleBackColor = true;
+      // 
+      // editMemberUserControl1
+      // 
+      this.editMemberUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.editMemberUserControl1.Location = new System.Drawing.Point(3, 3);
+      this.editMemberUserControl1.Name = "editMemberUserControl1";
+      this.editMemberUserControl1.Size = new System.Drawing.Size(787, 393);
+      this.editMemberUserControl1.TabIndex = 0;
       // 
       // searchTabPage
       // 
@@ -135,6 +146,7 @@
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MembersManagementForm_FormClosed);
       this.tabControl1.ResumeLayout(false);
       this.addTabPage.ResumeLayout(false);
+      this.updateTabPage.ResumeLayout(false);
       this.searchTabPage.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
@@ -151,5 +163,6 @@
         private System.Windows.Forms.TabPage searchTabPage;
         private User_Controls.AddMemberUserControl addMemberUserControl1;
         private User_Controls.SearchTransactionsUserControl searchTransactionsUserControl;
+        private User_Controls.EditMemberUserControl editMemberUserControl1;
     }
 }

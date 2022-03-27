@@ -132,5 +132,97 @@ namespace FurnitureRentalData
 
             return rentalTransactionList;
         }
+
+        public IEnumerable<Member> FindMembers(int? memberId, string phoneNumber, string name)
+        {
+            List<Member> memberList = new List<Member>();
+
+            phoneNumber = String.IsNullOrWhiteSpace(phoneNumber) ? null : phoneNumber;
+            name = String.IsNullOrWhiteSpace(name) ? null : name;
+
+            string selectStatement = @"SELECT [memberID], [birthDate], [firstName], [lastName], [phone], [address1], [address2], [city], [state], [zipcode]
+                                       FROM [Member]
+                                       WHERE @memberID is NULL or (memberID = @memberID)
+                                       AND @phoneNumber is NULL or (phone like '%' + @phoneNumber + '%')
+                                       AND @name is NULL or (firstName like '%' + @name + '%' OR lastName like '%' + @name + '%');";
+
+            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@memberId", memberId ?? Convert.DBNull);
+                    selectCommand.Parameters.AddWithValue("@phoneNumber", phoneNumber ?? Convert.DBNull);
+                    selectCommand.Parameters.AddWithValue("@name", name ?? Convert.DBNull);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member
+                            {
+                                MemberID = (int)reader["memberID"],
+                                Birthdate = (DateTime)reader["birthDate"],
+                                FirstName = reader["firstName"].ToString(),
+                                LastName = reader["lastName"].ToString(),
+                                Phone = reader["phone"].ToString(),
+                                Address1 = reader["address1"].ToString(),
+                                Address2 = reader["address2"].ToString(),
+                                City = reader["city"].ToString(),
+                                State = reader["state"].ToString(),
+                                Zipcode = reader["zipcode"].ToString(),
+
+                            };
+
+                            memberList.Add(member);
+                        }
+                    }
+                }
+            }
+
+            return memberList;
+        }
+
+        /// <summary>
+        /// Updates a member
+        /// </summary>
+        /// <param name="updateMember">the member to update</param>
+        /// <returns>true if the member was updated</returns>
+        public bool UpdateMember(Member updateMember)
+        {
+            string insertStatement =
+                "UPDATE Member " +
+                "set birthdate = @birthdate, firstName = @firstName, lastName = @lastName, phone = @phone, address1 = @address1, address2 = @address2, city = @city, state = @state, zipcode = @zipcode " +
+                "where memberID = @memberID";
+
+            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            {
+                SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+                insertCommand.Parameters.AddWithValue("@birthdate", updateMember.Birthdate);
+                insertCommand.Parameters.AddWithValue("@firstName", updateMember.FirstName);
+                insertCommand.Parameters.AddWithValue("@lastName", updateMember.LastName);
+                insertCommand.Parameters.AddWithValue("@phone", updateMember.Phone);
+                insertCommand.Parameters.AddWithValue("@address1", updateMember.Address1);
+                if (updateMember.Address2 is null)
+                {
+                    insertCommand.Parameters.AddWithValue("@address2", DBNull.Value);
+                }
+                else
+                {
+                    insertCommand.Parameters.AddWithValue("@address2", updateMember.Address2);
+                }
+                insertCommand.Parameters.AddWithValue("@city", updateMember.City);
+                insertCommand.Parameters.AddWithValue("@state", updateMember.State);
+                insertCommand.Parameters.AddWithValue("@zipcode", updateMember.Zipcode);
+                insertCommand.Parameters.AddWithValue("@memberID", updateMember.MemberID);
+
+                connection.Open();
+
+                using (insertCommand)
+                {
+                    return insertCommand.ExecuteNonQuery() == 1;
+                }
+            }
+        }
     }
 }

@@ -35,5 +35,20 @@ namespace FurnitureRentalBusiness
             //TODO: validation to make sure begin < end
             return _dal.GetMemberTransactionsByDateRange(memberId, begin, end);
         }
+
+        public IEnumerable<Member> FindMembers(int? memberId, string phoneNumber, string name)
+        {
+            return _dal.FindMembers(memberId, phoneNumber, name);
+        }
+
+        public bool UpdateMember(Member update)
+        {
+            if (update is null)
+            {
+                throw new ArgumentNullException("Member cannot be null");
+            }
+
+            return _dal.UpdateMember(update);
+        }
     }
 }

@@ -53,6 +53,12 @@
     <Compile Include="User Controls\AddEmployeeUserControl.Designer.cs">
       <DependentUpon>AddEmployeeUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\EditMemberUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\EditMemberUserControl.Designer.cs">
+      <DependentUpon>EditMemberUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\AddMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,11 +97,23 @@
     </Compile>
     <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\MemberSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MemberSearchForm.Designer.cs">
+      <DependentUpon>MemberSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MembersManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\MembersManagementForm.Designer.cs">
       <DependentUpon>MembersManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SearchResultsForm.Designer.cs">
+      <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,6 +126,9 @@
     </Compile>
     <EmbeddedResource Include="User Controls\AddEmployeeUserControl.resx">
       <DependentUpon>AddEmployeeUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\EditMemberUserControl.resx">
+      <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\AddMemberUserControl.resx">
       <DependentUpon>AddMemberUserControl.cs</DependentUpon>
@@ -127,8 +148,14 @@
     <EmbeddedResource Include="View\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MemberSearchForm.resx">
+      <DependentUpon>MemberSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MembersManagementForm.resx">
       <DependentUpon>MembersManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SearchResultsForm.resx">
+      <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\FurnitureRentalDomain.Employee.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.Member.datasource" />

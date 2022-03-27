@@ -13,28 +13,28 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
-  public partial class MembersManagementForm : Form
-  {
-      private static LoginBusiness _business;
-      private static Employee _employee;
+    public partial class MembersManagementForm : Form
+    {
+        private static LoginBusiness _business;
+        private static Employee _employee;
 
-      public MembersManagementForm()
-      {
-          _business = new LoginBusiness();
+        public MembersManagementForm()
+        {
+            _business = new LoginBusiness();
 
-          InitializeComponent();
-      }
+            InitializeComponent();
+        }
 
-      private void MembersManagementForm_FormClosed(object sender, FormClosedEventArgs e)
-      {
-          this.HideThisAndShowForm<MainMenuForm>();
-      }
+        private void MembersManagementForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.HideThisAndShowForm<MainMenuForm>();
+        }
 
-      private void MembersManagementForm_Activated(object sender, System.EventArgs e)
-      {
-          _employee = _business.GetLoggedInUser();
+        private void MembersManagementForm_Activated(object sender, System.EventArgs e)
+        {
+            _employee = _business.GetLoggedInUser();
 
-          this.employeeNameIdLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
-      }
-  }
+            this.employeeNameIdLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+        }
+    }
 }
