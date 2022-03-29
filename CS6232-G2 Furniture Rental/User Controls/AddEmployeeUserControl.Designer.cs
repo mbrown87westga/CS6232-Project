@@ -43,7 +43,6 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             System.Windows.Forms.Label userNameLabel;
             System.Windows.Forms.Label zipcodeLabel;
             this.address1TextBox = new System.Windows.Forms.TextBox();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.address2TextBox = new System.Windows.Forms.TextBox();
             this.birthdateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.cityTextBox = new System.Windows.Forms.TextBox();
@@ -51,16 +50,17 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.isAdminCheckBox = new System.Windows.Forms.CheckBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
-            this.zipcodeTextBox = new System.Windows.Forms.TextBox();
             this.reenterPasswordLabel = new System.Windows.Forms.Label();
             this.reenterPasswordTextBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.addErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.zipcodeMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             address1Label = new System.Windows.Forms.Label();
             address2Label = new System.Windows.Forms.Label();
             birthdateLabel = new System.Windows.Forms.Label();
@@ -73,8 +73,8 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             stateLabel = new System.Windows.Forms.Label();
             userNameLabel = new System.Windows.Forms.Label();
             zipcodeLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // address1Label
@@ -206,10 +206,6 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.address1TextBox.Size = new System.Drawing.Size(200, 23);
             this.address1TextBox.TabIndex = 5;
             // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
-            // 
             // address2TextBox
             // 
             this.address2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "Address2", true));
@@ -275,15 +271,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(200, 23);
             this.passwordTextBox.TabIndex = 24;
-            // 
-            // phoneTextBox
-            // 
-            this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "Phone", true));
-            this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneTextBox.Location = new System.Drawing.Point(398, 182);
-            this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(200, 23);
-            this.phoneTextBox.TabIndex = 17;
+            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // sexComboBox
             // 
@@ -314,15 +302,6 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.userNameTextBox.Size = new System.Drawing.Size(200, 23);
             this.userNameTextBox.TabIndex = 21;
             // 
-            // zipcodeTextBox
-            // 
-            this.zipcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "Zipcode", true));
-            this.zipcodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipcodeTextBox.Location = new System.Drawing.Point(522, 133);
-            this.zipcodeTextBox.Name = "zipcodeTextBox";
-            this.zipcodeTextBox.Size = new System.Drawing.Size(131, 23);
-            this.zipcodeTextBox.TabIndex = 13;
-            // 
             // reenterPasswordLabel
             // 
             this.reenterPasswordLabel.AutoSize = true;
@@ -339,6 +318,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.reenterPasswordTextBox.Name = "reenterPasswordTextBox";
             this.reenterPasswordTextBox.Size = new System.Drawing.Size(200, 20);
             this.reenterPasswordTextBox.TabIndex = 26;
+            this.reenterPasswordTextBox.UseSystemPasswordChar = true;
             // 
             // addButton
             // 
@@ -366,10 +346,36 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // 
             this.addErrorProvider.ContainerControl = this;
             // 
+            // zipcodeMaskedTextBox
+            // 
+            this.zipcodeMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zipcodeMaskedTextBox.Location = new System.Drawing.Point(517, 136);
+            this.zipcodeMaskedTextBox.Mask = "00000-9999";
+            this.zipcodeMaskedTextBox.Name = "zipcodeMaskedTextBox";
+            this.zipcodeMaskedTextBox.Size = new System.Drawing.Size(81, 23);
+            this.zipcodeMaskedTextBox.TabIndex = 13;
+            this.zipcodeMaskedTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // phoneMaskedTextBox
+            // 
+            this.phoneMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneMaskedTextBox.Location = new System.Drawing.Point(398, 181);
+            this.phoneMaskedTextBox.Mask = "(999) 000-0000";
+            this.phoneMaskedTextBox.Name = "phoneMaskedTextBox";
+            this.phoneMaskedTextBox.Size = new System.Drawing.Size(96, 23);
+            this.phoneMaskedTextBox.TabIndex = 17;
+            this.phoneMaskedTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
+            // 
             // AddEmployeeUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.phoneMaskedTextBox);
+            this.Controls.Add(this.zipcodeMaskedTextBox);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.reenterPasswordTextBox);
@@ -390,7 +396,6 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.Controls.Add(passwordLabel);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(phoneLabel);
-            this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(sexLabel);
             this.Controls.Add(this.sexComboBox);
             this.Controls.Add(stateLabel);
@@ -398,12 +403,11 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.Controls.Add(userNameLabel);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(zipcodeLabel);
-            this.Controls.Add(this.zipcodeTextBox);
             this.Name = "AddEmployeeUserControl";
             this.Size = new System.Drawing.Size(812, 534);
             this.Load += new System.EventHandler(this.AddEmployeeUserControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,15 +424,15 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private System.Windows.Forms.CheckBox isAdminCheckBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.ComboBox sexComboBox;
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.TextBox userNameTextBox;
-        private System.Windows.Forms.TextBox zipcodeTextBox;
         private System.Windows.Forms.Label reenterPasswordLabel;
         private System.Windows.Forms.TextBox reenterPasswordTextBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.ErrorProvider addErrorProvider;
+        private System.Windows.Forms.MaskedTextBox zipcodeMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
     }
 }

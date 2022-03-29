@@ -32,14 +32,15 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.address2TextBox.Text = "";
             this.cityTextBox.Text = "";
             this.stateComboBox.SelectedIndex = -1;
-            this.zipcodeTextBox.Text = "";
+            this.zipcodeMaskedTextBox.Text = "";
             this.birthdateDateTimePicker.Value = DateTime.Today;
-            this.phoneTextBox.Text = "";
+            this.phoneMaskedTextBox.Text = "";
             this.sexComboBox.SelectedIndex = -1;
             this.userNameTextBox.Text = "";
             this.passwordTextBox.Text = "";
             this.reenterPasswordTextBox.Text = "";
             this.isAdminCheckBox.Checked = false;
+            this.firstNameTextBox.Select();
         }
 
         private void LoadGenderListBox()
@@ -59,6 +60,8 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             
             this.LoadUSStatesListBox();
             this.stateComboBox.SelectedIndex = -1;
+
+            this.firstNameTextBox.Select();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -80,9 +83,9 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                         Address2 = (String.IsNullOrEmpty(this.address2TextBox.Text) ? null : this.address2TextBox.Text),
                         City = this.cityTextBox.Text,
                         State = this.stateComboBox.Text,
-                        Zipcode = this.zipcodeTextBox.Text,
+                        Zipcode = this.zipcodeMaskedTextBox.Text,
                         Birthdate = this.birthdateDateTimePicker.Value,
-                        Phone = this.phoneTextBox.Text,
+                        Phone = this.phoneMaskedTextBox.Text,
                         Sex = GenderHelper.ParseGender(this.sexComboBox.Text),
                         UserName = this.userNameTextBox.Text,
                         IsAdmin = this.isAdminCheckBox.Checked,
@@ -155,12 +158,12 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
             if (!this.ValidateZipcode())
             {
-                addErrorProvider.SetError(this.zipcodeTextBox, "Invalid zipcode");
+                addErrorProvider.SetError(this.zipcodeMaskedTextBox, "Invalid zipcode");
                 return false;
             }
             else
             {
-                addErrorProvider.SetError(this.zipcodeTextBox, string.Empty);
+                addErrorProvider.SetError(this.zipcodeMaskedTextBox, string.Empty);
             }
 
             if (this.birthdateDateTimePicker.Value >= DateTime.Today)
@@ -175,12 +178,12 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
             if (!this.ValidatePhone())
             {
-                addErrorProvider.SetError(this.phoneTextBox, "Invalid phone number");
+                addErrorProvider.SetError(this.phoneMaskedTextBox, "Invalid phone number");
                 return false;
             }
             else
             {
-                addErrorProvider.SetError(this.phoneTextBox, string.Empty);
+                addErrorProvider.SetError(this.phoneMaskedTextBox, string.Empty);
             }
 
             if (this.sexComboBox.SelectedIndex < 0)
@@ -206,6 +209,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             if (String.IsNullOrEmpty(this.passwordTextBox.Text))
             {
                 addErrorProvider.SetError(this.passwordTextBox, "Password cannot be blank");
+                return false;
             }
             else
             {
@@ -215,15 +219,19 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             if (this.passwordTextBox.Text != this.reenterPasswordTextBox.Text)
             {
                 addErrorProvider.SetError(this.passwordTextBox, "Passwords do not match");
+                addErrorProvider.SetError(this.reenterPasswordTextBox, "Passwords do not match");
+                return false;
             }
             else
             {
                 addErrorProvider.SetError(this.passwordTextBox, string.Empty);
+                addErrorProvider.SetError(this.reenterPasswordTextBox, string.Empty);
             }
 
             if (!validatePassword())
             {
                 addErrorProvider.SetError(this.passwordTextBox, "Password does not meet complexity requirements");
+                return false;
             }
             else
             {
@@ -235,14 +243,14 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
         private bool ValidateZipcode()
         {
-            if (String.IsNullOrWhiteSpace(this.zipcodeTextBox.Text))
+            if (String.IsNullOrWhiteSpace(this.zipcodeMaskedTextBox.Text))
             {
                 return false;
             }
 
-            var _usZipRegEx = @"^\d{5}(?:[-\s]\d{4})?$";
+            var _usZipRegEx = @"^\d{5}(\d{4})?$";
 
-            if ((!Regex.Match(this.zipcodeTextBox.Text, _usZipRegEx).Success))
+            if ((!Regex.Match(this.zipcodeMaskedTextBox.Text, _usZipRegEx).Success))
             {
                 return false;
             }
@@ -252,14 +260,14 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
         private bool ValidatePhone()
         {
-            if (string.IsNullOrEmpty(this.phoneTextBox.Text))
+            if (string.IsNullOrEmpty(this.phoneMaskedTextBox.Text))
             {
                 return false;
             }
 
             var _usPhoneRegEx = @"\(?\d{3}\)?[-\.]? *\d{3}[-\.]? *[-\.]?\d{4}";
 
-            if ((!Regex.Match(this.phoneTextBox.Text, _usPhoneRegEx).Success))
+            if ((!Regex.Match(this.phoneMaskedTextBox.Text, _usPhoneRegEx).Success))
             {
                 return false;
             }
