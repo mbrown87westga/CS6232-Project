@@ -38,7 +38,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         public void SelectRow(int index)
         {
-            if (index < 1 || index >= resultsDataGrid.Rows.Count)
+            if (index < 0 || index > resultsDataGrid.Rows.Count)
             {
                 return;
             }
@@ -50,6 +50,12 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void Button_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Result = null;
             this.Close();
         }
     }

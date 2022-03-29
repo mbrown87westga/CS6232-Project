@@ -142,9 +142,9 @@ namespace FurnitureRentalData
 
             string selectStatement = @"SELECT [memberID], [birthDate], [firstName], [lastName], [phone], [address1], [address2], [city], [state], [zipcode]
                                        FROM [Member]
-                                       WHERE @memberID is NULL or (memberID = @memberID)
-                                       AND @phoneNumber is NULL or (phone like '%' + @phoneNumber + '%')
-                                       AND @name is NULL or (firstName like '%' + @name + '%' OR lastName like '%' + @name + '%');";
+                                       WHERE (@memberID is NULL or (memberID = @memberID))
+                                       AND (@phoneNumber is NULL or (phone like '%' + @phoneNumber + '%'))
+                                       AND (@name is NULL or (firstName like '%' + @name + '%' OR lastName like '%' + @name + '%'));";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {

@@ -47,7 +47,7 @@ namespace CS6232_G2_Furniture_Rental.View
                     this.ShowFormAsDialog<SearchResultsForm>((f) =>
                     {
                         f.Members = _searchResults;
-                        f.SelectRow(1);
+                        f.SelectRow(0);
                     });
                 Result = searchResultsForm.Result;
                 Close();
@@ -69,6 +69,7 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 _memberList = _memberBusiness.GetMembers().ToList();
                 memberComboBox.DataSource = _memberList;
+                memberComboBox.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
