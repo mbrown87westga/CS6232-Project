@@ -2,6 +2,8 @@
 using System;
 using System.Data.SqlClient;
 using FurnitureRentalDomain.Helpers;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace FurnitureRentalData
 {
@@ -128,6 +130,48 @@ namespace FurnitureRentalData
                 }
             }
         }
+    }
+
+    public List<Employee> GetEmployees()
+    {
+        List<Employee> employeeList = new List<Employee>();
+
+        string selectStatement = "SELECT * FROM EMPLOYEE";
+
+        using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+        {
+            connection.Open();
+
+            using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+            {
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                            Employee employee = new Employee
+                            {
+                                EmployeeId = Int32.Parse(reader["employeeID"].ToString()),
+                                FirstName = reader["firstName"].ToString(),
+                                LastName = reader["lastName"].ToString(),
+                                Address1 = reader["address1"].ToString(),
+                                City = reader["city"].ToString(),
+                                State = reader["state"].ToString(),
+                                Zipcode = Int32.TryParse(reader["zipcode"].ToString(), out var value) ? 
+                                (value.ToString().Length == 9 ? value.ToString("#####-####") : reader["zipcode"].ToString()) 
+                                : reader["zipcode"].ToString(),
+                                //Zipcode = Regex.Replace(reader["zipcode"].ToString(), @"^\d{5}(\d{4})?$", ),
+                            Birthdate = (DateTime)reader["birthdate"],
+                            Sex = GenderHelper.ParseGender(reader["sex"].ToString()),
+                            UserName = reader["userName"].ToString(),
+                            IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"))
+                        };
+                        employeeList.Add(employee);
+                    }
+                }
+            }
+        }
+
+        return employeeList;
     }
   }
 }

@@ -26,6 +26,13 @@ namespace FurnitureRentalBusiness
 
             return this._dal.AddEmployee(newEmployee);
         }
+
+        public List<Employee> GetEmployees()
+        {
+            List<Employee> employees = this._dal.GetEmployees();
+
+            return employees;
+        }
     }
 
 }
