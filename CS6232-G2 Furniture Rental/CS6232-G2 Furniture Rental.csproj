@@ -71,6 +71,12 @@
     <Compile Include="User Controls\SearchTransactionsUserControl.Designer.cs">
       <DependentUpon>SearchTransactionsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\ViewEmployeesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\ViewEmployeesUserControl.Designer.cs">
+      <DependentUpon>ViewEmployeesUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\SearchTransactionsUserControl.resx">
       <DependentUpon>SearchTransactionsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\ViewEmployeesUserControl.resx">
+      <DependentUpon>ViewEmployeesUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminMenuForm.resx">
       <DependentUpon>AdminMenuForm.cs</DependentUpon>
