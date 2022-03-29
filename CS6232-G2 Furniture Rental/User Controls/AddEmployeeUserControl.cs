@@ -153,7 +153,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                 addErrorProvider.SetError(this.stateComboBox, string.Empty);
             }
 
-            if (!this.ValidateZipcode())
+            if (!this.validateZipcode())
             {
                 addErrorProvider.SetError(this.zipcodeTextBox, "Invalid zipcode");
                 return false;
@@ -173,7 +173,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                 addErrorProvider.SetError(this.birthdateDateTimePicker, string.Empty);
             }
 
-            if (!this.ValidatePhone())
+            if (!this.validatePhone())
             {
                 addErrorProvider.SetError(this.phoneTextBox, "Invalid phone number");
                 return false;
@@ -198,12 +198,16 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                 addErrorProvider.SetError(this.userNameTextBox, "Username cannot be blank");
                 return false;
             }
+            else if (!this.validateUsername())
+            {
+                addErrorProvider.SetError(this.userNameTextBox, "Username taken");
+            }
             else
             {
                 addErrorProvider.SetError(this.userNameTextBox, string.Empty);
             }
 
-            if (String.IsNullOrEmpty(this.passwordTextBox.Text))
+            if (String.IsNullOrWhiteSpace(this.passwordTextBox.Text))
             {
                 addErrorProvider.SetError(this.passwordTextBox, "Password cannot be blank");
             }
@@ -233,7 +237,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             return true;
         }
 
-        private bool ValidateZipcode()
+        private bool validateZipcode()
         {
             if (String.IsNullOrWhiteSpace(this.zipcodeTextBox.Text))
             {
@@ -250,7 +254,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             return true;
         }
 
-        private bool ValidatePhone()
+        private bool validatePhone()
         {
             if (string.IsNullOrEmpty(this.phoneTextBox.Text))
             {
@@ -264,6 +268,11 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                 return false;
             }
 
+            return true;
+        }
+
+        private bool validateUsername()
+        {
             return true;
         }
 
