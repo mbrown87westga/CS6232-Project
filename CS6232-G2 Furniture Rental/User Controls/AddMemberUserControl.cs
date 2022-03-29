@@ -14,10 +14,16 @@ using FurnitureRentalDomain.Helpers;
 
 namespace CS6232_G2_Furniture_Rental.User_Controls
 {
+    /// <summary>
+    /// The user control used to add a new member
+    /// </summary>
     public partial class AddMemberUserControl : UserControl
     {
         private static MemberBusiness _business;
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public AddMemberUserControl()
         {
             _business = new MemberBusiness();
@@ -41,6 +47,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.birthdateDateTimePicker.Value = DateTime.Today;
             this.phoneTextBox.Text = "";
         }
+
         private void LoadUSStatesListBox()
         {
             this.stateComboBox.DataSource = Enum.GetNames(typeof(USStates));

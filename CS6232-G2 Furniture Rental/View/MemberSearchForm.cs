@@ -13,15 +13,25 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// The form that allows the user to search for a member
+    /// </summary>
     public partial class MemberSearchForm : Form
     {
         private static LoginBusiness _loginBusiness;
         private static MemberBusiness _memberBusiness;
         private IEnumerable<Member> _memberList;
         private Employee _employee;
-        public Member Result;
         private IEnumerable<Member> _searchResults;
 
+        /// <summary>
+        /// The result of the search
+        /// </summary>
+        public Member Result { get; set; }
+
+        /// <summary>
+        /// the default constructor.
+        /// </summary>
         public MemberSearchForm()
         {
             _loginBusiness = new LoginBusiness();

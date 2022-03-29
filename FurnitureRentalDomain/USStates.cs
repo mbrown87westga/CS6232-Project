@@ -1,5 +1,8 @@
 ﻿namespace FurnitureRentalDomain
 {
+    /// <summary>
+    /// An enumeration that represents us states
+    /// </summary>
     public enum USStates
     {
         AL, AK, AR, AZ,

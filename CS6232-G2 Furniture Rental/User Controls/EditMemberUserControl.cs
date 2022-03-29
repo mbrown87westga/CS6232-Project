@@ -16,10 +16,16 @@ using FurnitureRentalDomain.Helpers;
 
 namespace CS6232_G2_Furniture_Rental.User_Controls
 {
+    /// <summary>
+    /// The user control used to edit an existing member
+    /// </summary>
     public partial class EditMemberUserControl : UserControl
     {
         private static MemberBusiness _business;
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public EditMemberUserControl()
         {
             _business = new MemberBusiness();

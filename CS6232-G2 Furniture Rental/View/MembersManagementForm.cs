@@ -13,11 +13,17 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// The member management form
+    /// </summary>
     public partial class MembersManagementForm : Form
     {
         private static LoginBusiness _business;
         private static Employee _employee;
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public MembersManagementForm()
         {
             _business = new LoginBusiness();

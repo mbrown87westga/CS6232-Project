@@ -13,12 +13,18 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.User_Controls
 {
+    /// <summary>
+    /// The user control used to search for transactions - Unused as of right now, I accidentally started it early.
+    /// </summary>
     public partial class SearchTransactionsUserControl : UserControl
     {
         private readonly MemberBusiness _memberBusiness;
         private IEnumerable<Member> _memberList;
         private List<RentalTransaction> _transactionList;
 
+        /// <summary>
+        /// The defualt constructor
+        /// </summary>
         public SearchTransactionsUserControl()
         {
             InitializeComponent();

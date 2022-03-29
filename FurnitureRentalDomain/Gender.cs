@@ -1,9 +1,12 @@
 ﻿namespace FurnitureRentalDomain
 {
-  public enum Gender
-  {
-    Male,
-    Female,
-    Unknown
-  }
+    /// <summary>
+    /// An enum representing a gender
+    /// </summary>
+    public enum Gender
+    {
+        Male,
+        Female,
+        Unknown
+    }
 }
