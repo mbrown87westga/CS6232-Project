@@ -32,7 +32,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.employeeIDLabel = new System.Windows.Forms.Label();
             this.employeeLabel = new System.Windows.Forms.Label();
             this.IDLabel = new System.Windows.Forms.Label();
-            this.IDTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.cityLabel = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.isAdminCheckBox = new System.Windows.Forms.CheckBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.idComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // employeeIDLabel
@@ -75,13 +75,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.IDLabel.Size = new System.Drawing.Size(21, 13);
             this.IDLabel.TabIndex = 5;
             this.IDLabel.Text = "ID:";
-            // 
-            // IDTextBox
-            // 
-            this.IDTextBox.Location = new System.Drawing.Point(85, 89);
-            this.IDTextBox.Name = "IDTextBox";
-            this.IDTextBox.Size = new System.Drawing.Size(61, 20);
-            this.IDTextBox.TabIndex = 6;
             // 
             // nameLabel
             // 
@@ -130,7 +123,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.Location = new System.Drawing.Point(85, 213);
             this.stateComboBox.Name = "stateComboBox";
-            this.stateComboBox.Size = new System.Drawing.Size(73, 21);
+            this.stateComboBox.Size = new System.Drawing.Size(67, 21);
             this.stateComboBox.TabIndex = 12;
             // 
             // zipcodeLabel
@@ -149,6 +142,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.zipcodeMaskedTextBox.Name = "zipcodeMaskedTextBox";
             this.zipcodeMaskedTextBox.Size = new System.Drawing.Size(67, 20);
             this.zipcodeMaskedTextBox.TabIndex = 14;
+            this.zipcodeMaskedTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // genderLabel
             // 
@@ -165,7 +159,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(85, 287);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(100, 21);
+            this.genderComboBox.Size = new System.Drawing.Size(67, 21);
             this.genderComboBox.TabIndex = 16;
             // 
             // isAdminLabel
@@ -195,6 +189,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.searchButton.TabIndex = 19;
             this.searchButton.Text = "&Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // cancelButton
             // 
@@ -206,11 +201,21 @@ namespace CS6232_G2_Furniture_Rental.View
             this.cancelButton.Text = "&Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // idComboBox
+            // 
+            this.idComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.idComboBox.FormattingEnabled = true;
+            this.idComboBox.Location = new System.Drawing.Point(85, 84);
+            this.idComboBox.Name = "idComboBox";
+            this.idComboBox.Size = new System.Drawing.Size(67, 21);
+            this.idComboBox.TabIndex = 6;
+            // 
             // EmployeeSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(271, 450);
+            this.Controls.Add(this.idComboBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.isAdminCheckBox);
@@ -225,13 +230,13 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Controls.Add(this.cityLabel);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.IDTextBox);
             this.Controls.Add(this.IDLabel);
             this.Controls.Add(this.employeeIDLabel);
             this.Controls.Add(this.employeeLabel);
             this.Name = "EmployeeSearchForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Employee Search";
+            this.Activated += new System.EventHandler(this.EmployeeSearchForm_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,7 +247,6 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.Label employeeIDLabel;
         private System.Windows.Forms.Label employeeLabel;
         private System.Windows.Forms.Label IDLabel;
-        private System.Windows.Forms.TextBox IDTextBox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label cityLabel;
@@ -257,5 +261,6 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.CheckBox isAdminCheckBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.ComboBox idComboBox;
     }
 }

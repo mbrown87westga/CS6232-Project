@@ -1,9 +1,10 @@
 ﻿using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
-using FurnitureRentalDomain.Helpers;
+using CS6232_G2_Furniture_Rental.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CS6232_G2_Furniture_Rental.View;
 
 namespace CS6232_G2_Furniture_Rental.User_Controls
 {
@@ -39,7 +40,12 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-
+            var form = this.ParentForm.ShowFormAsDialog<EmployeeSearchForm>();
+            List<Employee> result = form.Result;
+            if (result != null)
+            {
+                this.employeeBindingSource.DataSource = result;
+            }
         }
 
         private void viewAllButton_Click(object sender, EventArgs e)
