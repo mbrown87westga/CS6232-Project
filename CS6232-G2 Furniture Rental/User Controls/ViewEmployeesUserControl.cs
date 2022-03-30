@@ -36,5 +36,15 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         {
             this.GetEmployeeList();
         }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewAllButton_Click(object sender, EventArgs e)
+        {
+            this.GetEmployeeList();
+        }
     }
 }

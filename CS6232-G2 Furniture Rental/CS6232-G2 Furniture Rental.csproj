@@ -89,6 +89,12 @@
     <Compile Include="View\EmployeeMaintenanceForm.Designer.cs">
       <DependentUpon>EmployeeMaintenanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EmployeeSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeSearchForm.Designer.cs">
+      <DependentUpon>EmployeeSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeMaintenanceForm.resx">
       <DependentUpon>EmployeeMaintenanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeSearchForm.resx">
+      <DependentUpon>EmployeeSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
