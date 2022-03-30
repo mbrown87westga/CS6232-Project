@@ -78,13 +78,14 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                     }
                     else
                     {
-                        //TODO: failure logic
+                        MessageBox.Show("Member failed to update. Try again later.", "Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Invalid input!" + Environment.NewLine + ex.Message,
+                MessageBox.Show("Invalid input." + Environment.NewLine + ex.Message,
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

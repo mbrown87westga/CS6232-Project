@@ -21,7 +21,7 @@ namespace FurnitureRentalBusiness
         {
             if (newEmployee is null)
             {
-                throw new ArgumentNullException("Employee cannot be null");
+                throw new ArgumentNullException(nameof(newEmployee));
             }
 
             return this._dal.AddEmployee(newEmployee);

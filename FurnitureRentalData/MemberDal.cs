@@ -195,9 +195,9 @@ namespace FurnitureRentalData
                 "set birthdate = @birthdate, firstName = @firstName, lastName = @lastName, phone = @phone, address1 = @address1, address2 = @address2, city = @city, state = @state, zipcode = @zipcode " +
                 "where memberID = @memberID";
 
-            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            using (var connection = FurnitureRentalDbConnection.GetConnection())
             {
-                SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+                var insertCommand = new SqlCommand(insertStatement, connection);
                 insertCommand.Parameters.AddWithValue("@birthdate", updateMember.Birthdate);
                 insertCommand.Parameters.AddWithValue("@firstName", updateMember.FirstName);
                 insertCommand.Parameters.AddWithValue("@lastName", updateMember.LastName);
