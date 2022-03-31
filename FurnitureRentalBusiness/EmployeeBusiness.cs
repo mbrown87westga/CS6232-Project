@@ -27,6 +27,16 @@ namespace FurnitureRentalBusiness
             return this._dal.AddEmployee(newEmployee);
         }
 
+        public Employee GetEmployee(string userName)
+        {
+            if (String.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentOutOfRangeException("Username cannot be blank");
+            }
+
+            return this._dal.GetEmployee(userName);
+        }
+
         public List<Employee> GetEmployees()
         {
             List<Employee> employees = this._dal.GetEmployees();

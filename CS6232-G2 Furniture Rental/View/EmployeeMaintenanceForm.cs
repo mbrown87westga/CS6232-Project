@@ -10,6 +10,11 @@ namespace CS6232_G2_Furniture_Rental.View
         private static LoginBusiness _business;
         private static Employee _employee;
 
+        public Employee employee
+        {
+            get { return this.viewEmployeesUserControl.employee; }
+        }
+
         public EmployeeMaintenanceForm()
         {
             _business = new LoginBusiness();

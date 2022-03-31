@@ -136,7 +136,7 @@ namespace FurnitureRentalData
         {
             List<Employee> employeeList = new List<Employee>();
 
-            string selectStatement = "SELECT employeeID, firstName, lastName, address1, city, state, zipcode, birthdate, sex, userName, isAdmin " +
+            string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, birthdate, sex, userName, isAdmin " +
                                      "FROM EMPLOYEE";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
@@ -155,6 +155,7 @@ namespace FurnitureRentalData
                                 FirstName = reader["firstName"].ToString(),
                                 LastName = reader["lastName"].ToString(),
                                 Address1 = reader["address1"].ToString(),
+                                Address2 = reader["address2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 Zipcode = Int32.TryParse(reader["zipcode"].ToString(), out var value) ?
@@ -186,7 +187,7 @@ namespace FurnitureRentalData
             gender = String.IsNullOrWhiteSpace(gender) ? null : gender;
             isAdmin = String.IsNullOrWhiteSpace(isAdmin) ? null : Convert.ToInt32(isAdmin == "Yes").ToString();
 
-            string selectStatement = "SELECT employeeID, firstName, lastName, address1, city, state, zipcode, birthdate, sex, userName, isAdmin " +
+            string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, birthdate, sex, userName, isAdmin " +
                                      "FROM EMPLOYEE " +
                                      "WHERE (@employeeID IS NULL OR (employeeID = @employeeID)) " +
                                      "AND (@name is NULL or (firstName like '%' + @name + '%' OR lastName like '%' + @name + '%')) " +
@@ -219,6 +220,8 @@ namespace FurnitureRentalData
                                 EmployeeId = Int32.Parse(reader["employeeID"].ToString()),
                                 FirstName = reader["firstName"].ToString(),
                                 LastName = reader["lastName"].ToString(),
+                                Address1 = reader["address1"].ToString(),
+                                Address2 = reader["address2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 Zipcode = Int32.TryParse(reader["zipcode"].ToString(), out var value) ?

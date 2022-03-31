@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -50,6 +51,12 @@ namespace CS6232_G2_Furniture_Rental.Helpers
         {
             return Application.OpenForms.Cast<Form>()
                      .FirstOrDefault(c => c is T) as T ?? new T();
+        }
+
+        public static IEnumerable<T> GetChildControls<T>(this Control control) where T : Control
+        {
+            var children = control.Controls.OfType<T>();
+            return children.SelectMany(c => GetChildControls<T>(c)).Concat(children);
         }
     }
 }

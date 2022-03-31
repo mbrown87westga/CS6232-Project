@@ -95,6 +95,12 @@
     <Compile Include="View\EmployeeSearchForm.Designer.cs">
       <DependentUpon>EmployeeSearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EmployeeUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeUpdateForm.Designer.cs">
+      <DependentUpon>EmployeeUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeSearchForm.resx">
       <DependentUpon>EmployeeSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeUpdateForm.resx">
+      <DependentUpon>EmployeeUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
