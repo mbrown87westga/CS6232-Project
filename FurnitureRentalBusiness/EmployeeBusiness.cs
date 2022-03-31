@@ -34,7 +34,7 @@ namespace FurnitureRentalBusiness
             return employees;
         }
 
-        public List<Employee> FindEmployees(int? employeeID, string name, string city, string state, string zipcode, string gender, int? isAdmin)
+        public List<Employee> FindEmployees(int? employeeID, string name, string city, string state, string zipcode, string gender, string isAdmin)
         {
             return _dal.FindEmployees(employeeID, name, city, state, zipcode, gender, isAdmin);
         }

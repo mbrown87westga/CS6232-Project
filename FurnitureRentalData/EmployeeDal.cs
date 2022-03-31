@@ -175,7 +175,7 @@ namespace FurnitureRentalData
         }
 
         public List<Employee> FindEmployees(int? employeeID, string name, string city, string state,
-                                            string zipcode, string gender, int? isAdmin)
+                                            string zipcode, string gender, string isAdmin)
         {
             List<Employee> employeeList = new List<Employee>();
 
@@ -184,15 +184,17 @@ namespace FurnitureRentalData
             state = String.IsNullOrWhiteSpace(state) ? null : state;
             zipcode = String.IsNullOrWhiteSpace(zipcode) ? null : zipcode;
             gender = String.IsNullOrWhiteSpace(gender) ? null : gender;
+            isAdmin = String.IsNullOrWhiteSpace(isAdmin) ? null : Convert.ToInt32(isAdmin == "Yes").ToString();
 
             string selectStatement = "SELECT employeeID, firstName, lastName, address1, city, state, zipcode, birthdate, sex, userName, isAdmin " +
                                      "FROM EMPLOYEE " +
                                      "WHERE (@employeeID IS NULL OR (employeeID = @employeeID)) " +
-                                     "AND (@name IS NULL OR (name LIKE '%' + @name + '%')) " +
+                                     "AND (@name is NULL or (firstName like '%' + @name + '%' OR lastName like '%' + @name + '%')) " +
                                      "AND (@city IS NULL OR (city LIKE '%' + @city + '%')) " +
                                      "AND (@state IS NULL OR (state = @state)) " +
                                      "AND (@zipcode IS NULL OR (zipcode LIKE '%' + @zipcode + '%')) " +
-                                     "AND (@gender IS NULL OR (sex = @gender)) ";
+                                     "AND (@gender IS NULL OR (sex = @gender)) " +
+                                     "AND (@isAdmin IS NULL OR (isAdmin = @isAdmin))";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {
@@ -206,6 +208,7 @@ namespace FurnitureRentalData
                     selectCommand.Parameters.AddWithValue("@state", state ?? Convert.DBNull);
                     selectCommand.Parameters.AddWithValue("@zipcode", zipcode ?? Convert.DBNull);
                     selectCommand.Parameters.AddWithValue("@gender", gender ?? Convert.DBNull);
+                    selectCommand.Parameters.AddWithValue("@isAdmin", isAdmin ?? Convert.DBNull);
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {

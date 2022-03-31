@@ -26,6 +26,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             {
                 _employeeList = _business.GetEmployees();
                 employeeDataGridView.DataSource = _employeeList;
+                this.viewAllButton.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -44,7 +45,12 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             List<Employee> result = form.Result;
             if (result != null)
             {
-                this.employeeBindingSource.DataSource = result;
+                employeeDataGridView.DataSource = result;
+                this.viewAllButton.Enabled = true;
+            }
+            else
+            {
+                this.GetEmployeeList();
             }
         }
 
