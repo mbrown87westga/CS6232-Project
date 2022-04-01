@@ -69,6 +69,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private void detailsButton_Click(object sender, EventArgs e)
         {
             this.ParentForm.ShowFormAsDialog<EmployeeUpdateForm>();
+            this.GetEmployeeList();
         }
 
         private void employeeDataGridView_SelectionChanged(object sender, EventArgs e)

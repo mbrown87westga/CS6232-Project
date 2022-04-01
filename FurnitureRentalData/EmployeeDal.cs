@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using FurnitureRentalDomain.Helpers;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace FurnitureRentalData
 {
@@ -85,6 +86,82 @@ namespace FurnitureRentalData
             }
         }
 
+        public int UpdateEmployee(Employee oldEmployee, Employee newEmployee)
+        {
+            string updateStatement =
+                "UPDATE Employee " +
+                "SET birthdate = @birthdateNew, firstName = @firstNameNew, lastName = @lastNameNew, phone = @phoneNew, " +
+                "address1 = @address1New, address2 = @address2New, city = @cityNew, state = @stateNew, zipcode = @zipcodeNew, " +
+                "userName = @userNameNew, password = @passwordNew, isAdmin = @isAdminNew, sex = @sexNew " +
+                "WHERE employeeID = @employeeIDOld AND (birthdate = @birthdateOld) AND (firstName = @firstNameOld) " +
+                "AND (lastName = @lastNameOld) AND (phone = @phoneOld) AND (address1 = @address1Old) " +
+                "AND (address2 = @address2Old OR address2 IS NULL AND @address2Old IS NULL) " +
+                "AND (city = @cityOld) AND (state = @stateOld) AND (zipcode = @zipcodeOld) " +
+                "AND (userName = @userNameOld) AND (password = @passwordOld) AND (isAdmin = @isAdminOld) " +
+                "AND (sex = @sexOld)";
+
+            updateStatement = @"UPDATE Employee 
+                SET birthdate = @birthdateNew, firstName = @firstNameNew, lastName = @lastNameNew, phone = @phoneNew, 
+                address1 = @address1New, address2 = @address2New, city = @cityNew, state = @stateNew, zipcode = @zipcodeNew, 
+                userName = @userNameNew, password = @passwordNew, isAdmin = @isAdminNew, sex = @sexNew 
+                WHERE employeeID = @employeeIDOld AND (birthdate = @birthdateOld) AND (firstName = @firstNameOld) ";
+
+
+            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            {
+                SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+                updateCommand.Parameters.AddWithValue("@birthdateNew", newEmployee.Birthdate);
+                updateCommand.Parameters.AddWithValue("@firstNameNew", newEmployee.FirstName);
+                updateCommand.Parameters.AddWithValue("@lastNameNew", newEmployee.LastName);
+                updateCommand.Parameters.AddWithValue("@phoneNew", newEmployee.Phone);
+                updateCommand.Parameters.AddWithValue("@address1New", newEmployee.Address1);
+                if (newEmployee.Address2 is null)
+                {
+                    updateCommand.Parameters.AddWithValue("@address2New", DBNull.Value);
+                }
+                else
+                {
+                    updateCommand.Parameters.AddWithValue("@address2New", newEmployee.Address2);
+                }
+                updateCommand.Parameters.AddWithValue("@cityNew", newEmployee.City);
+                updateCommand.Parameters.AddWithValue("@stateNew", newEmployee.State);
+                updateCommand.Parameters.AddWithValue("@zipcodeNew", newEmployee.Zipcode);
+                updateCommand.Parameters.AddWithValue("@userNameNew", newEmployee.UserName);
+                updateCommand.Parameters.AddWithValue("@passwordNew", newEmployee.Password);
+                updateCommand.Parameters.AddWithValue("@isAdminNew", newEmployee.IsAdmin);
+                updateCommand.Parameters.AddWithValue("@sexNew", GenderHelper.ToString(newEmployee.Sex));
+                updateCommand.Parameters.AddWithValue("@employeeIDOld", oldEmployee.EmployeeId);
+                updateCommand.Parameters.AddWithValue("@birthdateOld", oldEmployee.Birthdate);
+                updateCommand.Parameters.AddWithValue("@firstNameOld", oldEmployee.FirstName);
+                updateCommand.Parameters.AddWithValue("@lastNameOld", oldEmployee.LastName);
+                updateCommand.Parameters.AddWithValue("@phoneOld", oldEmployee.Phone);
+                updateCommand.Parameters.AddWithValue("@address1Old", oldEmployee.Address1);
+                if (String.IsNullOrEmpty(oldEmployee.Address2))
+                {
+                    updateCommand.Parameters.AddWithValue("@address2Old", DBNull.Value);
+                }
+                else
+                {
+                    updateCommand.Parameters.AddWithValue("@address2Old", oldEmployee.Address2);
+                }
+                updateCommand.Parameters.AddWithValue("@cityOld", oldEmployee.City);
+                updateCommand.Parameters.AddWithValue("@stateOld", oldEmployee.State);
+                updateCommand.Parameters.AddWithValue("@zipcodeOld", oldEmployee.Zipcode);
+                updateCommand.Parameters.AddWithValue("@userNameOld", oldEmployee.UserName);
+                updateCommand.Parameters.AddWithValue("@passwordOld", oldEmployee.Password);
+                updateCommand.Parameters.AddWithValue("@isAdminOld", oldEmployee.IsAdmin);
+                updateCommand.Parameters.AddWithValue("@sexOld", GenderHelper.ToString(oldEmployee.Sex));
+
+                connection.Open();
+
+                using (updateCommand)
+                {
+                    return updateCommand.ExecuteNonQuery();
+                }
+            }
+
+        }
+
         public int AddEmployee(Employee newEmployee)
         {
             string insertStatement =
@@ -136,7 +213,7 @@ namespace FurnitureRentalData
         {
             List<Employee> employeeList = new List<Employee>();
 
-            string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, birthdate, sex, userName, isAdmin " +
+            string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, phone, birthdate, sex, userName, isAdmin, password " +
                                      "FROM EMPLOYEE";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
@@ -161,10 +238,12 @@ namespace FurnitureRentalData
                                 Zipcode = Int32.TryParse(reader["zipcode"].ToString(), out var value) ?
                                             (value.ToString().Length == 9 ? value.ToString("#####-####") : reader["zipcode"].ToString())
                                             : reader["zipcode"].ToString(),
+                                Phone = reader["phone"].ToString(),
                                 Birthdate = (DateTime)reader["birthdate"],
                                 Sex = GenderHelper.ParseGender(reader["sex"].ToString()),
                                 UserName = reader["userName"].ToString(),
-                                IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"))
+                                IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin")),
+                                Password = reader["password"].ToString()
                             };
                             employeeList.Add(employee);
                         }

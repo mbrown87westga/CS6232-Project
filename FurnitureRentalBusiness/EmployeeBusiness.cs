@@ -27,6 +27,21 @@ namespace FurnitureRentalBusiness
             return this._dal.AddEmployee(newEmployee);
         }
 
+        public int Update(Employee oldEmployee, Employee newEmployee)
+        {
+            if (oldEmployee == null)
+            {
+                throw new ArgumentNullException(nameof(oldEmployee));
+            }
+
+            if (newEmployee == null)
+            {
+                throw new ArgumentNullException(nameof(newEmployee));
+            }
+
+            return this._dal.UpdateEmployee(oldEmployee, newEmployee);
+
+        }
         public Employee GetEmployee(string userName)
         {
             if (String.IsNullOrEmpty(userName))

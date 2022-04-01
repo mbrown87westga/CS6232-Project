@@ -44,7 +44,6 @@ namespace CS6232_G2_Furniture_Rental.View
             System.Windows.Forms.Label zipcodeLabel;
             this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.zipcodeMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.clearButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.reenterPasswordTextBox = new System.Windows.Forms.TextBox();
             this.reenterPasswordLabel = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.adminLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.updateErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             address1Label = new System.Windows.Forms.Label();
             address2Label = new System.Windows.Forms.Label();
             birthdateLabel = new System.Windows.Forms.Label();
@@ -76,7 +76,128 @@ namespace CS6232_G2_Furniture_Rental.View
             userNameLabel = new System.Windows.Forms.Label();
             zipcodeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updateErrorProvider)).BeginInit();
             this.SuspendLayout();
+            // 
+            // address1Label
+            // 
+            address1Label.AutoSize = true;
+            address1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            address1Label.Location = new System.Drawing.Point(41, 128);
+            address1Label.Name = "address1Label";
+            address1Label.Size = new System.Drawing.Size(72, 17);
+            address1Label.TabIndex = 33;
+            address1Label.Text = "Address1:";
+            // 
+            // address2Label
+            // 
+            address2Label.AutoSize = true;
+            address2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            address2Label.Location = new System.Drawing.Point(41, 154);
+            address2Label.Name = "address2Label";
+            address2Label.Size = new System.Drawing.Size(72, 17);
+            address2Label.TabIndex = 35;
+            address2Label.Text = "Address2:";
+            // 
+            // birthdateLabel
+            // 
+            birthdateLabel.AutoSize = true;
+            birthdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            birthdateLabel.Location = new System.Drawing.Point(41, 229);
+            birthdateLabel.Name = "birthdateLabel";
+            birthdateLabel.Size = new System.Drawing.Size(69, 17);
+            birthdateLabel.TabIndex = 43;
+            birthdateLabel.Text = "Birthdate:";
+            // 
+            // cityLabel
+            // 
+            cityLabel.AutoSize = true;
+            cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            cityLabel.Location = new System.Drawing.Point(74, 183);
+            cityLabel.Name = "cityLabel";
+            cityLabel.Size = new System.Drawing.Size(35, 17);
+            cityLabel.TabIndex = 37;
+            cityLabel.Text = "City:";
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            firstNameLabel.Location = new System.Drawing.Point(33, 89);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(80, 17);
+            firstNameLabel.TabIndex = 29;
+            firstNameLabel.Text = "First Name:";
+            // 
+            // lastNameLabel
+            // 
+            lastNameLabel.AutoSize = true;
+            lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            lastNameLabel.Location = new System.Drawing.Point(325, 86);
+            lastNameLabel.Name = "lastNameLabel";
+            lastNameLabel.Size = new System.Drawing.Size(80, 17);
+            lastNameLabel.TabIndex = 31;
+            lastNameLabel.Text = "Last Name:";
+            // 
+            // passwordLabel
+            // 
+            passwordLabel.AutoSize = true;
+            passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            passwordLabel.Location = new System.Drawing.Point(40, 354);
+            passwordLabel.Name = "passwordLabel";
+            passwordLabel.Size = new System.Drawing.Size(73, 17);
+            passwordLabel.TabIndex = 52;
+            passwordLabel.Text = "Password:";
+            // 
+            // phoneLabel
+            // 
+            phoneLabel.AutoSize = true;
+            phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            phoneLabel.Location = new System.Drawing.Point(352, 229);
+            phoneLabel.Name = "phoneLabel";
+            phoneLabel.Size = new System.Drawing.Size(53, 17);
+            phoneLabel.TabIndex = 45;
+            phoneLabel.Text = "Phone:";
+            // 
+            // sexLabel
+            // 
+            sexLabel.AutoSize = true;
+            sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            sexLabel.Location = new System.Drawing.Point(74, 267);
+            sexLabel.Name = "sexLabel";
+            sexLabel.Size = new System.Drawing.Size(35, 17);
+            sexLabel.TabIndex = 47;
+            sexLabel.Text = "Sex:";
+            // 
+            // stateLabel
+            // 
+            stateLabel.AutoSize = true;
+            stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            stateLabel.Location = new System.Drawing.Point(360, 183);
+            stateLabel.Name = "stateLabel";
+            stateLabel.Size = new System.Drawing.Size(45, 17);
+            stateLabel.TabIndex = 39;
+            stateLabel.Text = "State:";
+            // 
+            // userNameLabel
+            // 
+            userNameLabel.AutoSize = true;
+            userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            userNameLabel.Location = new System.Drawing.Point(26, 309);
+            userNameLabel.Name = "userNameLabel";
+            userNameLabel.Size = new System.Drawing.Size(83, 17);
+            userNameLabel.TabIndex = 49;
+            userNameLabel.Text = "User Name:";
+            // 
+            // zipcodeLabel
+            // 
+            zipcodeLabel.AutoSize = true;
+            zipcodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            zipcodeLabel.Location = new System.Drawing.Point(461, 180);
+            zipcodeLabel.Name = "zipcodeLabel";
+            zipcodeLabel.Size = new System.Drawing.Size(63, 17);
+            zipcodeLabel.TabIndex = 41;
+            zipcodeLabel.Text = "Zipcode:";
             // 
             // phoneMaskedTextBox
             // 
@@ -100,16 +221,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.zipcodeMaskedTextBox.TabIndex = 42;
             this.zipcodeMaskedTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // clearButton
-            // 
-            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(215, 413);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 30);
-            this.clearButton.TabIndex = 57;
-            this.clearButton.Text = "Cl&ear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            // 
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,6 +230,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.updateButton.TabIndex = 56;
             this.updateButton.Text = "&Edit";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // reenterPasswordTextBox
             // 
@@ -139,16 +251,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.reenterPasswordLabel.TabIndex = 54;
             this.reenterPasswordLabel.Text = "(Re-enter:)";
             // 
-            // address1Label
-            // 
-            address1Label.AutoSize = true;
-            address1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            address1Label.Location = new System.Drawing.Point(41, 128);
-            address1Label.Name = "address1Label";
-            address1Label.Size = new System.Drawing.Size(72, 17);
-            address1Label.TabIndex = 33;
-            address1Label.Text = "Address1:";
-            // 
             // address1TextBox
             // 
             this.address1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "Address1", true));
@@ -158,16 +260,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.address1TextBox.Size = new System.Drawing.Size(200, 23);
             this.address1TextBox.TabIndex = 34;
             // 
-            // address2Label
-            // 
-            address2Label.AutoSize = true;
-            address2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            address2Label.Location = new System.Drawing.Point(41, 154);
-            address2Label.Name = "address2Label";
-            address2Label.Size = new System.Drawing.Size(72, 17);
-            address2Label.TabIndex = 35;
-            address2Label.Text = "Address2:";
-            // 
             // address2TextBox
             // 
             this.address2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "Address2", true));
@@ -176,16 +268,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(200, 23);
             this.address2TextBox.TabIndex = 36;
-            // 
-            // birthdateLabel
-            // 
-            birthdateLabel.AutoSize = true;
-            birthdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            birthdateLabel.Location = new System.Drawing.Point(41, 229);
-            birthdateLabel.Name = "birthdateLabel";
-            birthdateLabel.Size = new System.Drawing.Size(69, 17);
-            birthdateLabel.TabIndex = 43;
-            birthdateLabel.Text = "Birthdate:";
             // 
             // birthdateDateTimePicker
             // 
@@ -197,16 +279,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.birthdateDateTimePicker.Size = new System.Drawing.Size(107, 23);
             this.birthdateDateTimePicker.TabIndex = 44;
             // 
-            // cityLabel
-            // 
-            cityLabel.AutoSize = true;
-            cityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cityLabel.Location = new System.Drawing.Point(74, 183);
-            cityLabel.Name = "cityLabel";
-            cityLabel.Size = new System.Drawing.Size(35, 17);
-            cityLabel.TabIndex = 37;
-            cityLabel.Text = "City:";
-            // 
             // cityTextBox
             // 
             this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "City", true));
@@ -215,16 +287,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 23);
             this.cityTextBox.TabIndex = 38;
-            // 
-            // firstNameLabel
-            // 
-            firstNameLabel.AutoSize = true;
-            firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            firstNameLabel.Location = new System.Drawing.Point(33, 89);
-            firstNameLabel.Name = "firstNameLabel";
-            firstNameLabel.Size = new System.Drawing.Size(80, 17);
-            firstNameLabel.TabIndex = 29;
-            firstNameLabel.Text = "First Name:";
             // 
             // firstNameTextBox
             // 
@@ -246,16 +308,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.isAdminCheckBox.Text = "Is admin";
             this.isAdminCheckBox.UseVisualStyleBackColor = true;
             // 
-            // lastNameLabel
-            // 
-            lastNameLabel.AutoSize = true;
-            lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lastNameLabel.Location = new System.Drawing.Point(325, 86);
-            lastNameLabel.Name = "lastNameLabel";
-            lastNameLabel.Size = new System.Drawing.Size(80, 17);
-            lastNameLabel.TabIndex = 31;
-            lastNameLabel.Text = "Last Name:";
-            // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "LastName", true));
@@ -264,16 +316,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(200, 23);
             this.lastNameTextBox.TabIndex = 32;
-            // 
-            // passwordLabel
-            // 
-            passwordLabel.AutoSize = true;
-            passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            passwordLabel.Location = new System.Drawing.Point(40, 354);
-            passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new System.Drawing.Size(73, 17);
-            passwordLabel.TabIndex = 52;
-            passwordLabel.Text = "Password:";
             // 
             // passwordTextBox
             // 
@@ -285,29 +327,9 @@ namespace CS6232_G2_Furniture_Rental.View
             this.passwordTextBox.TabIndex = 53;
             this.passwordTextBox.UseSystemPasswordChar = true;
             // 
-            // phoneLabel
-            // 
-            phoneLabel.AutoSize = true;
-            phoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            phoneLabel.Location = new System.Drawing.Point(352, 229);
-            phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(53, 17);
-            phoneLabel.TabIndex = 45;
-            phoneLabel.Text = "Phone:";
-            // 
-            // sexLabel
-            // 
-            sexLabel.AutoSize = true;
-            sexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sexLabel.Location = new System.Drawing.Point(74, 267);
-            sexLabel.Name = "sexLabel";
-            sexLabel.Size = new System.Drawing.Size(35, 17);
-            sexLabel.TabIndex = 47;
-            sexLabel.Text = "Sex:";
-            // 
             // sexComboBox
             // 
-            this.sexComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.employeeBindingSource, "Sex", true));
+            this.sexComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.employeeBindingSource, "Sex", true));
             this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sexComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sexComboBox.FormattingEnabled = true;
@@ -315,16 +337,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(107, 24);
             this.sexComboBox.TabIndex = 48;
-            // 
-            // stateLabel
-            // 
-            stateLabel.AutoSize = true;
-            stateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            stateLabel.Location = new System.Drawing.Point(360, 183);
-            stateLabel.Name = "stateLabel";
-            stateLabel.Size = new System.Drawing.Size(45, 17);
-            stateLabel.TabIndex = 39;
-            stateLabel.Text = "State:";
             // 
             // stateComboBox
             // 
@@ -338,16 +350,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.stateComboBox.Size = new System.Drawing.Size(42, 24);
             this.stateComboBox.TabIndex = 40;
             // 
-            // userNameLabel
-            // 
-            userNameLabel.AutoSize = true;
-            userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            userNameLabel.Location = new System.Drawing.Point(26, 309);
-            userNameLabel.Name = "userNameLabel";
-            userNameLabel.Size = new System.Drawing.Size(83, 17);
-            userNameLabel.TabIndex = 49;
-            userNameLabel.Text = "User Name:";
-            // 
             // userNameTextBox
             // 
             this.userNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeeBindingSource, "UserName", true));
@@ -356,16 +358,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(200, 23);
             this.userNameTextBox.TabIndex = 50;
-            // 
-            // zipcodeLabel
-            // 
-            zipcodeLabel.AutoSize = true;
-            zipcodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            zipcodeLabel.Location = new System.Drawing.Point(461, 180);
-            zipcodeLabel.Name = "zipcodeLabel";
-            zipcodeLabel.Size = new System.Drawing.Size(63, 17);
-            zipcodeLabel.TabIndex = 41;
-            zipcodeLabel.Text = "Zipcode:";
             // 
             // adminIDLabel
             // 
@@ -388,16 +380,21 @@ namespace CS6232_G2_Furniture_Rental.View
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(317, 413);
+            this.cancelButton.Location = new System.Drawing.Point(209, 414);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 30);
             this.cancelButton.TabIndex = 60;
             this.cancelButton.Text = "&Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // employeeBindingSource
             // 
             this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
+            // 
+            // updateErrorProvider
+            // 
+            this.updateErrorProvider.ContainerControl = this;
             // 
             // EmployeeUpdateForm
             // 
@@ -409,7 +406,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Controls.Add(this.adminLabel);
             this.Controls.Add(this.phoneMaskedTextBox);
             this.Controls.Add(this.zipcodeMaskedTextBox);
-            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.reenterPasswordTextBox);
             this.Controls.Add(this.reenterPasswordLabel);
@@ -441,6 +437,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Text = "EmployeeUpdateForm";
             this.Load += new System.EventHandler(this.EmployeeUpdateForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updateErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,7 +448,6 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.BindingSource employeeBindingSource;
         private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
         private System.Windows.Forms.MaskedTextBox zipcodeMaskedTextBox;
-        private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.TextBox reenterPasswordTextBox;
         private System.Windows.Forms.Label reenterPasswordLabel;
@@ -469,5 +465,6 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.Label adminIDLabel;
         private System.Windows.Forms.Label adminLabel;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.ErrorProvider updateErrorProvider;
     }
 }

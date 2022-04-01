@@ -67,5 +67,10 @@ namespace FurnitureRentalDomain
         /// The employee's Sex
         /// </summary>
         public Gender Sex { get; set; }
+
+        public object ShallowCopy()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }
