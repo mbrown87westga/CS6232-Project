@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs" />
+    <Compile Include="Furniture.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Helpers\GenderHelper.cs" />
     <Compile Include="Member.cs" />
