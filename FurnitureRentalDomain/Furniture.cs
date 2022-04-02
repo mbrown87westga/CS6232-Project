@@ -4,7 +4,7 @@ namespace FurnitureRentalDomain
     /// <summary>
     /// A Furniture item as represented in the db
     /// </summary>
-    class Furniture
+    public class Furniture
     {
         /// <summary>
         /// The furniture's id

@@ -194,6 +194,7 @@
       <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\FurnitureRentalDomain.Employee.datasource" />
+    <None Include="Properties\DataSources\FurnitureRentalDomain.Furniture.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.Member.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.RentalItem.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.RentalTransaction.datasource" />

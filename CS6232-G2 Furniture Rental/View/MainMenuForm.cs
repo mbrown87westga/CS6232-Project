@@ -67,5 +67,10 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             this.HideThisAndShowForm<MembersManagementForm>();
         }
+
+        private void furnitureButton_Click(object sender, EventArgs e)
+        {
+            this.HideThisAndShowForm<FurnitureSearchForm>();
+        }
     }
 }
