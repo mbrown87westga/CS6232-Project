@@ -61,8 +61,11 @@ namespace CS6232_G2_Furniture_Rental.View
             this.adminIDLabel = new System.Windows.Forms.Label();
             this.adminLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.updateErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.modeLabel = new System.Windows.Forms.Label();
+            this.deactivatedLabel = new System.Windows.Forms.Label();
+            this.deactivateButton = new System.Windows.Forms.Button();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             address1Label = new System.Windows.Forms.Label();
             address2Label = new System.Windows.Forms.Label();
             birthdateLabel = new System.Windows.Forms.Label();
@@ -75,8 +78,8 @@ namespace CS6232_G2_Furniture_Rental.View
             stateLabel = new System.Windows.Forms.Label();
             userNameLabel = new System.Windows.Forms.Label();
             zipcodeLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // address1Label
@@ -224,7 +227,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(115, 414);
+            this.updateButton.Location = new System.Drawing.Point(115, 443);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 30);
             this.updateButton.TabIndex = 56;
@@ -380,27 +383,62 @@ namespace CS6232_G2_Furniture_Rental.View
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(209, 414);
+            this.cancelButton.Location = new System.Drawing.Point(209, 443);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 30);
             this.cancelButton.TabIndex = 60;
-            this.cancelButton.Text = "&Cancel";
+            this.cancelButton.Text = "&Close";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
             // 
             // updateErrorProvider
             // 
             this.updateErrorProvider.ContainerControl = this;
+            // 
+            // modeLabel
+            // 
+            this.modeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modeLabel.Location = new System.Drawing.Point(314, 37);
+            this.modeLabel.Name = "modeLabel";
+            this.modeLabel.Size = new System.Drawing.Size(297, 19);
+            this.modeLabel.TabIndex = 61;
+            this.modeLabel.Text = "* View mode";
+            // 
+            // deactivatedLabel
+            // 
+            this.deactivatedLabel.AutoSize = true;
+            this.deactivatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deactivatedLabel.ForeColor = System.Drawing.Color.Red;
+            this.deactivatedLabel.Location = new System.Drawing.Point(330, 406);
+            this.deactivatedLabel.Name = "deactivatedLabel";
+            this.deactivatedLabel.Size = new System.Drawing.Size(83, 17);
+            this.deactivatedLabel.TabIndex = 62;
+            this.deactivatedLabel.Text = "Deactivated";
+            // 
+            // deactivateButton
+            // 
+            this.deactivateButton.AutoSize = true;
+            this.deactivateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deactivateButton.Location = new System.Drawing.Point(308, 445);
+            this.deactivateButton.Name = "deactivateButton";
+            this.deactivateButton.Size = new System.Drawing.Size(85, 27);
+            this.deactivateButton.TabIndex = 63;
+            this.deactivateButton.Text = "&Deactivate";
+            this.deactivateButton.UseVisualStyleBackColor = true;
+            this.deactivateButton.Click += new System.EventHandler(this.deactivateButton_Click);
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
             // 
             // EmployeeUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 551);
+            this.Controls.Add(this.deactivateButton);
+            this.Controls.Add(this.deactivatedLabel);
+            this.Controls.Add(this.modeLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.adminIDLabel);
             this.Controls.Add(this.adminLabel);
@@ -436,8 +474,8 @@ namespace CS6232_G2_Furniture_Rental.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EmployeeUpdateForm";
             this.Load += new System.EventHandler(this.EmployeeUpdateForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,5 +504,8 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.Label adminLabel;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ErrorProvider updateErrorProvider;
+        private System.Windows.Forms.Label modeLabel;
+        private System.Windows.Forms.Label deactivatedLabel;
+        private System.Windows.Forms.Button deactivateButton;
     }
 }

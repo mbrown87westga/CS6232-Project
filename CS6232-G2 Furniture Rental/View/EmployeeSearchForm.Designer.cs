@@ -48,14 +48,16 @@ namespace CS6232_G2_Furniture_Rental.View
             this.idComboBox = new System.Windows.Forms.ComboBox();
             this.isAdminComboBox = new System.Windows.Forms.ComboBox();
             this.clearButton = new System.Windows.Forms.Button();
+            this.isDeactivatedLabel = new System.Windows.Forms.Label();
+            this.isDeactivatedComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // employeeIDLabel
             // 
             this.employeeIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeIDLabel.Location = new System.Drawing.Point(33, 26);
+            this.employeeIDLabel.Location = new System.Drawing.Point(33, 32);
             this.employeeIDLabel.Name = "employeeIDLabel";
-            this.employeeIDLabel.Size = new System.Drawing.Size(240, 23);
+            this.employeeIDLabel.Size = new System.Drawing.Size(240, 20);
             this.employeeIDLabel.TabIndex = 4;
             // 
             // employeeLabel
@@ -71,7 +73,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // IDLabel
             // 
             this.IDLabel.AutoSize = true;
-            this.IDLabel.Location = new System.Drawing.Point(33, 92);
+            this.IDLabel.Location = new System.Drawing.Point(33, 65);
             this.IDLabel.Name = "IDLabel";
             this.IDLabel.Size = new System.Drawing.Size(21, 13);
             this.IDLabel.TabIndex = 5;
@@ -80,7 +82,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(33, 128);
+            this.nameLabel.Location = new System.Drawing.Point(33, 101);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(38, 13);
             this.nameLabel.TabIndex = 7;
@@ -88,7 +90,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(97, 125);
+            this.nameTextBox.Location = new System.Drawing.Point(118, 98);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(174, 20);
             this.nameTextBox.TabIndex = 8;
@@ -96,7 +98,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
-            this.cityLabel.Location = new System.Drawing.Point(33, 166);
+            this.cityLabel.Location = new System.Drawing.Point(33, 136);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(27, 13);
             this.cityLabel.TabIndex = 9;
@@ -104,7 +106,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new System.Drawing.Point(97, 163);
+            this.cityTextBox.Location = new System.Drawing.Point(118, 133);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(174, 20);
             this.cityTextBox.TabIndex = 10;
@@ -112,7 +114,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // stateLabel
             // 
             this.stateLabel.AutoSize = true;
-            this.stateLabel.Location = new System.Drawing.Point(33, 205);
+            this.stateLabel.Location = new System.Drawing.Point(33, 171);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(35, 13);
             this.stateLabel.TabIndex = 11;
@@ -122,7 +124,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(97, 202);
+            this.stateComboBox.Location = new System.Drawing.Point(118, 168);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(67, 21);
             this.stateComboBox.TabIndex = 12;
@@ -130,7 +132,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // zipcodeLabel
             // 
             this.zipcodeLabel.AutoSize = true;
-            this.zipcodeLabel.Location = new System.Drawing.Point(33, 246);
+            this.zipcodeLabel.Location = new System.Drawing.Point(33, 207);
             this.zipcodeLabel.Name = "zipcodeLabel";
             this.zipcodeLabel.Size = new System.Drawing.Size(49, 13);
             this.zipcodeLabel.TabIndex = 13;
@@ -138,7 +140,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // zipcodeMaskedTextBox
             // 
-            this.zipcodeMaskedTextBox.Location = new System.Drawing.Point(97, 243);
+            this.zipcodeMaskedTextBox.Location = new System.Drawing.Point(118, 204);
             this.zipcodeMaskedTextBox.Mask = "00000-9999";
             this.zipcodeMaskedTextBox.Name = "zipcodeMaskedTextBox";
             this.zipcodeMaskedTextBox.Size = new System.Drawing.Size(67, 20);
@@ -148,7 +150,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // genderLabel
             // 
             this.genderLabel.AutoSize = true;
-            this.genderLabel.Location = new System.Drawing.Point(33, 281);
+            this.genderLabel.Location = new System.Drawing.Point(33, 242);
             this.genderLabel.Name = "genderLabel";
             this.genderLabel.Size = new System.Drawing.Size(45, 13);
             this.genderLabel.TabIndex = 15;
@@ -158,7 +160,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.FormattingEnabled = true;
-            this.genderComboBox.Location = new System.Drawing.Point(97, 278);
+            this.genderComboBox.Location = new System.Drawing.Point(118, 239);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(67, 21);
             this.genderComboBox.TabIndex = 16;
@@ -166,7 +168,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // isAdminLabel
             // 
             this.isAdminLabel.AutoSize = true;
-            this.isAdminLabel.Location = new System.Drawing.Point(33, 319);
+            this.isAdminLabel.Location = new System.Drawing.Point(33, 278);
             this.isAdminLabel.Name = "isAdminLabel";
             this.isAdminLabel.Size = new System.Drawing.Size(50, 13);
             this.isAdminLabel.TabIndex = 17;
@@ -175,7 +177,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // searchButton
             // 
             this.searchButton.AutoSize = true;
-            this.searchButton.Location = new System.Drawing.Point(24, 364);
+            this.searchButton.Location = new System.Drawing.Point(24, 387);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 19;
@@ -186,7 +188,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // cancelButton
             // 
             this.cancelButton.AutoSize = true;
-            this.cancelButton.Location = new System.Drawing.Point(224, 364);
+            this.cancelButton.Location = new System.Drawing.Point(224, 387);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 20;
@@ -199,7 +201,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.idComboBox.DisplayMember = "employeeID";
             this.idComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.idComboBox.FormattingEnabled = true;
-            this.idComboBox.Location = new System.Drawing.Point(97, 84);
+            this.idComboBox.Location = new System.Drawing.Point(118, 62);
             this.idComboBox.Name = "idComboBox";
             this.idComboBox.Size = new System.Drawing.Size(67, 21);
             this.idComboBox.TabIndex = 6;
@@ -209,7 +211,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.isAdminComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.isAdminComboBox.FormattingEnabled = true;
-            this.isAdminComboBox.Location = new System.Drawing.Point(97, 316);
+            this.isAdminComboBox.Location = new System.Drawing.Point(118, 275);
             this.isAdminComboBox.Name = "isAdminComboBox";
             this.isAdminComboBox.Size = new System.Drawing.Size(67, 21);
             this.isAdminComboBox.TabIndex = 21;
@@ -217,7 +219,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // clearButton
             // 
             this.clearButton.AutoSize = true;
-            this.clearButton.Location = new System.Drawing.Point(124, 364);
+            this.clearButton.Location = new System.Drawing.Point(124, 387);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 22;
@@ -225,12 +227,33 @@ namespace CS6232_G2_Furniture_Rental.View
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
+            // isDeactivatedLabel
+            // 
+            this.isDeactivatedLabel.AutoSize = true;
+            this.isDeactivatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isDeactivatedLabel.Location = new System.Drawing.Point(33, 314);
+            this.isDeactivatedLabel.Name = "isDeactivatedLabel";
+            this.isDeactivatedLabel.Size = new System.Drawing.Size(79, 13);
+            this.isDeactivatedLabel.TabIndex = 23;
+            this.isDeactivatedLabel.Text = "Is Deactivated:";
+            // 
+            // isDeactivatedComboBox
+            // 
+            this.isDeactivatedComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.isDeactivatedComboBox.FormattingEnabled = true;
+            this.isDeactivatedComboBox.Location = new System.Drawing.Point(118, 311);
+            this.isDeactivatedComboBox.Name = "isDeactivatedComboBox";
+            this.isDeactivatedComboBox.Size = new System.Drawing.Size(67, 21);
+            this.isDeactivatedComboBox.TabIndex = 24;
+            // 
             // EmployeeSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.isDeactivatedComboBox);
+            this.Controls.Add(this.isDeactivatedLabel);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.isAdminComboBox);
             this.Controls.Add(this.idComboBox);
@@ -281,5 +304,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.ComboBox idComboBox;
         private System.Windows.Forms.ComboBox isAdminComboBox;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label isDeactivatedLabel;
+        private System.Windows.Forms.ComboBox isDeactivatedComboBox;
     }
 }

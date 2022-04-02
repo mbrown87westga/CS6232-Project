@@ -67,7 +67,14 @@ namespace FurnitureRentalDomain
         /// The employee's Sex
         /// </summary>
         public Gender Sex { get; set; }
-
+        /// <summary>
+        /// The date the employee was deactivated
+        /// </summary>
+        public DateTime? DeactivatedDate { get; set; }
+        /// <summary>
+        /// Makes a shallow copy of the Employee 
+        /// </summary>
+        /// <returns></returns>
         public object ShallowCopy()
         {
             return this.MemberwiseClone();

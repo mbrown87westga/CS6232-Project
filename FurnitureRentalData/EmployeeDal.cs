@@ -21,7 +21,7 @@ namespace FurnitureRentalData
         /// <returns>true if they are correct</returns>
         public bool CheckCredentials(string username, string password)
         {
-            string selectStatement = @"SELECT 1
+            string selectStatement = @"SELECT deactivatedDate
                                    FROM [cs6232-g2].[dbo].[Employee]
                                    WHERE userName = @username
                                      AND password = @password;";
@@ -36,7 +36,10 @@ namespace FurnitureRentalData
                     selectCommand.Parameters.AddWithValue("@password", password);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        if (reader.Read()) return true;
+                        if (reader.Read())
+                        {
+                            if (reader["deactivatedDate"] == DBNull.Value) return true;
+                        }
                     }
                 }
             }
@@ -51,7 +54,7 @@ namespace FurnitureRentalData
         /// <returns>the employee</returns>
         public Employee GetEmployee(string username)
         {
-            string selectStatement = @"SELECT [employeeID], [birthdate], [firstName], [lastName], [phone], [address1], [address2], [city], [state], [zipcode], [userName], [isAdmin], [sex]
+            string selectStatement = @"SELECT [employeeID], [birthdate], [firstName], [lastName], [phone], [address1], [address2], [city], [state], [zipcode], [userName], [isAdmin], [sex], [deactivatedDate]
                                    FROM [cs6232-g2].[dbo].[Employee]
                                    WHERE userName = @username;";
 
@@ -80,6 +83,7 @@ namespace FurnitureRentalData
                             UserName = reader["userName"].ToString(),
                             IsAdmin = (bool)reader["isAdmin"],
                             Sex = GenderHelper.ParseGender(reader["sex"].ToString()),
+                            DeactivatedDate = reader["deactivatedDate"] == DBNull.Value ? null : (DateTime?)reader["deactivatedDate"]
                         };
                     }
                 }
@@ -92,20 +96,14 @@ namespace FurnitureRentalData
                 "UPDATE Employee " +
                 "SET birthdate = @birthdateNew, firstName = @firstNameNew, lastName = @lastNameNew, phone = @phoneNew, " +
                 "address1 = @address1New, address2 = @address2New, city = @cityNew, state = @stateNew, zipcode = @zipcodeNew, " +
-                "userName = @userNameNew, password = @passwordNew, isAdmin = @isAdminNew, sex = @sexNew " +
+                "userName = @userNameNew, password = @passwordNew, isAdmin = @isAdminNew, sex = @sexNew, deactivatedDate = @deactivatedDateNew " +
                 "WHERE employeeID = @employeeIDOld AND (birthdate = @birthdateOld) AND (firstName = @firstNameOld) " +
                 "AND (lastName = @lastNameOld) AND (phone = @phoneOld) AND (address1 = @address1Old) " +
                 "AND (address2 = @address2Old OR address2 IS NULL AND @address2Old IS NULL) " +
                 "AND (city = @cityOld) AND (state = @stateOld) AND (zipcode = @zipcodeOld) " +
                 "AND (userName = @userNameOld) AND (password = @passwordOld) AND (isAdmin = @isAdminOld) " +
-                "AND (sex = @sexOld)";
-
-            updateStatement = @"UPDATE Employee 
-                SET birthdate = @birthdateNew, firstName = @firstNameNew, lastName = @lastNameNew, phone = @phoneNew, 
-                address1 = @address1New, address2 = @address2New, city = @cityNew, state = @stateNew, zipcode = @zipcodeNew, 
-                userName = @userNameNew, password = @passwordNew, isAdmin = @isAdminNew, sex = @sexNew 
-                WHERE employeeID = @employeeIDOld AND (birthdate = @birthdateOld) AND (firstName = @firstNameOld) ";
-
+                "AND (sex = @sexOld) " +
+                "AND (deactivatedDate = @deactivatedDateOld OR deactivatedDate IS NULL AND @deactivatedDateOld IS NULL)";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {
@@ -130,6 +128,14 @@ namespace FurnitureRentalData
                 updateCommand.Parameters.AddWithValue("@passwordNew", newEmployee.Password);
                 updateCommand.Parameters.AddWithValue("@isAdminNew", newEmployee.IsAdmin);
                 updateCommand.Parameters.AddWithValue("@sexNew", GenderHelper.ToString(newEmployee.Sex));
+                if (newEmployee.DeactivatedDate is null)
+                {
+                    updateCommand.Parameters.AddWithValue("@deactivatedDateNew", DBNull.Value);
+                }
+                else
+                {
+                    updateCommand.Parameters.AddWithValue("@deactivatedDateNew", newEmployee.DeactivatedDate);
+                }
                 updateCommand.Parameters.AddWithValue("@employeeIDOld", oldEmployee.EmployeeId);
                 updateCommand.Parameters.AddWithValue("@birthdateOld", oldEmployee.Birthdate);
                 updateCommand.Parameters.AddWithValue("@firstNameOld", oldEmployee.FirstName);
@@ -151,6 +157,14 @@ namespace FurnitureRentalData
                 updateCommand.Parameters.AddWithValue("@passwordOld", oldEmployee.Password);
                 updateCommand.Parameters.AddWithValue("@isAdminOld", oldEmployee.IsAdmin);
                 updateCommand.Parameters.AddWithValue("@sexOld", GenderHelper.ToString(oldEmployee.Sex));
+                if (oldEmployee.DeactivatedDate is null)
+                {
+                    updateCommand.Parameters.AddWithValue("@deactivatedDateOld", DBNull.Value);
+                }
+                else
+                {
+                    updateCommand.Parameters.AddWithValue("@deactivatedDateOld", oldEmployee.DeactivatedDate);
+                }
 
                 connection.Open();
 
@@ -192,6 +206,7 @@ namespace FurnitureRentalData
                 insertCommand.Parameters.AddWithValue("@password", newEmployee.Password);
                 insertCommand.Parameters.AddWithValue("@isAdmin", newEmployee.IsAdmin);
                 insertCommand.Parameters.AddWithValue("@sex", GenderHelper.ToString(newEmployee.Sex));
+                insertCommand.Parameters.AddWithValue("@deactivatedDate", DBNull.Value);
 
                 connection.Open();
 
@@ -213,8 +228,9 @@ namespace FurnitureRentalData
         {
             List<Employee> employeeList = new List<Employee>();
 
-            string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, phone, birthdate, sex, userName, isAdmin, password " +
-                                     "FROM EMPLOYEE";
+            string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, phone, birthdate, sex, userName, isAdmin, password, deactivatedDate " +
+                                     "FROM EMPLOYEE " +
+                                     "WHERE deactivatedDate IS NULL";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {
@@ -243,7 +259,8 @@ namespace FurnitureRentalData
                                 Sex = GenderHelper.ParseGender(reader["sex"].ToString()),
                                 UserName = reader["userName"].ToString(),
                                 IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin")),
-                                Password = reader["password"].ToString()
+                                Password = reader["password"].ToString(),
+                                DeactivatedDate = reader["deactivatedDate"] == DBNull.Value ? null : (DateTime?)reader["deactivatedDate"]
                             };
                             employeeList.Add(employee);
                         }
@@ -255,7 +272,7 @@ namespace FurnitureRentalData
         }
 
         public List<Employee> FindEmployees(int? employeeID, string name, string city, string state,
-                                            string zipcode, string gender, string isAdmin)
+                                            string zipcode, string gender, string isAdmin, string isDeactivated)
         {
             List<Employee> employeeList = new List<Employee>();
 
@@ -265,8 +282,9 @@ namespace FurnitureRentalData
             zipcode = String.IsNullOrWhiteSpace(zipcode) ? null : zipcode;
             gender = String.IsNullOrWhiteSpace(gender) ? null : gender;
             isAdmin = String.IsNullOrWhiteSpace(isAdmin) ? null : Convert.ToInt32(isAdmin == "Yes").ToString();
+            isDeactivated = String.IsNullOrEmpty(isDeactivated) ? null : Convert.ToInt32(isDeactivated == "Yes").ToString();
 
-            string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, birthdate, sex, userName, isAdmin " +
+            string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, phone, birthdate, sex, userName, isAdmin, password, deactivatedDate " +
                                      "FROM EMPLOYEE " +
                                      "WHERE (@employeeID IS NULL OR (employeeID = @employeeID)) " +
                                      "AND (@name is NULL or (firstName like '%' + @name + '%' OR lastName like '%' + @name + '%')) " +
@@ -274,7 +292,8 @@ namespace FurnitureRentalData
                                      "AND (@state IS NULL OR (state = @state)) " +
                                      "AND (@zipcode IS NULL OR (zipcode LIKE '%' + @zipcode + '%')) " +
                                      "AND (@gender IS NULL OR (sex = @gender)) " +
-                                     "AND (@isAdmin IS NULL OR (isAdmin = @isAdmin))";
+                                     "AND (@isAdmin IS NULL OR (isAdmin = @isAdmin)) " +
+                                     "AND (@isDeactivated IS NULL OR (@isDeactivated = 0 AND deactivatedDate IS NULL) OR (@isDeactivated = 1 AND deactivatedDate IS NOT NULL))";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {
@@ -289,6 +308,7 @@ namespace FurnitureRentalData
                     selectCommand.Parameters.AddWithValue("@zipcode", zipcode ?? Convert.DBNull);
                     selectCommand.Parameters.AddWithValue("@gender", gender ?? Convert.DBNull);
                     selectCommand.Parameters.AddWithValue("@isAdmin", isAdmin ?? Convert.DBNull);
+                    selectCommand.Parameters.AddWithValue("@isDeactivated", isDeactivated ?? Convert.DBNull);
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
@@ -306,10 +326,13 @@ namespace FurnitureRentalData
                                 Zipcode = Int32.TryParse(reader["zipcode"].ToString(), out var value) ?
                                             (value.ToString().Length == 9 ? value.ToString("#####-####") : reader["zipcode"].ToString())
                                             : reader["zipcode"].ToString(),
+                                Phone = reader["phone"].ToString(),
                                 Birthdate = (DateTime)reader["birthdate"],
                                 Sex = GenderHelper.ParseGender(reader["sex"].ToString()),
                                 UserName = reader["userName"].ToString(),
-                                IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"))
+                                IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin")),
+                                Password = reader["password"].ToString(),
+                                DeactivatedDate = reader["deactivatedDate"] == DBNull.Value ? null : (DateTime?)reader["deactivatedDate"]
                             };
                             employeeList.Add(employee);
                         }

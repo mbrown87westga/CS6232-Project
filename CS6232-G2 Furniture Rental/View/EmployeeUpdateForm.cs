@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
@@ -36,7 +37,7 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 _employee = (Employee)new EmployeeMaintenanceForm().employee.ShallowCopy();
                 this.employeeBindingSource.DataSource = _employee;
-                this.SetControlsReadOnly(true);
+                this.PutIntoViewMode();
             }
             catch (Exception ex)
             {
@@ -56,7 +57,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.stateComboBox.SelectedIndex = -1;
         }
 
-        private void SetControlsReadOnly(bool value)
+        public void SetControlsReadOnly(bool value)
         {
             IEnumerable<TextBoxBase> textBoxes = this.GetChildControls<TextBoxBase>();
             foreach (TextBoxBase tb in textBoxes) tb.ReadOnly = value;
@@ -64,7 +65,11 @@ namespace CS6232_G2_Furniture_Rental.View
             IEnumerable<ComboBox> comboBoxes = this.GetChildControls<ComboBox>();
             foreach (ComboBox cb in comboBoxes) cb.Enabled = !value;
 
-            this.birthdateDateTimePicker.Enabled = !value;
+            IEnumerable<DateTimePicker> dateTimePickers = this.GetChildControls<DateTimePicker>();
+            foreach (DateTimePicker dtp in dateTimePickers) dtp.Enabled = !value;
+
+            IEnumerable<CheckBox> checkBoxes = this.GetChildControls<CheckBox>();
+            foreach (CheckBox cb in checkBoxes) cb.Enabled = !value;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -73,12 +78,28 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Close();
         }
 
+        private void deactivateButton_Click(object sender, EventArgs e)
+        {
+            if (this.deactivateButton.Text == "&Deactivate")
+            {
+                _employee.DeactivatedDate = DateTime.Today;
+                this.deactivatedLabel.Text = "Deactivated on " + ((DateTime)_employee.DeactivatedDate).ToShortDateString();
+                this.deactivatedLabel.Visible = true;
+                this.deactivateButton.Text = "&Reactivate";
+            }
+            else
+            {
+                _employee.DeactivatedDate = null;
+                this.deactivatedLabel.Visible = false;
+                this.deactivateButton.Text = "&Deactivate";
+            }
+        }
+
         private void updateButton_Click(object sender, EventArgs e)
         {
             if (this.updateButton.Text == "&Edit")
             {
-                this.SetControlsReadOnly(false);
-                this.updateButton.Text = "&Save changes";
+                this.PutIntoUpdateMode();
             }
             else
             {
@@ -102,14 +123,14 @@ namespace CS6232_G2_Furniture_Rental.View
                             Sex = GenderHelper.ParseGender(this.sexComboBox.Text),
                             UserName = this.userNameTextBox.Text,
                             IsAdmin = this.isAdminCheckBox.Checked,
-                            Password = this.passwordTextBox.Text
+                            Password = this.passwordTextBox.Text,
+                            DeactivatedDate = _employee.DeactivatedDate
                         };
 
                         if (_employeeBusiness.Update(new EmployeeMaintenanceForm().employee, newEmployee) > 0)
                         {
                             MessageBox.Show("Employee updated!", "Employee updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.updateButton.Text = "&Edit";
-                            this.SetControlsReadOnly(true);
+                            this.PutIntoViewMode();
                         }
                         else
                         {
@@ -129,6 +150,43 @@ namespace CS6232_G2_Furniture_Rental.View
                         "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void PutIntoUpdateMode()
+        {
+            this.SetControlsReadOnly(false);
+            this.updateButton.Text = "&Save changes";
+            this.cancelButton.Text = "&Cancel";
+            if (_employee.DeactivatedDate is null)
+            {
+                this.deactivateButton.Text = "&Deactivate";
+            }
+            else
+            {
+                this.deactivateButton.Text = "&Reactivate";
+            }
+            this.deactivateButton.Visible = true;
+            this.modeLabel.Text = "* Update mode";
+            this.modeLabel.ForeColor = System.Drawing.Color.Red;
+        }
+
+        private void PutIntoViewMode()
+        {
+            this.updateButton.Text = "&Edit";
+            this.cancelButton.Text = "&Close";
+            this.deactivateButton.Visible = false;
+            if (_employee.DeactivatedDate is null)
+            {
+                this.deactivatedLabel.Visible = false;
+            }
+            else
+            {
+                this.deactivatedLabel.Text = "Deactivated on " + ((DateTime)_employee.DeactivatedDate).ToShortDateString();
+                this.deactivatedLabel.Visible = true;
+            }
+            this.modeLabel.Text = "* View mode";
+            this.modeLabel.ForeColor = SystemColors.ControlText;
+            this.SetControlsReadOnly(true);
         }
 
         private bool FieldsValidated()

@@ -59,9 +59,9 @@ namespace FurnitureRentalBusiness
             return employees;
         }
 
-        public List<Employee> FindEmployees(int? employeeID, string name, string city, string state, string zipcode, string gender, string isAdmin)
+        public List<Employee> FindEmployees(int? employeeID, string name, string city, string state, string zipcode, string gender, string isAdmin, string isDeactivated)
         {
-            return _dal.FindEmployees(employeeID, name, city, state, zipcode, gender, isAdmin);
+            return _dal.FindEmployees(employeeID, name, city, state, zipcode, gender, isAdmin, isDeactivated);
         }
     }
 

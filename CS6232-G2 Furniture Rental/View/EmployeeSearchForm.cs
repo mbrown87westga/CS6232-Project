@@ -42,7 +42,8 @@ namespace CS6232_G2_Furniture_Rental.View
                                                               stateComboBox.SelectedIndex < 0 ? "" : stateComboBox.SelectedValue.ToString(),
                                                               zipcodeMaskedTextBox.Text, 
                                                               genderComboBox.SelectedIndex < 0 ? "" : GenderHelper.ToString(GenderHelper.ParseGender(this.genderComboBox.Text)),
-                                                              isAdminComboBox.SelectedIndex < 0 ? "" : isAdminComboBox.SelectedItem.ToString());
+                                                              isAdminComboBox.SelectedIndex < 0 ? "" : isAdminComboBox.SelectedItem.ToString(),
+                                                              isDeactivatedComboBox.SelectedIndex < 0 ? "" : isDeactivatedComboBox.SelectedItem.ToString());
                 if (this.Result.Any())
                 {
                     this.DialogResult = DialogResult.OK;
@@ -65,6 +66,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.LoadGenderListBox();
             this.LoadUSStatesListBox();
             this.LoadIsAdminListBox();
+            this.LoadIsDeactivatedListBox();
         }
         
         private void LoadIDListBox()
@@ -100,6 +102,13 @@ namespace CS6232_G2_Furniture_Rental.View
             isAdminComboBox.Items.Add("Yes");
             isAdminComboBox.Items.Add("No");
             isAdminComboBox.SelectedIndex = -1;
+        }
+
+        private void LoadIsDeactivatedListBox()
+        {
+            isDeactivatedComboBox.Items.Add("Yes");
+            isDeactivatedComboBox.Items.Add("No");
+            isDeactivatedComboBox.SelectedIndex = -1;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
