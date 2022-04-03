@@ -53,11 +53,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.adminButton.Enabled = _employee.IsAdmin;
         }
 
-        private void EmployeeIDLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AdminButton_Click(object sender, EventArgs e)
         {
             this.HideThisAndShowForm<AdminMenuForm>();

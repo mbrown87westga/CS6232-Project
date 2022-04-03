@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FurnitureRentalData
 {
@@ -13,6 +10,10 @@ namespace FurnitureRentalData
     /// </summary>
     public class FurnitureDal
     {
+        /// <summary>
+        /// Retreives all furniture items from the database
+        /// </summary>
+        /// <returns>a list of Fuurniture items</returns>
         public List<Furniture> GetAllFurniture()
         {
             List<Furniture> furnitureList = new List<Furniture>();
@@ -49,6 +50,10 @@ namespace FurnitureRentalData
             return furnitureList;
         }
 
+        /// <summary>
+        /// Retrieves all furniture category descriptions from the database
+        /// </summary>
+        /// <returns>a list of furniture category descriptions</returns>
         public List<string> GetCategories()
         {
             List<string> categoryList = new List<string>();
@@ -75,6 +80,10 @@ namespace FurnitureRentalData
             return categoryList;
         }
 
+        /// <summary>
+        /// Retrieves all furniture style descriptions from the database
+        /// </summary>
+        /// <returns>a list of furniture style descriptions</returns>
         public List<string> GetStyles()
         {
             List<string> styleList = new List<string>();
@@ -101,6 +110,15 @@ namespace FurnitureRentalData
             return styleList;
         }
 
+        /// <summary>
+        /// Searches for furniture matching the given criteria
+        /// </summary>
+        /// <param name="furnitureID">id to search for, or null to not include in search criteria</param>
+        /// <param name="name">furniture name to search for, or null to not include in search criteria</param>
+        /// <param name="description">furniture description to search for, or null to not include in search criteria</param>
+        /// <param name="category">furniture category description to search for, or null to not include in search criteria</param>
+        /// <param name="style">furniture style description to search for, or null to not include in search criteria</param>
+        /// <returns></returns>
         public List<Furniture> FindFurniture(int? furnitureID, string name, string description, string category, string style)
         {
             List<Furniture> furnitureList = new List<Furniture>();

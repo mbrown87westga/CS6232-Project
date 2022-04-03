@@ -3,8 +3,6 @@ using System;
 using System.Data.SqlClient;
 using FurnitureRentalDomain.Helpers;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace FurnitureRentalData
 {
@@ -90,6 +88,12 @@ namespace FurnitureRentalData
             }
         }
 
+        /// <summary>
+        /// Updates an employee in the database with any changes
+        /// </summary>
+        /// <param name="oldEmployee">The employee data as read from the database. Will make sure it hasn't changed elsewhere before it's updated.</param>
+        /// <param name="newEmployee">The changes to the employee data</param>
+        /// <returns></returns>
         public int UpdateEmployee(Employee oldEmployee, Employee newEmployee)
         {
             string updateStatement =
@@ -176,6 +180,11 @@ namespace FurnitureRentalData
 
         }
 
+        /// <summary>
+        /// Adds an employee to the database
+        /// </summary>
+        /// <param name="newEmployee"></param>
+        /// <returns>the id of the newly added record</returns>
         public int AddEmployee(Employee newEmployee)
         {
             string insertStatement =
@@ -224,6 +233,10 @@ namespace FurnitureRentalData
             }
         }
 
+        /// <summary>
+        /// Retrieves all active employees from the database
+        /// </summary>
+        /// <returns>list of employees who have not been deactivated</returns>
         public List<Employee> GetEmployees()
         {
             List<Employee> employeeList = new List<Employee>();
@@ -271,6 +284,18 @@ namespace FurnitureRentalData
             return employeeList;
         }
 
+        /// <summary>
+        /// Searches for employees matching the given criteria
+        /// </summary>
+        /// <param name="employeeID">id to search for, or null to not include in search criteria</param>
+        /// <param name="name">employee name to search for, or null to not include in search criteria</param>
+        /// <param name="city">employee city to search for, or null to not include in search criteria</param>
+        /// <param name="state">employee state to search for, or null to not include in search criteria</param>
+        /// <param name="zipcode">employee zipcode to search for, or null to not include in search criteria</param>
+        /// <param name="gender">employee gender to search for, or null to not include in search criteria</param>
+        /// <param name="isAdmin">employee admin status to search for, or null to not include in search criteria</param>
+        /// <param name="isDeactivated">employee active/inactive status to search for, or null to not include in search criteria</param>
+        /// <returns></returns>
         public List<Employee> FindEmployees(int? employeeID, string name, string city, string state,
                                             string zipcode, string gender, string isAdmin, string isDeactivated)
         {

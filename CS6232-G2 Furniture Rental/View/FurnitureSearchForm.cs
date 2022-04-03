@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
 using FurnitureRentalBusiness;
@@ -8,6 +7,9 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// Form for searching furniture items
+    /// </summary>
     public partial class FurnitureSearchForm : Form
     {
         private static LoginBusiness _loginBusiness;
@@ -17,6 +19,9 @@ namespace CS6232_G2_Furniture_Rental.View
         private static List<string> _styleList;
         private static Employee _admin;
 
+        /// <summary>
+        /// Furniture Search form constructor
+        /// </summary>
         public FurnitureSearchForm()
         {
             _loginBusiness = new LoginBusiness();

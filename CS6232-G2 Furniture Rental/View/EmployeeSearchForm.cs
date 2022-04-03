@@ -8,6 +8,9 @@ using FurnitureRentalDomain.Helpers;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// Form for searching for employees
+    /// </summary>
     public partial class EmployeeSearchForm : Form
     {
         private static LoginBusiness _loginBusiness;
@@ -15,8 +18,14 @@ namespace CS6232_G2_Furniture_Rental.View
         private static List<Employee> _employeeList;
         private static Employee _admin;
 
+        /// <summary>
+        /// Employee search results
+        /// </summary>
         public List<Employee> Result { get; set; }
 
+        /// <summary>
+        /// Employee Search form constructor
+        /// </summary>
         public EmployeeSearchForm()
         {
             _loginBusiness = new LoginBusiness();

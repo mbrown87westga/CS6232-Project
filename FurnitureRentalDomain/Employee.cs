@@ -74,7 +74,7 @@ namespace FurnitureRentalDomain
         /// <summary>
         /// Makes a shallow copy of the Employee 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>a shallow copy of the current Employee</returns>
         public object ShallowCopy()
         {
             return this.MemberwiseClone();

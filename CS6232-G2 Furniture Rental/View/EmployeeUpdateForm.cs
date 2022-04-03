@@ -10,6 +10,9 @@ using FurnitureRentalDomain.Helpers;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// Form for viewing and updating an employee
+    /// </summary>
     public partial class EmployeeUpdateForm : Form
     {
         private static Employee _admin;
@@ -17,6 +20,9 @@ namespace CS6232_G2_Furniture_Rental.View
         private static LoginBusiness _loginBusiness;
         private static EmployeeBusiness _employeeBusiness;
 
+        /// <summary>
+        /// Employee View/Update form constructor
+        /// </summary>
         public EmployeeUpdateForm()
         {
             _employeeBusiness = new EmployeeBusiness();
@@ -57,7 +63,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.stateComboBox.SelectedIndex = -1;
         }
 
-        public void SetControlsReadOnly(bool value)
+        private void SetControlsReadOnly(bool value)
         {
             IEnumerable<TextBoxBase> textBoxes = this.GetChildControls<TextBoxBase>();
             foreach (TextBoxBase tb in textBoxes) tb.ReadOnly = value;

@@ -8,17 +8,26 @@ using CS6232_G2_Furniture_Rental.View;
 
 namespace CS6232_G2_Furniture_Rental.User_Controls
 {
+    /// <summary>
+    /// Form for viewing employees
+    /// </summary>
     public partial class ViewEmployeesUserControl : UserControl
     {
         private static EmployeeBusiness _business;
         private static List<Employee> _employeeList;
         private static Employee _employee;
         
+        /// <summary>
+        /// Accessor for the currently selected employee
+        /// </summary>
         public Employee employee 
         {
             get { return _employee; }
         }
 
+        /// <summary>
+        /// View Employees user control constructor
+        /// </summary>
         public ViewEmployeesUserControl()
         {
             _business = new EmployeeBusiness();

@@ -108,7 +108,6 @@
             this.employeeIDLabel.Name = "employeeIDLabel";
             this.employeeIDLabel.Size = new System.Drawing.Size(247, 23);
             this.employeeIDLabel.TabIndex = 1;
-            this.employeeIDLabel.Click += new System.EventHandler(this.EmployeeIDLabel_Click);
             // 
             // furnitureButton
             // 

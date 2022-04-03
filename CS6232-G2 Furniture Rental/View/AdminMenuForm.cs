@@ -5,11 +5,17 @@ using System.Windows.Forms;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// Form for the administrator menu
+    /// </summary>
     public partial class AdminMenuForm : Form
     {
         private static LoginBusiness _business;
         private static Employee _employee;
 
+        /// <summary>
+        /// Admin Menu form constructor
+        /// </summary>
         public AdminMenuForm()
         {
             _business = new LoginBusiness();
