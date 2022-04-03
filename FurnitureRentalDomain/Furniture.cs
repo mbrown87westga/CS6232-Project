@@ -34,5 +34,9 @@ namespace FurnitureRentalDomain
         /// The furniture's style description
         /// </summary>
         public string StyleDescription { get; set; }
+        /// <summary>
+        /// The furniture's quantity available to rent
+        /// </summary>
+        public int QuantityAvailable { get; set; }
     }
 }

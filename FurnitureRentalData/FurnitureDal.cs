@@ -18,8 +18,13 @@ namespace FurnitureRentalData
         {
             List<Furniture> furnitureList = new List<Furniture>();
 
-            string selectStatement = "SELECT furnitureID, description, dailyRentalRate, quantityOwned, name, categoryDescription, styleDescription " +
-                                     "FROM FURNITURE ";
+            string selectStatement = @"SELECT f.*, ISNULL(f.quantityOwned - ISNULL(rented.qtyRented, 0) + ISNULL(returned.qtyReturned, 0), 0) AS quantityAvailable
+                                       FROM Furniture f LEFT JOIN
+                                       (SELECT furnitureID, SUM(quantity) AS qtyRented FROM RentalItem GROUP BY furnitureID) rented 
+                                       ON rented.furnitureID = f.furnitureID LEFT JOIN
+                                       (SELECT furnitureID, SUM(quantity) AS qtyReturned FROM ReturnItem GROUP BY furnitureID) returned 
+                                       ON returned.furnitureID = rented.furnitureID
+                                       ORDER BY furnitureID;";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {
@@ -39,7 +44,8 @@ namespace FurnitureRentalData
                                 QuantityOwned = Int32.Parse(reader["quantityOwned"].ToString()),
                                 Name = reader["name"].ToString(),
                                 CategoryDescription = reader["categoryDescription"].ToString(),
-                                StyleDescription = reader["styleDescription"].ToString()
+                                StyleDescription = reader["styleDescription"].ToString(),
+                                QuantityAvailable = Int32.Parse(reader["quantityAvailable"].ToString())
                             };
                             furnitureList.Add(furniture);
                         }
