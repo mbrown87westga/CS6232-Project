@@ -2,6 +2,7 @@
 using FurnitureRentalDomain;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace FurnitureRentalBusiness
 {
@@ -65,7 +66,7 @@ namespace FurnitureRentalBusiness
         {
             if (String.IsNullOrEmpty(userName))
             {
-                throw new ArgumentOutOfRangeException("Username cannot be blank");
+                throw new ArgumentException("Username cannot be blank");
             }
 
             return this._dal.GetEmployee(userName);
@@ -96,6 +97,54 @@ namespace FurnitureRentalBusiness
         /// <returns>list of Employees matching the search criteria</returns>
         public List<Employee> FindEmployees(int? employeeID, string name, string city, string state, string zipcode, string gender, string isAdmin, string isDeactivated)
         {
+            if (employeeID <= 0)
+            {
+                throw new ArgumentException("Employee ID must be > 0");
+            }
+            if (name.Length > 100)
+            {
+                throw new ArgumentException("Employee name must be less than 100 characters");
+            }
+            if (city.Length > 50)
+            {
+                throw new ArgumentException("Employee city must be less than 50 characters");
+            }
+            if (state.Length == 1 | state.Length > 2)
+            {
+                throw new ArgumentException("Employee state must be 2 characters");
+            }
+            if (!string.IsNullOrEmpty(zipcode))
+            {
+                if (zipcode.Length != 5 & zipcode.Length != 9)
+                {
+                    throw new ArgumentException("Employee zipcode must be 5 or 9 digits");
+                }
+                else
+                {
+                    var _usZipRegEx = @"^\d{5}(\d{4})?$";
+                    if ((!Regex.Match(zipcode, _usZipRegEx).Success))
+                    {
+                        throw new ArgumentException("Invalid employee zipcode format");
+                    }
+                }
+            }
+            if (!string.IsNullOrEmpty(gender) & !gender.Equals("m", StringComparison.OrdinalIgnoreCase) & 
+                                                !gender.Equals("f", StringComparison.OrdinalIgnoreCase) & 
+                                                !gender.Equals("?", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Employee gender must be 'm', 'f', or '?'");
+            }
+            if (!string.IsNullOrEmpty(isAdmin) & !isAdmin.Equals("yes", StringComparison.OrdinalIgnoreCase) &
+                                                 !isAdmin.Equals("no", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Is Admin should only be 'yes' or 'no'");
+            }
+            if (!string.IsNullOrEmpty(isDeactivated) & !isDeactivated.Equals("yes", StringComparison.OrdinalIgnoreCase) &
+                                                       !isDeactivated.Equals("no", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Is Deactivated should only be 'yes' or 'no'");
+            }
+            
             return _dal.FindEmployees(employeeID, name, city, state, zipcode, gender, isAdmin, isDeactivated);
         }
     }

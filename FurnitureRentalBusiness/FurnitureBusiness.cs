@@ -1,5 +1,6 @@
 ﻿using FurnitureRentalData;
 using FurnitureRentalDomain;
+using System;
 using System.Collections.Generic;
 
 namespace FurnitureRentalBusiness
@@ -57,6 +58,27 @@ namespace FurnitureRentalBusiness
         /// <returns>list of Furniture matching the search criteria</returns>
         public List<Furniture> FindFurniture(int? furnitureID, string name, string description, string category, string style)
         {
+            if (furnitureID <= 0)
+            {
+                throw new ArgumentException("Furniture ID must be > 0");
+            }
+            if (name.Length > 50)
+            {
+                throw new ArgumentException("Furniture name must be less than 50 characters");
+            }
+            if (description.Length > 50)
+            {
+                throw new ArgumentException("Furniture description must be less than 50 characters");
+            }
+            if (category.Length > 50)
+            {
+                throw new ArgumentException("Furniture category must be less than 50 characters");
+            }
+            if (style.Length > 50)
+            {
+                throw new ArgumentException("Furniture style must be less than 50 characters");
+            }
+
             return this._dal.FindFurniture(furnitureID, name, description, category, style);
         }
     }

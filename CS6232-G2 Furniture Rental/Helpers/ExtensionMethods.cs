@@ -53,6 +53,12 @@ namespace CS6232_G2_Furniture_Rental.Helpers
                      .FirstOrDefault(c => c is T) as T ?? new T();
         }
 
+        /// <summary>
+        /// Retrieves a list of controls of type T on the current form, allowing properties like 'enabled' to be set on them as a group
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="control"></param>
+        /// <returns>a list of form controls of type T</returns>
         public static IEnumerable<T> GetChildControls<T>(this Control control) where T : Control
         {
             var children = control.Controls.OfType<T>();

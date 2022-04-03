@@ -2,6 +2,7 @@
 using FurnitureRentalDomain;
 using CS6232_G2_Furniture_Rental.Helpers;
 using System.Windows.Forms;
+using System;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
@@ -38,9 +39,16 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void EmployeeMaintenanceForm_Activated(object sender, System.EventArgs e)
         {
-            _admin = _business.GetLoggedInUser();
+            try
+            {
+                _admin = _business.GetLoggedInUser();
 
-            this.employeeIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
+                this.employeeIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }

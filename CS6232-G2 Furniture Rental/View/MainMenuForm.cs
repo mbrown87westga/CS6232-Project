@@ -37,20 +37,27 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void MainMenuForm_Activated(object sender, EventArgs e)
         {
-            _employee = _business.GetLoggedInUser();
-
-            this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
-
-            if (_employee.IsAdmin)
+            try
             {
-                this.adminButton.Select();
-            }
-            else
-            {
-                this.membersButton.Select();
-            }
+                _employee = _business.GetLoggedInUser();
 
-            this.adminButton.Enabled = _employee.IsAdmin;
+                this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+
+                if (_employee.IsAdmin)
+                {
+                    this.adminButton.Select();
+                }
+                else
+                {
+                    this.membersButton.Select();
+                }
+
+                this.adminButton.Enabled = _employee.IsAdmin;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
 
         private void AdminButton_Click(object sender, EventArgs e)

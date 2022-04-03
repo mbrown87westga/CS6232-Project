@@ -30,7 +30,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,9 +107,9 @@ namespace CS6232_G2_Furniture_Rental.View
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "DailyRentalRate";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn3.HeaderText = "Daily Rate";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -283,7 +283,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.addToCartButton.Location = new System.Drawing.Point(404, 361);
             this.addToCartButton.Name = "addToCartButton";
             this.addToCartButton.Size = new System.Drawing.Size(87, 27);
-            this.addToCartButton.TabIndex = 73;
+            this.addToCartButton.TabIndex = 74;
             this.addToCartButton.Text = "&Add to cart";
             this.addToCartButton.UseVisualStyleBackColor = true;
             // 
@@ -294,7 +294,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.cancelButton.Location = new System.Drawing.Point(520, 361);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 27);
-            this.cancelButton.TabIndex = 74;
+            this.cancelButton.TabIndex = 75;
             this.cancelButton.Text = "&Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -306,7 +306,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.clearButton.Location = new System.Drawing.Point(106, 270);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 27);
-            this.clearButton.TabIndex = 75;
+            this.clearButton.TabIndex = 73;
             this.clearButton.Text = "Cl&ear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);

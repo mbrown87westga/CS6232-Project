@@ -36,23 +36,30 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void EmployeeSearchForm_Activated(object sender, EventArgs e)
         {
-            _admin = _loginBusiness.GetLoggedInUser();
+            try
+            {
+                _admin = _loginBusiness.GetLoggedInUser();
 
-            this.employeeIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
+                this.employeeIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
             int? employeeID = (int?)this.idComboBox.SelectedValue;
+            string state = stateComboBox.SelectedIndex < 0 ? "" : stateComboBox.SelectedValue.ToString();
+            string sex = genderComboBox.SelectedIndex < 0 ? "" : GenderHelper.ToString(GenderHelper.ParseGender(genderComboBox.Text));
+            string isAdmin = isAdminComboBox.SelectedIndex < 0 ? "" : isAdminComboBox.SelectedItem.ToString();
+            string isDeactivated = isDeactivatedComboBox.SelectedIndex < 0 ? "" : isDeactivatedComboBox.SelectedItem.ToString();
 
             try
             {
-                this.Result = _employeeBusiness.FindEmployees(employeeID, nameTextBox.Text, cityTextBox.Text, 
-                                                              stateComboBox.SelectedIndex < 0 ? "" : stateComboBox.SelectedValue.ToString(),
-                                                              zipcodeMaskedTextBox.Text, 
-                                                              genderComboBox.SelectedIndex < 0 ? "" : GenderHelper.ToString(GenderHelper.ParseGender(this.genderComboBox.Text)),
-                                                              isAdminComboBox.SelectedIndex < 0 ? "" : isAdminComboBox.SelectedItem.ToString(),
-                                                              isDeactivatedComboBox.SelectedIndex < 0 ? "" : isDeactivatedComboBox.SelectedItem.ToString());
+                this.Result = _employeeBusiness.FindEmployees(employeeID, nameTextBox.Text, cityTextBox.Text, state, zipcodeMaskedTextBox.Text,
+                                                              sex, isAdmin, isDeactivated);
                 if (this.Result.Any())
                 {
                     this.DialogResult = DialogResult.OK;

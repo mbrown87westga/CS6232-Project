@@ -33,14 +33,14 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void EmployeeUpdateForm_Load(object sender, EventArgs e)
         {
-            _admin = _loginBusiness.GetLoggedInUser();
-            this.adminIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
-
-            this.LoadGenderListBox();
-            this.LoadUSStatesListBox();
-
             try
             {
+                _admin = _loginBusiness.GetLoggedInUser();
+                this.adminIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
+
+                this.LoadGenderListBox();
+                this.LoadUSStatesListBox();
+
                 _employee = (Employee)new EmployeeMaintenanceForm().employee.ShallowCopy();
                 this.employeeBindingSource.DataSource = _employee;
                 this.PutIntoViewMode();

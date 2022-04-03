@@ -180,7 +180,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.searchButton.Location = new System.Drawing.Point(24, 387);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
-            this.searchButton.TabIndex = 19;
+            this.searchButton.TabIndex = 21;
             this.searchButton.Text = "&Search";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
@@ -191,7 +191,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.cancelButton.Location = new System.Drawing.Point(224, 387);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 20;
+            this.cancelButton.TabIndex = 23;
             this.cancelButton.Text = "&Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -214,7 +214,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.isAdminComboBox.Location = new System.Drawing.Point(118, 275);
             this.isAdminComboBox.Name = "isAdminComboBox";
             this.isAdminComboBox.Size = new System.Drawing.Size(67, 21);
-            this.isAdminComboBox.TabIndex = 21;
+            this.isAdminComboBox.TabIndex = 18;
             // 
             // clearButton
             // 
@@ -244,7 +244,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.isDeactivatedComboBox.Location = new System.Drawing.Point(118, 311);
             this.isDeactivatedComboBox.Name = "isDeactivatedComboBox";
             this.isDeactivatedComboBox.Size = new System.Drawing.Size(67, 21);
-            this.isDeactivatedComboBox.TabIndex = 24;
+            this.isDeactivatedComboBox.TabIndex = 20;
             // 
             // EmployeeSearchForm
             // 
