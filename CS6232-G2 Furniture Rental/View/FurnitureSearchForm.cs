@@ -30,7 +30,7 @@ namespace CS6232_G2_Furniture_Rental.View
             InitializeComponent();
         }
 
-        private void FurnitureSearchForm_Activated(object sender, System.EventArgs e)
+        private void FurnitureSearchForm_Activated(object sender, EventArgs e)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace CS6232_G2_Furniture_Rental.View
             }
         }
 
-        private void FurnitureSearchForm_Load(object sender, System.EventArgs e)
+        private void FurnitureSearchForm_Load(object sender, EventArgs e)
         {            
             try
             {

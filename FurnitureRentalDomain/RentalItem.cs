@@ -10,7 +10,7 @@
         /// </summary>
         public string RentalTransactionID { get; set; }
         /// <summary>
-        /// The furniture being rented's id
+        /// The id of the furniture being rented
         /// </summary>
         public string FurnitureID { get; set; }
         /// <summary>

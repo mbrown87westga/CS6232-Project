@@ -11,9 +11,9 @@ namespace FurnitureRentalData
     public class FurnitureDal
     {
         /// <summary>
-        /// Retreives all furniture items from the database
+        /// Retrieves all furniture items from the database
         /// </summary>
-        /// <returns>a list of Fuurniture items</returns>
+        /// <returns>a list of Furniture items</returns>
         public List<Furniture> GetAllFurniture()
         {
             List<Furniture> furnitureList = new List<Furniture>();

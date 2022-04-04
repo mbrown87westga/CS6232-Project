@@ -24,7 +24,7 @@ namespace CS6232_G2_Furniture_Rental.View
             InitializeComponent();
         }
 
-        private void MainMenuButton_Click(object sender, System.EventArgs e)
+        private void MainMenuButton_Click(object sender, EventArgs e)
         {
             this.HideThisAndShowForm<MainMenuForm>();
         }
@@ -34,7 +34,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.HideThisAndShowForm<MainMenuForm>();
         }
 
-        private void AdminMenuForm_Activated(object sender, System.EventArgs e)
+        private void AdminMenuForm_Activated(object sender, EventArgs e)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace CS6232_G2_Furniture_Rental.View
             }
         }
 
-        private void EmployeeMaintenanceButton_Click(object sender, System.EventArgs e)
+        private void EmployeeMaintenanceButton_Click(object sender, EventArgs e)
         {
             this.HideThisAndShowForm<EmployeeMaintenanceForm>();
         }

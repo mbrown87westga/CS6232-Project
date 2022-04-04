@@ -85,8 +85,8 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         {
             if (employeeDataGridView.SelectedCells.Count > 0)
             {
-                int selectedrowindex = employeeDataGridView.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = employeeDataGridView.Rows[selectedrowindex];
+                int selectedRowIndex = employeeDataGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = employeeDataGridView.Rows[selectedRowIndex];
                 _employee = selectedRow.DataBoundItem as Employee;
                 if (_employee != null)
                 {

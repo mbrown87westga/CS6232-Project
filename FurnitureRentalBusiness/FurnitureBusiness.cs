@@ -21,9 +21,9 @@ namespace FurnitureRentalBusiness
         }
 
         /// <summary>
-        /// Retreives all furniture items from the database
+        /// Retrieves all furniture items from the database
         /// </summary>
-        /// <returns>a list of Fuurniture items</returns>
+        /// <returns>a list of Furniture items</returns>
         public List<Furniture> GetAllFurniture()
         {
             return this._dal.GetAllFurniture();

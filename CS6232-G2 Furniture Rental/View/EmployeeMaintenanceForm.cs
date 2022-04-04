@@ -37,7 +37,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.HideThisAndShowForm<AdminMenuForm>();
         }
 
-        private void EmployeeMaintenanceForm_Activated(object sender, System.EventArgs e)
+        private void EmployeeMaintenanceForm_Activated(object sender, EventArgs e)
         {
             try
             {

@@ -113,8 +113,6 @@ namespace CS6232_G2_Furniture_Rental.View
                 {
                     if (FieldsValidated())
                     {
-                        Gender newsex = GenderHelper.ParseGender(this.sexComboBox.Text);
-        
                         var newEmployee = new Employee()
                         {
                             FirstName = this.firstNameTextBox.Text,
@@ -173,7 +171,7 @@ namespace CS6232_G2_Furniture_Rental.View
             }
             this.deactivateButton.Visible = true;
             this.modeLabel.Text = "* Update mode";
-            this.modeLabel.ForeColor = System.Drawing.Color.Red;
+            this.modeLabel.ForeColor = Color.Red;
         }
 
         private void PutIntoViewMode()

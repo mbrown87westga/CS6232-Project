@@ -28,11 +28,12 @@ namespace CS6232_G2_Furniture_Rental.Helpers
 
         /// <summary>
         /// Finds an instance of the form that this is called for and shows it as a dialog.
-        ///
+        /// 
         /// If the instance exists, shows it, and if it doesn't then it makes a new one and shows it.
         /// </summary>
         /// <typeparam name="T">The type of form that should be shown</typeparam>
         /// <param name="thisForm">The form that is calling this method.</param>
+        /// <param name="setupAction">the action to take before showing the dialog</param>
         /// <returns>the new form that was just shown - in case we need to do anything with it.</returns>
         public static T ShowFormAsDialog<T>(this Form thisForm, Action<T> setupAction = null) where T : Form, new()
         {
@@ -62,7 +63,8 @@ namespace CS6232_G2_Furniture_Rental.Helpers
         public static IEnumerable<T> GetChildControls<T>(this Control control) where T : Control
         {
             var children = control.Controls.OfType<T>();
-            return children.SelectMany(c => GetChildControls<T>(c)).Concat(children);
+            var enumerable = children as T[] ?? children.ToArray();
+            return enumerable.SelectMany(GetChildControls<T>).Concat(enumerable);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private List<RentalTransaction> _transactionList;
 
         /// <summary>
-        /// The defualt constructor
+        /// The default constructor
         /// </summary>
         public SearchTransactionsUserControl()
         {
@@ -47,10 +47,14 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         {
             try
             {
-                int memberId = ((Member)(memberComboBox?.SelectedValue)).MemberID;
-                DateTime begin = beginDateDateTimePicker.Value;
-                DateTime end = endDateDateTimePicker.Value;
-                _transactionList = _memberBusiness.GetMemberTransactionsByDateRange(memberId, begin, end).ToList();
+                if (memberComboBox?.SelectedValue != null)
+                {
+                    int memberId = ((Member) (memberComboBox?.SelectedValue)).MemberID;
+                    DateTime begin = beginDateDateTimePicker.Value;
+                    DateTime end = endDateDateTimePicker.Value;
+                    _transactionList = _memberBusiness.GetMemberTransactionsByDateRange(memberId, begin, end).ToList();
+                }
+
                 this.resultsDataGridView.DataSource = _transactionList;
             }
             catch (Exception ex)
