@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
-using FurnitureRentalDomain.Helpers;
 
 namespace CS6232_G2_Furniture_Rental.User_Controls
 {

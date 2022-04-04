@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FurnitureRentalDomain.Helpers
+﻿namespace FurnitureRentalDomain.Helpers
 {
     /// <summary>
     /// This is a helper class that I made to parse genders, since adding static methods to enums is not possible
