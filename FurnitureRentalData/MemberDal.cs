@@ -5,8 +5,16 @@ using FurnitureRentalDomain;
 
 namespace FurnitureRentalData
 {
+    /// <summary>
+    /// The member Dal
+    /// </summary>
     public class MemberDal
     {
+        /// <summary>
+        /// Adds a member to the db
+        /// </summary>
+        /// <param name="newMember">the member to add</param>
+        /// <returns>the ID of the added member</returns>
         public int AddMember(Member newMember)
         {
             string insertStatement =
@@ -50,6 +58,10 @@ namespace FurnitureRentalData
             }
         }
 
+        /// <summary>
+        /// Gets all the members in the db
+        /// </summary>
+        /// <returns>the list of members</returns>
         public IEnumerable<Member> GetMembers()
         {
             List<Member> memberList = new List<Member>();
@@ -91,6 +103,13 @@ namespace FurnitureRentalData
             return memberList;
         }
 
+        /// <summary>
+        /// Gets all of the members transactions by a date range
+        /// </summary>
+        /// <param name="memberId">the id of the member's transactions to get</param>
+        /// <param name="begin">the earliest date time to get transactions from (exclusive)</param>
+        /// <param name="end">the latest date time to get transactions from (exclusive)</param>
+        /// <returns></returns>
         public IEnumerable<RentalTransaction> GetMemberTransactionsByDateRange(int memberId, DateTime begin, DateTime end)
         {
             List<RentalTransaction> rentalTransactionList = new List<RentalTransaction>();
@@ -132,6 +151,13 @@ namespace FurnitureRentalData
             return rentalTransactionList;
         }
 
+        /// <summary>
+        /// Finds members based on ANDed search criteria.
+        /// </summary>
+        /// <param name="memberId">The id to find - if null, get all ids</param>
+        /// <param name="phoneNumber">the phone number or phone number part to find by. If null - get all phone numbers</param>
+        /// <param name="name">the name or name part to search by. if null - gets all the names</param>
+        /// <returns>the list</returns>
         public IEnumerable<Member> FindMembers(int? memberId, string phoneNumber, string name)
         {
             List<Member> memberList = new List<Member>();

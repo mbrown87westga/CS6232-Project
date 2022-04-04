@@ -227,7 +227,6 @@
         private System.Windows.Forms.DateTimePicker endDateDateTimePicker;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView resultsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource rentalTransactionBindingSource;
         private System.Windows.Forms.ComboBox memberComboBox;
         private System.Windows.Forms.Button ShowDetailsButton;
