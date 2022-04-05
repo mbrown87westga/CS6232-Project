@@ -134,13 +134,16 @@ namespace FurnitureRentalData
             category = String.IsNullOrWhiteSpace(category) ? null : category;
             style = String.IsNullOrWhiteSpace(style) ? null : style;
 
-            string selectStatement = "SELECT furnitureID, description, dailyRentalRate, quantityOwned, name, categoryDescription, styleDescription  " +
-                                     "FROM FURNITURE " +
-                                     "WHERE (@furnitureID IS NULL OR (furnitureID = @furnitureID)) " +
-                                     "AND (@name is NULL or (name like '%' + @name + '%')) " +
-                                     "AND (@description IS NULL OR (description LIKE '%' + @description + '%')) " +
-                                     "AND (@category IS NULL OR (categoryDescription = @category)) " +
-                                     "AND (@style IS NULL OR (styleDescription = @style)) ";
+            string selectStatement = @"SELECT f.*, ISNULL(f.quantityOwned - ISNULL(rented.qtyRented, 0) + ISNULL(returned.qtyReturned, 0), 0) AS quantityAvailable FROM
+                                     (SELECT * FROM FURNITURE 
+                                      WHERE (@furnitureID IS NULL OR (furnitureID = @furnitureID)) 
+                                        AND (@name is NULL or (name like '%' + @name + '%')) 
+                                        AND (@description IS NULL OR (description LIKE '%' + @description + '%')) 
+                                        AND (@category IS NULL OR (categoryDescription = @category)) 
+                                        AND (@style IS NULL OR (styleDescription = @style))) f LEFT JOIN
+                                     (SELECT furnitureID, SUM(quantity) AS qtyRented FROM RentalItem GROUP BY furnitureID) rented ON rented.furnitureID = f.furnitureID LEFT JOIN
+                                     (SELECT furnitureID, SUM(quantity) AS qtyReturned FROM ReturnItem GROUP BY furnitureID) returned ON returned.furnitureID = rented.furnitureID
+                                     ORDER BY furnitureID;";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {
@@ -166,7 +169,8 @@ namespace FurnitureRentalData
                                 QuantityOwned = Int32.Parse(reader["quantityOwned"].ToString()),
                                 Name = reader["name"].ToString(),
                                 CategoryDescription = reader["categoryDescription"].ToString(),
-                                StyleDescription = reader["styleDescription"].ToString()
+                                StyleDescription = reader["styleDescription"].ToString(),
+                                QuantityAvailable = Int32.Parse(reader["quantityAvailable"].ToString())
                             };
                             furnitureList.Add(furniture);
                         }
