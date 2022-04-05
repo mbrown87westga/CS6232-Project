@@ -32,6 +32,46 @@ namespace FurnitureRentalBusiness
             {
                 throw new ArgumentNullException(nameof(newEmployee));
             }
+            if (newEmployee.Birthdate.Equals(DateTime.MinValue) || newEmployee.Birthdate.Equals(DateTime.MaxValue))
+            {
+                throw new ArgumentOutOfRangeException("The birthdate must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.FirstName))
+            {
+                throw new ArgumentOutOfRangeException("The first name must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.LastName))
+            {
+                throw new ArgumentOutOfRangeException("The last name must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.Phone))
+            {
+                throw new ArgumentOutOfRangeException("The phone number must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.Address1))
+            {
+                throw new ArgumentOutOfRangeException("The address must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.City))
+            {
+                throw new ArgumentOutOfRangeException("The city must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.State))
+            {
+                throw new ArgumentOutOfRangeException("The state must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.Zipcode))
+            {
+                throw new ArgumentOutOfRangeException("The zipcode must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.UserName))
+            {
+                throw new ArgumentOutOfRangeException("The username must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newEmployee.Password))
+            {
+                throw new ArgumentOutOfRangeException("The password must be set");
+            }
 
             return this._dal.AddEmployee(newEmployee);
         }

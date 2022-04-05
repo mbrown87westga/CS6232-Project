@@ -32,6 +32,38 @@ namespace FurnitureRentalBusiness
             {
                 throw new ArgumentNullException(nameof(newMember));
             }
+            if (newMember.Birthdate.Equals(DateTime.MinValue) || newMember.Birthdate.Equals(DateTime.MaxValue))
+            {
+                throw new ArgumentOutOfRangeException("The birthdate must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newMember.FirstName))
+            {
+                throw new ArgumentOutOfRangeException("The first name must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newMember.LastName))
+            {
+                throw new ArgumentOutOfRangeException("The last name must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newMember.Phone))
+            {
+                throw new ArgumentOutOfRangeException("The phone number must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newMember.Address1))
+            {
+                throw new ArgumentOutOfRangeException("The address must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newMember.City))
+            {
+                throw new ArgumentOutOfRangeException("The city must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newMember.State))
+            {
+                throw new ArgumentOutOfRangeException("The state must be set");
+            }
+            if (string.IsNullOrWhiteSpace(newMember.Zipcode))
+            {
+                throw new ArgumentOutOfRangeException("The zipcode must be set");
+            }
 
             return _dal.AddMember(newMember);
         }
@@ -110,6 +142,39 @@ namespace FurnitureRentalBusiness
             {
                 throw new ArgumentNullException(nameof(member));
             }
+            if (member.Birthdate.Equals(DateTime.MinValue) || member.Birthdate.Equals(DateTime.MaxValue))
+            {
+                throw new ArgumentOutOfRangeException("The birthdate must be set");
+            }
+            if (string.IsNullOrWhiteSpace(member.FirstName))
+            {
+                throw new ArgumentOutOfRangeException("The first name must be set");
+            }
+            if (string.IsNullOrWhiteSpace(member.LastName))
+            {
+                throw new ArgumentOutOfRangeException("The last name must be set");
+            }
+            if (string.IsNullOrWhiteSpace(member.Phone))
+            {
+                throw new ArgumentOutOfRangeException("The phone number must be set");
+            }
+            if (string.IsNullOrWhiteSpace(member.Address1))
+            {
+                throw new ArgumentOutOfRangeException("The address must be set");
+            }
+            if (string.IsNullOrWhiteSpace(member.City))
+            {
+                throw new ArgumentOutOfRangeException("The city must be set");
+            }
+            if (string.IsNullOrWhiteSpace(member.State))
+            {
+                throw new ArgumentOutOfRangeException("The state must be set");
+            }
+            if (string.IsNullOrWhiteSpace(member.Zipcode))
+            {
+                throw new ArgumentOutOfRangeException("The zipcode must be set");
+            }
+
 
             return _dal.UpdateMember(member);
         }
