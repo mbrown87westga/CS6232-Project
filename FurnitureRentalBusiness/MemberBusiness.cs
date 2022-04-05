@@ -119,7 +119,7 @@ namespace FurnitureRentalBusiness
             {
                 throw new ArgumentException("Phone Number number must be no more than 10 digits long");
             }
-            if (Regex.Match(phoneNumber, "[^0-9]*").Success)
+            if (Regex.Match(phoneNumber, "[^0-9]+").Success)
             {
                 throw new ArgumentException("Phone Number number may only contain digits");
             }

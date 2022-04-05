@@ -45,7 +45,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private void searchButton_Click(object sender, EventArgs e)
         {
             int? memberId = ((Member)(memberComboBox?.SelectedValue))?.MemberID;
-            _searchResults = _memberBusiness.FindMembers(memberId, phoneTextBox.Text, nameTextBox.Text);
+            _searchResults = _memberBusiness.FindMembers(memberId, phoneTextBox.Text.Trim(), nameTextBox.Text.Trim());
             if (_searchResults.Any())
             {
                 var searchResultsForm =

@@ -73,5 +73,10 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             _transactionList = new List<RentalTransaction>();
             this.resultsDataGridView.DataSource = _transactionList;
         }
+
+        private void ShowDetailsButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Implemented Yet", "Info");
+        }
     }
 }

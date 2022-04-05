@@ -27,10 +27,12 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private void clearButton_Click(object sender, EventArgs e)
         {
             ClearForm();
+            DisableEdit();
         }
 
         private void ClearForm()
         {
+            this.memberBindingSource.Clear();
             this.firstNameTextBox.Text = "";
             this.lastNameTextBox.Text = "";
             this.address1TextBox.Text = "";
@@ -66,7 +68,8 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                     {
                         MessageBox.Show("Member updated!", "Member updated", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-                        this.ClearForm();
+                        ClearForm();
+                        DisableEdit();
                     }
                     else
                     {
@@ -207,8 +210,39 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             Member result = form.Result;
             if (result != null)
             {
+                this.EnableEdit();
                 this.memberBindingSource.DataSource = result;
             }
+        }
+
+        private void EnableEdit()
+        {
+            clearButton.Enabled = true;
+            updateButton.Enabled = true;
+            address1TextBox.Enabled = true;
+            address2TextBox.Enabled = true;
+            birthdateDateTimePicker.Enabled = true;
+            cityTextBox.Enabled = true;
+            firstNameTextBox.Enabled = true;
+            lastNameTextBox.Enabled = true;
+            stateComboBox.Enabled = true;
+            phoneTextBox.Enabled = true;
+            zipcodeTextBox.Enabled = true;
+        }
+        
+        private void DisableEdit()
+        {
+            clearButton.Enabled = false;
+            updateButton.Enabled = false;
+            address1TextBox.Enabled = false;
+            address2TextBox.Enabled = false;
+            birthdateDateTimePicker.Enabled = false;
+            cityTextBox.Enabled = false;
+            firstNameTextBox.Enabled = false;
+            lastNameTextBox.Enabled = false;
+            stateComboBox.Enabled = false;
+            phoneTextBox.Enabled = false;
+            zipcodeTextBox.Enabled = false;
         }
     }
 }
