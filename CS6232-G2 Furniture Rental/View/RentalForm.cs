@@ -8,10 +8,13 @@ namespace CS6232_G2_Furniture_Rental.View
 {
     public partial class RentalForm : Form
     {
+        private static LoginBusiness _loginBusiness;
+        private static Employee _employee;
         private static MemberBusiness _memberBusiness;
 
         public RentalForm()
         {
+            _loginBusiness = new LoginBusiness();
             _memberBusiness = new MemberBusiness();
             InitializeComponent();
         }
@@ -46,6 +49,25 @@ namespace CS6232_G2_Furniture_Rental.View
                 {
                     this.phoneDataLabel.Text = Convert.ToInt64(result.Phone).ToString("(###) ###-####");
                 }
+            }
+        }
+
+        private void RentalForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RentalForm_Activated(object sender, EventArgs e)
+        {
+            try
+            {
+                _employee = _loginBusiness.GetLoggedInUser();
+
+                this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
     }

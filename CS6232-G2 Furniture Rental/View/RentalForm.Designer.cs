@@ -361,7 +361,9 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Name = "RentalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentalForm";
+            this.Activated += new System.EventHandler(this.RentalForm_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RentalForm_FormClosed);
+            this.Load += new System.EventHandler(this.RentalForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
