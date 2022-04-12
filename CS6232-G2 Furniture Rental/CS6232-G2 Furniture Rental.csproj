@@ -135,6 +135,12 @@
     <Compile Include="View\MembersManagementForm.Designer.cs">
       <DependentUpon>MembersManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\RentalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RentalForm.Designer.cs">
+      <DependentUpon>RentalForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SearchResultsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     <EmbeddedResource Include="View\MembersManagementForm.resx">
       <DependentUpon>MembersManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\RentalForm.resx">
+      <DependentUpon>RentalForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SearchResultsForm.resx">
       <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,10 +222,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\cs6232-g2_creation_script.sql" />
   </ItemGroup>
