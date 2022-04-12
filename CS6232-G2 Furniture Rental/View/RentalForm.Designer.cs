@@ -34,18 +34,15 @@ namespace CS6232_G2_Furniture_Rental.View
             System.Windows.Forms.Label phoneLabel;
             System.Windows.Forms.Label rentalTimestampLabel;
             System.Windows.Forms.Label dueDateTimeLabel;
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.memberLabel = new System.Windows.Forms.Label();
             this.address1DataLabel = new System.Windows.Forms.Label();
             this.memberNameLabel = new System.Windows.Forms.Label();
             this.address2DataLabel = new System.Windows.Forms.Label();
-            this.cityStZipLlabel = new System.Windows.Forms.Label();
+            this.cityStZipLabel = new System.Windows.Forms.Label();
             this.phoneDataLabel = new System.Windows.Forms.Label();
             this.employeeIDLabel = new System.Windows.Forms.Label();
             this.employeeLabel = new System.Windows.Forms.Label();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rentalTimestampDataLabel = new System.Windows.Forms.Label();
             this.dueDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.memberSearchButton = new System.Windows.Forms.Button();
@@ -53,20 +50,23 @@ namespace CS6232_G2_Furniture_Rental.View
             this.newRentalButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.checkoutButton = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             address1Label = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
             rentalTimestampLabel = new System.Windows.Forms.Label();
             dueDateTimeLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // address1Label
@@ -109,10 +109,6 @@ namespace CS6232_G2_Furniture_Rental.View
             dueDateTimeLabel.TabIndex = 23;
             dueDateTimeLabel.Text = "Due Date\\Time:";
             // 
-            // rentalItemBindingSource
-            // 
-            this.rentalItemBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalItem);
-            // 
             // rentalItemDataGridView
             // 
             this.rentalItemDataGridView.AllowUserToAddRows = false;
@@ -133,10 +129,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalItemDataGridView.Size = new System.Drawing.Size(544, 174);
             this.rentalItemDataGridView.TabIndex = 1;
             // 
-            // memberBindingSource
-            // 
-            this.memberBindingSource.DataSource = typeof(FurnitureRentalDomain.Member);
-            // 
             // memberLabel
             // 
             this.memberLabel.AutoSize = true;
@@ -155,7 +147,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.address1DataLabel.Name = "address1DataLabel";
             this.address1DataLabel.Size = new System.Drawing.Size(150, 17);
             this.address1DataLabel.TabIndex = 16;
-            this.address1DataLabel.Text = "address line 1";
             // 
             // memberNameLabel
             // 
@@ -164,7 +155,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.memberNameLabel.Name = "memberNameLabel";
             this.memberNameLabel.Size = new System.Drawing.Size(150, 17);
             this.memberNameLabel.TabIndex = 17;
-            this.memberNameLabel.Text = "FirstName LastName";
             // 
             // address2DataLabel
             // 
@@ -174,16 +164,14 @@ namespace CS6232_G2_Furniture_Rental.View
             this.address2DataLabel.Name = "address2DataLabel";
             this.address2DataLabel.Size = new System.Drawing.Size(150, 17);
             this.address2DataLabel.TabIndex = 18;
-            this.address2DataLabel.Text = "address line 2";
             // 
-            // cityStZipLlabel
+            // cityStZipLabel
             // 
-            this.cityStZipLlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cityStZipLlabel.Location = new System.Drawing.Point(95, 83);
-            this.cityStZipLlabel.Name = "cityStZipLlabel";
-            this.cityStZipLlabel.Size = new System.Drawing.Size(150, 17);
-            this.cityStZipLlabel.TabIndex = 19;
-            this.cityStZipLlabel.Text = "City, ST 55555-5555";
+            this.cityStZipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cityStZipLabel.Location = new System.Drawing.Point(95, 83);
+            this.cityStZipLabel.Name = "cityStZipLabel";
+            this.cityStZipLabel.Size = new System.Drawing.Size(150, 17);
+            this.cityStZipLabel.TabIndex = 19;
             // 
             // phoneDataLabel
             // 
@@ -193,7 +181,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.phoneDataLabel.Name = "phoneDataLabel";
             this.phoneDataLabel.Size = new System.Drawing.Size(125, 17);
             this.phoneDataLabel.TabIndex = 20;
-            this.phoneDataLabel.Text = "(999) 999-9999";
+            this.phoneDataLabel.Text = "(   )   -";
             // 
             // employeeIDLabel
             // 
@@ -212,10 +200,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.employeeLabel.Size = new System.Drawing.Size(74, 17);
             this.employeeLabel.TabIndex = 21;
             this.employeeLabel.Text = "Employee:";
-            // 
-            // rentalTransactionBindingSource
-            // 
-            this.rentalTransactionBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalTransaction);
             // 
             // rentalTimestampDataLabel
             // 
@@ -250,6 +234,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.memberSearchButton.TabIndex = 25;
             this.memberSearchButton.Text = "&Member Search";
             this.memberSearchButton.UseVisualStyleBackColor = true;
+            this.memberSearchButton.Click += new System.EventHandler(this.memberSearchButton_Click);
             // 
             // furnitureSearchButton
             // 
@@ -295,18 +280,32 @@ namespace CS6232_G2_Furniture_Rental.View
             this.checkoutButton.Text = "&Check Out";
             this.checkoutButton.UseVisualStyleBackColor = true;
             // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // rentalTransactionBindingSource
+            // 
+            this.rentalTransactionBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalTransaction);
+            // 
+            // memberBindingSource
+            // 
+            this.memberBindingSource.DataSource = typeof(FurnitureRentalDomain.Member);
+            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "FurnitureID";
             this.dataGridViewTextBoxColumn2.HeaderText = "ID";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -322,12 +321,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "RentalTransactionID";
@@ -335,6 +328,10 @@ namespace CS6232_G2_Furniture_Rental.View
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // rentalItemBindingSource
+            // 
+            this.rentalItemBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalItem);
             // 
             // RentalForm
             // 
@@ -353,7 +350,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Controls.Add(this.employeeIDLabel);
             this.Controls.Add(this.employeeLabel);
             this.Controls.Add(this.phoneDataLabel);
-            this.Controls.Add(this.cityStZipLlabel);
+            this.Controls.Add(this.cityStZipLabel);
             this.Controls.Add(this.address2DataLabel);
             this.Controls.Add(this.memberNameLabel);
             this.Controls.Add(this.address1DataLabel);
@@ -365,10 +362,10 @@ namespace CS6232_G2_Furniture_Rental.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentalForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RentalForm_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,7 +380,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.Label address1DataLabel;
         private System.Windows.Forms.Label memberNameLabel;
         private System.Windows.Forms.Label address2DataLabel;
-        private System.Windows.Forms.Label cityStZipLlabel;
+        private System.Windows.Forms.Label cityStZipLabel;
         private System.Windows.Forms.Label phoneDataLabel;
         private System.Windows.Forms.Label employeeIDLabel;
         private System.Windows.Forms.Label employeeLabel;
