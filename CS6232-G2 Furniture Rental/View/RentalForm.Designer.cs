@@ -246,6 +246,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.furnitureSearchButton.TabIndex = 26;
             this.furnitureSearchButton.Text = "&Furniture Search";
             this.furnitureSearchButton.UseVisualStyleBackColor = true;
+            this.furnitureSearchButton.Click += new System.EventHandler(this.furnitureSearchButton_Click);
             // 
             // newRentalButton
             // 

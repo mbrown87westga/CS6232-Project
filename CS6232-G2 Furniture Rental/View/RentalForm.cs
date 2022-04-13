@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
 using FurnitureRentalBusiness;
@@ -11,11 +12,14 @@ namespace CS6232_G2_Furniture_Rental.View
         private static LoginBusiness _loginBusiness;
         private static Employee _employee;
         private static MemberBusiness _memberBusiness;
+        private List<RentalItem> _cart;
 
         public RentalForm()
         {
             _loginBusiness = new LoginBusiness();
             _memberBusiness = new MemberBusiness();
+
+
             InitializeComponent();
         }
 
@@ -54,7 +58,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void RentalForm_Load(object sender, EventArgs e)
         {
-
+            this.initializeCart();
         }
 
         private void RentalForm_Activated(object sender, EventArgs e)
@@ -69,6 +73,28 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void furnitureSearchButton_Click(object sender, EventArgs e)
+        {
+            var form = this.ParentForm.ShowFormAsDialog<FurnitureSearchForm>();
+            Furniture result = form.Result;
+            if (result != null)
+            {
+                RentalItem rentalItem = new RentalItem
+                {
+                    FurnitureID = result.FurnitureID,
+                    Quantity = result.QuantityAvailable,
+                    DailyRentalRate = result.DailyRentalRate
+                };
+                _cart.Add(rentalItem);
+            }
+        }
+
+        private void initializeCart()
+        {
+            _cart = new List<RentalItem>();
+            this.rentalItemBindingSource.DataSource = _cart;
         }
     }
 }

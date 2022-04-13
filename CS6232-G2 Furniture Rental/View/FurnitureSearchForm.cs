@@ -30,6 +30,11 @@ namespace CS6232_G2_Furniture_Rental.View
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The search result that is currently selected
+        /// </summary>
+        public Furniture Result { get; set; }
+        
         private void FurnitureSearchForm_Activated(object sender, EventArgs e)
         {
             try
