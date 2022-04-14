@@ -125,7 +125,7 @@ namespace FurnitureRentalData
         /// <param name="category">furniture category description to search for, or null to not include in search criteria</param>
         /// <param name="style">furniture style description to search for, or null to not include in search criteria</param>
         /// <returns></returns>
-        public List<Furniture> FindFurniture(int? furnitureID, string name, string description, string category, string style)
+        public List<Furniture> FindFurniture(string name, string description, string category, string style)
         {
             List<Furniture> furnitureList = new List<Furniture>();
 
@@ -136,8 +136,7 @@ namespace FurnitureRentalData
 
             string selectStatement = @"SELECT f.*, ISNULL(f.quantityOwned - ISNULL(rented.qtyRented, 0) + ISNULL(returned.qtyReturned, 0), 0) AS quantityAvailable FROM
                                      (SELECT * FROM FURNITURE 
-                                      WHERE (@furnitureID IS NULL OR (furnitureID = @furnitureID)) 
-                                        AND (@name is NULL or (name like '%' + @name + '%')) 
+                                      WHERE (@name is NULL or (name like '%' + @name + '%')) 
                                         AND (@description IS NULL OR (description LIKE '%' + @description + '%')) 
                                         AND (@category IS NULL OR (categoryDescription = @category)) 
                                         AND (@style IS NULL OR (styleDescription = @style))) f LEFT JOIN
@@ -151,7 +150,6 @@ namespace FurnitureRentalData
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.AddWithValue("@furnitureID", furnitureID ?? Convert.DBNull);
                     selectCommand.Parameters.AddWithValue("@name", name ?? Convert.DBNull);
                     selectCommand.Parameters.AddWithValue("@description", description ?? Convert.DBNull);
                     selectCommand.Parameters.AddWithValue("@category", category ?? Convert.DBNull);

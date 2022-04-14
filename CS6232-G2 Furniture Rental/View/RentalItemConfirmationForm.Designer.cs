@@ -43,6 +43,8 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalQuantityTextBox = new System.Windows.Forms.TextBox();
             this.confirmButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // employeeIDLabel
@@ -86,7 +88,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.Location = new System.Drawing.Point(12, 107);
+            this.descriptionLabel.Location = new System.Drawing.Point(10, 148);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(83, 17);
             this.descriptionLabel.TabIndex = 27;
@@ -95,7 +97,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // descriptionTextBox
             // 
             this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionTextBox.Location = new System.Drawing.Point(113, 104);
+            this.descriptionTextBox.Location = new System.Drawing.Point(111, 145);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ReadOnly = true;
             this.descriptionTextBox.Size = new System.Drawing.Size(168, 23);
@@ -105,7 +107,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.dailyRateLabel.AutoSize = true;
             this.dailyRateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dailyRateLabel.Location = new System.Drawing.Point(12, 158);
+            this.dailyRateLabel.Location = new System.Drawing.Point(10, 199);
             this.dailyRateLabel.Name = "dailyRateLabel";
             this.dailyRateLabel.Size = new System.Drawing.Size(77, 17);
             this.dailyRateLabel.TabIndex = 29;
@@ -114,7 +116,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // dailyRateMaskedTextBox
             // 
             this.dailyRateMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dailyRateMaskedTextBox.Location = new System.Drawing.Point(113, 155);
+            this.dailyRateMaskedTextBox.Location = new System.Drawing.Point(111, 196);
             this.dailyRateMaskedTextBox.Name = "dailyRateMaskedTextBox";
             this.dailyRateMaskedTextBox.ReadOnly = true;
             this.dailyRateMaskedTextBox.Size = new System.Drawing.Size(100, 23);
@@ -124,7 +126,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.quantityAvailableLabel.AutoSize = true;
             this.quantityAvailableLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityAvailableLabel.Location = new System.Drawing.Point(12, 209);
+            this.quantityAvailableLabel.Location = new System.Drawing.Point(10, 250);
             this.quantityAvailableLabel.Name = "quantityAvailableLabel";
             this.quantityAvailableLabel.Size = new System.Drawing.Size(95, 17);
             this.quantityAvailableLabel.TabIndex = 31;
@@ -133,7 +135,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // quantityAvailableTextBox
             // 
             this.quantityAvailableTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityAvailableTextBox.Location = new System.Drawing.Point(113, 206);
+            this.quantityAvailableTextBox.Location = new System.Drawing.Point(111, 247);
             this.quantityAvailableTextBox.Name = "quantityAvailableTextBox";
             this.quantityAvailableTextBox.ReadOnly = true;
             this.quantityAvailableTextBox.Size = new System.Drawing.Size(69, 23);
@@ -143,7 +145,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.rentalQuantityLabel.AutoSize = true;
             this.rentalQuantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rentalQuantityLabel.Location = new System.Drawing.Point(12, 260);
+            this.rentalQuantityLabel.Location = new System.Drawing.Point(10, 301);
             this.rentalQuantityLabel.Name = "rentalQuantityLabel";
             this.rentalQuantityLabel.Size = new System.Drawing.Size(79, 17);
             this.rentalQuantityLabel.TabIndex = 33;
@@ -152,7 +154,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // rentalQuantityTextBox
             // 
             this.rentalQuantityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rentalQuantityTextBox.Location = new System.Drawing.Point(113, 257);
+            this.rentalQuantityTextBox.Location = new System.Drawing.Point(111, 298);
             this.rentalQuantityTextBox.Name = "rentalQuantityTextBox";
             this.rentalQuantityTextBox.Size = new System.Drawing.Size(69, 23);
             this.rentalQuantityTextBox.TabIndex = 34;
@@ -161,29 +163,52 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.confirmButton.AutoSize = true;
             this.confirmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmButton.Location = new System.Drawing.Point(49, 311);
+            this.confirmButton.Location = new System.Drawing.Point(47, 352);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(75, 35);
             this.confirmButton.TabIndex = 35;
             this.confirmButton.Text = "&Confirm";
             this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
             // cancelButton
             // 
             this.cancelButton.AutoSize = true;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(148, 311);
+            this.cancelButton.Location = new System.Drawing.Point(146, 352);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 35);
             this.cancelButton.TabIndex = 36;
             this.cancelButton.Text = "C&ancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(12, 105);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(49, 17);
+            this.nameLabel.TabIndex = 37;
+            this.nameLabel.Text = "Name:";
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameTextBox.Location = new System.Drawing.Point(111, 104);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.ReadOnly = true;
+            this.nameTextBox.Size = new System.Drawing.Size(100, 23);
+            this.nameTextBox.TabIndex = 38;
             // 
             // RentalItemConfirmationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 368);
+            this.ClientSize = new System.Drawing.Size(315, 411);
+            this.Controls.Add(this.nameTextBox);
+            this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.rentalQuantityTextBox);
@@ -201,6 +226,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Name = "RentalItemConfirmationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirmation";
+            this.Load += new System.EventHandler(this.RentalItemConfirmationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +248,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.TextBox rentalQuantityTextBox;
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.TextBox nameTextBox;
     }
 }

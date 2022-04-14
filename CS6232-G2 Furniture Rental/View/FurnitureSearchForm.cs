@@ -18,6 +18,12 @@ namespace CS6232_G2_Furniture_Rental.View
         private static List<string> _categoryList;
         private static List<string> _styleList;
         private static Employee _admin;
+        private static Furniture _furniture;
+
+        public Furniture furniture
+        {
+            get { return _furniture; }
+        }
 
         /// <summary>
         /// Furniture Search form constructor
@@ -33,7 +39,7 @@ namespace CS6232_G2_Furniture_Rental.View
         /// <summary>
         /// The search result that is currently selected
         /// </summary>
-        public Furniture Result { get; set; }
+        public RentalItem Result { get; set; }
         
         private void FurnitureSearchForm_Activated(object sender, EventArgs e)
         {
@@ -56,7 +62,6 @@ namespace CS6232_G2_Furniture_Rental.View
                 _furnitureList = _furnitureBusiness.GetAllFurniture();
                 this.furnitureDataGridView.DataSource = _furnitureList;
 
-                this.LoadIDListBox();
                 this.LoadCategoryListBox();
                 this.LoadStyleListBox();
             }
@@ -64,13 +69,7 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-        }
 
-        private void LoadIDListBox()
-        {
-            furnitureIDComboBox.DataSource = null;
-            furnitureIDComboBox.DataSource = _furnitureList;
-            furnitureIDComboBox.SelectedIndex = -1;
         }
 
         private void LoadCategoryListBox()
@@ -108,18 +107,17 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.HideThisAndShowForm<MainMenuForm>();
+            this.HideThisAndShowForm<RentalForm>();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            int? furnitureID = (int?)this.furnitureIDComboBox.SelectedValue;
             string category = categoryComboBox.SelectedIndex < 0 ? "" : categoryComboBox.SelectedValue.ToString();
             string style = styleComboBox.SelectedIndex < 0 ? "" : styleComboBox.SelectedValue.ToString();
 
             try
             {
-                _furnitureList = _furnitureBusiness.FindFurniture(furnitureID, nameTextBox.Text, descriptionTextBox.Text,
+                _furnitureList = _furnitureBusiness.FindFurniture(nameTextBox.Text, descriptionTextBox.Text,
                                                                   category, style);
 
                 if (_furnitureList.Count > 0)
@@ -144,7 +142,6 @@ namespace CS6232_G2_Furniture_Rental.View
                 _furnitureList = _furnitureBusiness.GetAllFurniture();
                 furnitureDataGridView.DataSource = _furnitureList;
 
-                this.furnitureIDComboBox.SelectedIndex = -1;
                 this.categoryComboBox.SelectedIndex = -1;
                 this.styleComboBox.SelectedIndex = -1;
                 this.nameTextBox.Text = "";
@@ -153,6 +150,28 @@ namespace CS6232_G2_Furniture_Rental.View
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void addToCartButton_Click(object sender, EventArgs e)
+        {
+            var form = this.ParentForm.ShowFormAsDialog<RentalItemConfirmationForm>();
+            RentalItem result = form.Result;
+            if (result != null)
+            {
+                Result = result;
+                this.Close();
+
+            }
+        }
+
+        private void furnitureDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (furnitureDataGridView.SelectedCells.Count > 0)
+            {
+                int selectedRowIndex = furnitureDataGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = furnitureDataGridView.Rows[selectedRowIndex];
+                _furniture = selectedRow.DataBoundItem as Furniture;
             }
         }
     }

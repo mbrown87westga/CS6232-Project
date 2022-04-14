@@ -56,12 +56,8 @@ namespace FurnitureRentalBusiness
         /// <param name="category">furniture category description to search for, or null to not include in search criteria</param>
         /// <param name="style">furniture style description to search for, or null to not include in search criteria</param>
         /// <returns>list of Furniture matching the search criteria</returns>
-        public List<Furniture> FindFurniture(int? furnitureID, string name, string description, string category, string style)
+        public List<Furniture> FindFurniture(string name, string description, string category, string style)
         {
-            if (furnitureID <= 0)
-            {
-                throw new ArgumentException("Furniture ID must be > 0");
-            }
             if (name.Length > 50)
             {
                 throw new ArgumentException("Furniture name must be less than 50 characters");
@@ -79,7 +75,7 @@ namespace FurnitureRentalBusiness
                 throw new ArgumentException("Furniture style must be less than 50 characters");
             }
 
-            return this._dal.FindFurniture(furnitureID, name, description, category, style);
+            return this._dal.FindFurniture(name, description, category, style);
         }
     }
 }

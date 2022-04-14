@@ -38,5 +38,13 @@ namespace FurnitureRentalDomain
         /// The furniture's quantity available to rent
         /// </summary>
         public int QuantityAvailable { get; set; }
+        /// <summary>
+        /// Makes a shallow copy of the Furniture
+        /// </summary>
+        /// <returns>a shallow copy of the current Furniture</returns>
+        public object ShallowCopy()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

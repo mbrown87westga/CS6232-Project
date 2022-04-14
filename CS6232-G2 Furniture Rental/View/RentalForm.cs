@@ -11,16 +11,22 @@ namespace CS6232_G2_Furniture_Rental.View
     {
         private static LoginBusiness _loginBusiness;
         private static Employee _employee;
-        private static MemberBusiness _memberBusiness;
+        private static FurnitureBusiness _furnitureBusiness;
+        private List<Furniture> _furniture;
         private List<RentalItem> _cart;
 
         public RentalForm()
         {
             _loginBusiness = new LoginBusiness();
-            _memberBusiness = new MemberBusiness();
-
+            _furnitureBusiness = new FurnitureBusiness();
 
             InitializeComponent();
+        }
+
+        private void RentalForm_Load(object sender, EventArgs e)
+        {
+            initializeCart();
+            _furniture = _furnitureBusiness.GetAllFurniture();
         }
 
         private void RentalForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -34,31 +40,10 @@ namespace CS6232_G2_Furniture_Rental.View
             Member result = form.Result;
             if (result != null)
             {
+                memberBindingSource.Clear();
                 this.memberBindingSource.DataSource = result;
                 this.memberNameLabel.Text = result.FirstName + " " + result.LastName;
-                this.cityStZipLabel.Text = result.City.Trim() + ", " + result.State.Trim() + " ";
-                if (result.Zipcode.Length > 5)
-                {
-                    this.cityStZipLabel.Text += Convert.ToInt64(result.Zipcode).ToString("#####-####");
-                }
-                else
-                {
-                    this.cityStZipLabel.Text += Convert.ToInt64(result.Zipcode).ToString("#####");
-                }
-                if (result.Phone.Length == 7)
-                {
-                    this.phoneDataLabel.Text = Convert.ToInt64(result.Phone).ToString("###-####");
-                }
-                else
-                {
-                    this.phoneDataLabel.Text = Convert.ToInt64(result.Phone).ToString("(###) ###-####");
-                }
             }
-        }
-
-        private void RentalForm_Load(object sender, EventArgs e)
-        {
-            this.initializeCart();
         }
 
         private void RentalForm_Activated(object sender, EventArgs e)
@@ -78,23 +63,29 @@ namespace CS6232_G2_Furniture_Rental.View
         private void furnitureSearchButton_Click(object sender, EventArgs e)
         {
             var form = this.ParentForm.ShowFormAsDialog<FurnitureSearchForm>();
-            Furniture result = form.Result;
+            RentalItem result = form.Result;
             if (result != null)
             {
-                RentalItem rentalItem = new RentalItem
-                {
-                    FurnitureID = result.FurnitureID,
-                    Quantity = result.QuantityAvailable,
-                    DailyRentalRate = result.DailyRentalRate
-                };
-                _cart.Add(rentalItem);
+                _cart.Add(result);
+                rentalItemDataGridView.DataSource = null;
+                rentalItemDataGridView.DataSource = _cart;
             }
         }
 
         private void initializeCart()
         {
             _cart = new List<RentalItem>();
-            this.rentalItemBindingSource.DataSource = _cart;
+        }
+
+        private void rentalItemDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            DataGridViewRow newRow = rentalItemDataGridView.Rows[rentalItemDataGridView.Rows.Count - 1];
+            var rentalItem = newRow.DataBoundItem as RentalItem;
+            if (rentalItem != null)
+            {
+                newRow.Cells["FurnitureName"].Value = _furniture.Find(f => f.FurnitureID == rentalItem.FurnitureID).Name;
+                newRow.Cells["Total"].Value = rentalItem.Quantity * rentalItem.DailyRentalRate;
+            }
         }
     }
 }
