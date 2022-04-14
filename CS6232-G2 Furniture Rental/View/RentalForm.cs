@@ -87,5 +87,12 @@ namespace CS6232_G2_Furniture_Rental.View
                 newRow.Cells["Total"].Value = rentalItem.Quantity * rentalItem.DailyRentalRate;
             }
         }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            initializeCart();
+            rentalItemDataGridView.DataSource = null;
+            rentalItemDataGridView.DataSource = _cart;
+        }
     }
 }

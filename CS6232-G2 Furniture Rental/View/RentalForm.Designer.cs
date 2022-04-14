@@ -34,9 +34,9 @@ namespace CS6232_G2_Furniture_Rental.View
             System.Windows.Forms.Label phoneLabel;
             System.Windows.Forms.Label rentalTimestampLabel;
             System.Windows.Forms.Label dueDateTimeLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
             this.memberLabel = new System.Windows.Forms.Label();
             this.address1DataLabel = new System.Windows.Forms.Label();
@@ -258,6 +258,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.clearButton.TabIndex = 28;
             this.clearButton.Text = "Cl&ear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // checkoutButton
             // 
@@ -324,10 +325,10 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // Total
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "C2";
-            dataGridViewCellStyle12.NullValue = null;
-            this.Total.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "C2";
+            dataGridViewCellStyle13.NullValue = null;
+            this.Total.DefaultCellStyle = dataGridViewCellStyle13;
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
@@ -350,10 +351,10 @@ namespace CS6232_G2_Furniture_Rental.View
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N0";
+            dataGridViewCellStyle14.NullValue = null;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
@@ -361,10 +362,10 @@ namespace CS6232_G2_Furniture_Rental.View
             // dailyRentalRateDataGridViewTextBoxColumn
             // 
             this.dailyRentalRateDataGridViewTextBoxColumn.DataPropertyName = "DailyRentalRate";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "C2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.dailyRentalRateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "C2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.dailyRentalRateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
             this.dailyRentalRateDataGridViewTextBoxColumn.HeaderText = "Daily Rate";
             this.dailyRentalRateDataGridViewTextBoxColumn.Name = "dailyRentalRateDataGridViewTextBoxColumn";
             this.dailyRentalRateDataGridViewTextBoxColumn.ReadOnly = true;
