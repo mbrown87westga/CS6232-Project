@@ -34,9 +34,9 @@ namespace CS6232_G2_Furniture_Rental.View
             System.Windows.Forms.Label phoneLabel;
             System.Windows.Forms.Label rentalTimestampLabel;
             System.Windows.Forms.Label dueDateTimeLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
             this.memberLabel = new System.Windows.Forms.Label();
             this.address1DataLabel = new System.Windows.Forms.Label();
@@ -55,16 +55,16 @@ namespace CS6232_G2_Furniture_Rental.View
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipcodeMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.furnitureIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dailyRentalRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentalTransactionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.furnitureIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dailyRentalRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalTransactionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             address1Label = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
             rentalTimestampLabel = new System.Windows.Forms.Label();
@@ -132,9 +132,9 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalItemDataGridView.DataSource = this.rentalItemBindingSource;
             this.rentalItemDataGridView.Location = new System.Drawing.Point(16, 209);
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
-            this.rentalItemDataGridView.ReadOnly = true;
             this.rentalItemDataGridView.Size = new System.Drawing.Size(544, 174);
             this.rentalItemDataGridView.TabIndex = 1;
+            this.rentalItemDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.rentalItemDataGridView_CellEndEdit);
             this.rentalItemDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.rentalItemDataGridView_RowsAdded);
             // 
             // memberLabel
@@ -270,6 +270,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.checkoutButton.TabIndex = 29;
             this.checkoutButton.Text = "&Check Out";
             this.checkoutButton.UseVisualStyleBackColor = true;
+            this.checkoutButton.Click += new System.EventHandler(this.checkoutButton_Click);
             // 
             // cityTextBox
             // 
@@ -317,22 +318,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.phoneMaskedTextBox.Size = new System.Drawing.Size(100, 16);
             this.phoneMaskedTextBox.TabIndex = 33;
             // 
-            // FurnitureName
-            // 
-            this.FurnitureName.HeaderText = "Name";
-            this.FurnitureName.Name = "FurnitureName";
-            this.FurnitureName.ReadOnly = true;
-            // 
-            // Total
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "C2";
-            dataGridViewCellStyle13.NullValue = null;
-            this.Total.DefaultCellStyle = dataGridViewCellStyle13;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
             // memberBindingSource
             // 
             this.memberBindingSource.DataSource = typeof(FurnitureRentalDomain.Member);
@@ -341,6 +326,14 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.rentalTransactionBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalTransaction);
             // 
+            // rentalItemBindingSource
+            // 
+            this.rentalItemBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalItem);
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
+            // 
             // furnitureIDDataGridViewTextBoxColumn
             // 
             this.furnitureIDDataGridViewTextBoxColumn.DataPropertyName = "FurnitureID";
@@ -348,27 +341,42 @@ namespace CS6232_G2_Furniture_Rental.View
             this.furnitureIDDataGridViewTextBoxColumn.Name = "furnitureIDDataGridViewTextBoxColumn";
             this.furnitureIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // FurnitureName
+            // 
+            this.FurnitureName.HeaderText = "Name";
+            this.FurnitureName.Name = "FurnitureName";
+            this.FurnitureName.ReadOnly = true;
+            // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "N0";
-            dataGridViewCellStyle14.NullValue = null;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dailyRentalRateDataGridViewTextBoxColumn
             // 
             this.dailyRentalRateDataGridViewTextBoxColumn.DataPropertyName = "DailyRentalRate";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "C2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.dailyRentalRateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "C2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.dailyRentalRateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.dailyRentalRateDataGridViewTextBoxColumn.HeaderText = "Daily Rate";
             this.dailyRentalRateDataGridViewTextBoxColumn.Name = "dailyRentalRateDataGridViewTextBoxColumn";
             this.dailyRentalRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Total
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "C2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.Total.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             // 
             // rentalTransactionIDDataGridViewTextBoxColumn
             // 
@@ -377,14 +385,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalTransactionIDDataGridViewTextBoxColumn.Name = "rentalTransactionIDDataGridViewTextBoxColumn";
             this.rentalTransactionIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.rentalTransactionIDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // rentalItemBindingSource
-            // 
-            this.rentalItemBindingSource.DataSource = typeof(FurnitureRentalDomain.RentalItem);
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
             // 
             // RentalForm
             // 
