@@ -39,7 +39,11 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             if (String.IsNullOrEmpty(rentalQuantityTextBox.Text))
             {
-                MessageBox.Show("Please select a rental quantity!", "Invalid quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter a rental quantity!", "Invalid quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (Int32.Parse(rentalQuantityTextBox.Text) <= 0)
+            {
+                MessageBox.Show("Please enter a rental quantity > 0!", "Invalid quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (Int32.Parse(rentalQuantityTextBox.Text) > _furniture.QuantityAvailable)
             {

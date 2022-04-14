@@ -141,6 +141,31 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 return ("Due date must be after today!");
             }
+            if (_cart.Count <= 0)
+            {
+                return ("Cart is empty!");
+            }
+            foreach(RentalItem item in _cart)
+            {
+                Furniture furniture = _furniture.Find(f => f.FurnitureID == item.FurnitureID);
+
+                if (item.FurnitureID <= 0)
+                {
+                    return ("Item '" + furniture.Name + "' has invalid ID");
+                }
+                if (item.Quantity <= 0)
+                {
+                    return ("Item '" + furniture.Name + "' quantity must be > 0");
+                }
+                if (item.Quantity > furniture.QuantityAvailable)
+                {
+                    return ("Item '" + furniture.Name + "' quantity exceeds quantity available");
+                }
+                if (item.DailyRentalRate <= 0)
+                {
+                    return ("Item '" + furniture.Name + "' rental rate must be > 0");
+                }
+            }
 
             return "";
         }
@@ -156,8 +181,24 @@ namespace CS6232_G2_Furniture_Rental.View
                 {
                     if (!string.IsNullOrEmpty(cell?.ToString()))
                     {
-                        calculateTotal(rowIdx.Value);
-                        updateCart();
+                        DataGridViewRow row = rentalItemDataGridView.Rows[rowIdx.Value];
+                        var rentalItem = row.DataBoundItem as RentalItem;
+                        if (rentalItem != null)
+                        {
+                            if (rentalItem.Quantity <= 0)
+                            {
+                                DialogResult result = MessageBox.Show("Remove " + row.Cells["FurnitureName"].Value + " from cart?", "Remove item?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                                if (result.Equals(DialogResult.OK))
+                                {
+                                    _cart.Remove(rentalItem);
+                                    updateCart();
+                                }
+                            }
+                            else if (rentalItem.Quantity > _furniture.Find(f => f.FurnitureID == rentalItem.FurnitureID).QuantityAvailable)
+                            {
+                                MessageBox.Show("Cannot rent more than the quantity available!", "Invalid quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                 }
             }
@@ -176,12 +217,24 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void calculateTotal(int rowIndex)
         {
-            DataGridViewRow newRow = rentalItemDataGridView.Rows[rowIndex];
-            var rentalItem = newRow.DataBoundItem as RentalItem;
+            DataGridViewRow row = rentalItemDataGridView.Rows[rowIndex];
+            var rentalItem = row.DataBoundItem as RentalItem;
             if (rentalItem != null)
             {
-                newRow.Cells["FurnitureName"].Value = _furniture.Find(f => f.FurnitureID == rentalItem.FurnitureID).Name;
-                newRow.Cells["Total"].Value = rentalItem.Quantity * rentalItem.DailyRentalRate;
+                if (rentalItem.Quantity <= 0)
+                {
+                    DialogResult result = MessageBox.Show("Remove " + row.Cells["FurnitureName"].Value + " from cart?", "Remove item?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result.Equals(DialogResult.OK)) 
+                    {
+                        _cart.Remove(rentalItem);
+                    }
+                }
+                else if (rentalItem.Quantity > _furniture.Find(f => f.FurnitureID == rentalItem.FurnitureID).QuantityAvailable)
+                {
+                    MessageBox.Show("Cannot rent more than the quantity available!", "Invalid quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                row.Cells["FurnitureName"].Value = _furniture.Find(f => f.FurnitureID == rentalItem.FurnitureID).Name;
+                row.Cells["Total"].Value = rentalItem.Quantity * rentalItem.DailyRentalRate;
             }
         }
     }
