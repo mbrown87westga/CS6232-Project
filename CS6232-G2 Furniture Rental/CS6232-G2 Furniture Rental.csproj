@@ -147,6 +147,12 @@
     <Compile Include="View\RentalItemConfirmationForm.Designer.cs">
       <DependentUpon>RentalItemConfirmationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\RentalTransactionConfirmationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RentalTransactionConfirmationForm.Designer.cs">
+      <DependentUpon>RentalTransactionConfirmationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SearchResultsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RentalItemConfirmationForm.resx">
       <DependentUpon>RentalItemConfirmationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RentalTransactionConfirmationForm.resx">
+      <DependentUpon>RentalTransactionConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SearchResultsForm.resx">
       <DependentUpon>SearchResultsForm.cs</DependentUpon>

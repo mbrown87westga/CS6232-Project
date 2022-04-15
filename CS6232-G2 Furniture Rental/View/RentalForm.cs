@@ -17,12 +17,18 @@ namespace CS6232_G2_Furniture_Rental.View
         private List<RentalItem> _cart;
         private static RentalTransactionBusiness _rentalTransactionBusiness;
 
+        public decimal cartTotal
+        {
+            get { return getCartTotal(); }
+        }
+
         public RentalForm()
         {
             _loginBusiness = new LoginBusiness();
             _furnitureBusiness = new FurnitureBusiness();
             _rentalTransactionBusiness = new RentalTransactionBusiness();
             _member = new Member();
+            _cart = new List<RentalItem>();
 
             InitializeComponent();
         }
@@ -115,22 +121,29 @@ namespace CS6232_G2_Furniture_Rental.View
 
                 if (errorMessage == "")
                 {
-                    RentalTransaction newRental = new RentalTransaction
+                    RentalTransactionConfirmationForm confirmationForm = new RentalTransactionConfirmationForm(getCartTotal());
+
+                    if (confirmationForm.ShowDialog(this) == DialogResult.OK)
                     {
-                        DueDateTime = dueDateTimePicker.Value,
-                        MemberID = _member.MemberID,
-                        EmployeeID = _employee.EmployeeId,
-                        RentalTimestamp = DateTime.Now
-                    };
-                    
-                    if (_rentalTransactionBusiness.Add(newRental, _cart) > 0)
-                    {
-                        rentalTimestampDataLabel.Text = newRental.RentalTimestamp.ToString();
-                        MessageBox.Show("Transaction complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        newRentalButton.Enabled = true;
-                        clearButton.Enabled = false;
-                        checkoutButton.Enabled = false;
+                        RentalTransaction newRental = new RentalTransaction
+                        {
+                            DueDateTime = dueDateTimePicker.Value,
+                            MemberID = _member.MemberID,
+                            EmployeeID = _employee.EmployeeId,
+                            RentalTimestamp = DateTime.Now
+                        };
+
+                        if (_rentalTransactionBusiness.Add(newRental, _cart) > 0)
+                        {
+                            rentalTimestampDataLabel.Text = newRental.RentalTimestamp.ToString();
+                            MessageBox.Show("Transaction complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            newRentalButton.Enabled = true;
+                            clearButton.Enabled = false;
+                            checkoutButton.Enabled = false;
+                        }
                     }
+
+                    confirmationForm.Dispose();
                 }
                 else
                 {
@@ -252,6 +265,18 @@ namespace CS6232_G2_Furniture_Rental.View
                 row.Cells["FurnitureName"].Value = _furniture.Find(f => f.FurnitureID == rentalItem.FurnitureID).Name;
                 row.Cells["Total"].Value = rentalItem.Quantity * rentalItem.DailyRentalRate;
             }
+        }
+
+        private decimal getCartTotal()
+        {
+            decimal total = 0;
+
+            foreach (RentalItem rentalItem in _cart)
+            {
+                total += rentalItem.Quantity * rentalItem.DailyRentalRate;    
+            }
+
+            return total;
         }
     }
 }
