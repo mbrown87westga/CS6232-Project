@@ -17,8 +17,8 @@ namespace FurnitureRentalBusiness
             _dal = new RentalTransactionDal();
         }
 
-        public int Add(RentalTransaction newRental)
-        {
+        public int Add(RentalTransaction newRental, List<RentalItem> cart)
+        {            
             if (newRental is null)
             {
                 throw new ArgumentNullException(nameof(newRental));
@@ -48,7 +48,27 @@ namespace FurnitureRentalBusiness
                 throw new ArgumentOutOfRangeException("Employee must be selected");
             }
 
-            return this._dal.AddRentalTransaction(newRental);
+            foreach (RentalItem rentalItem in cart)
+            {
+                if (rentalItem is null)
+                {
+                    throw new ArgumentNullException(nameof(rentalItem));
+                }
+                if (rentalItem.FurnitureID <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Furniture ID must be > 0");
+                }
+                if (rentalItem.Quantity <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Quantity must be > 0");
+                }
+                if (rentalItem.DailyRentalRate <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Daily rental rate must be > 0");
+                }
+            }
+
+            return this._dal.AddRentalTransaction(newRental, cart);
         }
     }
 }

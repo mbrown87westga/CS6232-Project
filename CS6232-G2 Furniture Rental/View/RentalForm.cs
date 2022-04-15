@@ -94,6 +94,19 @@ namespace CS6232_G2_Furniture_Rental.View
             updateCart();
         }
 
+        private void newRentalButton_Click(object sender, EventArgs e)
+        {
+            initializeCart();
+            updateCart();
+            _member = new Member();
+            memberBindingSource.Clear();
+            this.memberBindingSource.DataSource = _member;
+            this.memberNameLabel.Text = "";
+            newRentalButton.Enabled = false;
+            clearButton.Enabled = true;
+            checkoutButton.Enabled = true;
+        }
+
         private void checkoutButton_Click(object sender, EventArgs e)
         {
             try
@@ -109,21 +122,24 @@ namespace CS6232_G2_Furniture_Rental.View
                         EmployeeID = _employee.EmployeeId,
                         RentalTimestamp = DateTime.Now
                     };
-
-                    _rentalTransactionBusiness.Add(newRental);
-                    rentalTimestampDataLabel.Text = newRental.RentalTimestamp.ToString();
-                    MessageBox.Show("Transaction complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    newRentalButton.Enabled = true;
-                    checkoutButton.Enabled = false;
+                    
+                    if (_rentalTransactionBusiness.Add(newRental, _cart) > 0)
+                    {
+                        rentalTimestampDataLabel.Text = newRental.RentalTimestamp.ToString();
+                        MessageBox.Show("Transaction complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        newRentalButton.Enabled = true;
+                        clearButton.Enabled = false;
+                        checkoutButton.Enabled = false;
+                    }
                 }
                 else
                 {
                     MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -137,7 +153,7 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 return ("Invalid due date & time!");
             }
-            if (dueDateTimePicker.Value <= DateTime.Today)
+            if (dueDateTimePicker.Value.Date <= DateTime.Today.Date)
             {
                 return ("Due date must be after today!");
             }
