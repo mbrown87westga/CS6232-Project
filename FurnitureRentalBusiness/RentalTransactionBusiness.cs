@@ -70,5 +70,26 @@ namespace FurnitureRentalBusiness
 
             return this._dal.AddRentalTransaction(newRental, cart);
         }
+
+        public IEnumerable<ReturnGridItem> GetCurrentReturnGridItemsForMember(int memberID)
+        {
+            return new List<ReturnGridItem>
+            {
+                new ReturnGridItem
+                {
+                    QuantityToReturn = 0,
+                    Employee = "Joe Blow",
+                    DueDate = DateTime.Today,
+                    QuantityOut = 5,
+                    FurnitureID = 2,
+                    DailyRefundRate = 10.00,
+                    ReturnTransactionID = 1,
+                    DailyFineRate = 15.00,
+                    Description = "A crappy banjo",
+                    RentalDate = DateTime.Today.AddDays(-7),
+                    RentalTransactionID = 3
+                }
+            };
+        }
     }
 }

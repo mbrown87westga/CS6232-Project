@@ -50,6 +50,7 @@
     <Compile Include="MemberDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalTransactionDal.cs" />
+    <Compile Include="ReturnTransactionDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FurnitureRentalDomain\FurnitureRentalDomain.csproj">

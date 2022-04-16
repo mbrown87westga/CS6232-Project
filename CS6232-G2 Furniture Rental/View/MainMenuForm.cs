@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
+using CS6232_G2_Furniture_Return.View;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
 
@@ -85,6 +86,11 @@ namespace CS6232_G2_Furniture_Rental.View
         private void rentalsButton_Click(object sender, EventArgs e)
         {
             this.HideThisAndShowForm<RentalForm>();
+        }
+
+        private void returnsButton_Click(object sender, EventArgs e)
+        {
+            this.HideThisAndShowForm<ReturnForm>();
         }
     }
 }
