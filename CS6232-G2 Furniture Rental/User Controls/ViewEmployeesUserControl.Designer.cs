@@ -32,10 +32,10 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.employeeDataGridView = new System.Windows.Forms.DataGridView();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchButton = new System.Windows.Forms.Button();
             this.detailsButton = new System.Windows.Forms.Button();
             this.viewAllButton = new System.Windows.Forms.Button();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,13 +75,9 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.employeeDataGridView.Location = new System.Drawing.Point(0, 0);
             this.employeeDataGridView.Name = "employeeDataGridView";
             this.employeeDataGridView.ReadOnly = true;
-            this.employeeDataGridView.Size = new System.Drawing.Size(601, 327);
+            this.employeeDataGridView.Size = new System.Drawing.Size(586, 327);
             this.employeeDataGridView.TabIndex = 1;
             this.employeeDataGridView.SelectionChanged += new System.EventHandler(this.employeeDataGridView_SelectionChanged);
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
             // 
             // searchButton
             // 
@@ -119,6 +115,10 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.viewAllButton.UseVisualStyleBackColor = true;
             this.viewAllButton.Click += new System.EventHandler(this.viewAllButton_Click);
             // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "EmployeeId";
@@ -127,6 +127,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.dataGridViewTextBoxColumn1.HeaderText = "ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             this.dataGridViewTextBoxColumn1.Width = 25;
             // 
             // UserName
@@ -226,7 +227,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.employeeDataGridView);
             this.Name = "ViewEmployeesUserControl";
-            this.Size = new System.Drawing.Size(604, 370);
+            this.Size = new System.Drawing.Size(592, 370);
             this.Load += new System.EventHandler(this.ViewEmployeesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();

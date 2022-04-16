@@ -242,8 +242,7 @@ namespace FurnitureRentalData
             List<Employee> employeeList = new List<Employee>();
 
             string selectStatement = "SELECT employeeID, firstName, lastName, address1, address2, city, state, zipcode, phone, birthdate, sex, userName, isAdmin, password, deactivatedDate " +
-                                     "FROM EMPLOYEE " +
-                                     "WHERE deactivatedDate IS NULL";
+                                     "FROM EMPLOYEE";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {

@@ -157,7 +157,7 @@ namespace CS6232_G2_Furniture_Rental.View
                             DeactivatedDate = _employee.DeactivatedDate
                         };
 
-                        if (_employeeBusiness.Update(new EmployeeMaintenanceForm().employee, newEmployee) > 0)
+                        if (_employeeBusiness.Update(_oldEmployee, newEmployee) > 0)
                         {
                             MessageBox.Show("Employee updated!", "Employee updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _oldEmployee = (Employee) _employee.ShallowCopy();
