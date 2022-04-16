@@ -39,6 +39,7 @@ namespace CS6232_G2_Furniture_Rental.View
             initializeCart();
             _furniture = _furnitureBusiness.GetAllFurniture();
             newRentalButton.Enabled = false;
+            dueDateTimePicker.Value = DateTime.Now.AddHours(24);
         }
 
         private void RentalForm_Activated(object sender, EventArgs e)
@@ -112,6 +113,7 @@ namespace CS6232_G2_Furniture_Rental.View
             newRentalButton.Enabled = false;
             clearButton.Enabled = true;
             checkoutButton.Enabled = true;
+            dueDateTimePicker.Value = DateTime.Now.AddHours(24);
         }
 
         private void checkoutButton_Click(object sender, EventArgs e)
@@ -243,6 +245,7 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             rentalItemDataGridView.DataSource = null;
             rentalItemDataGridView.DataSource = _cart;
+            updateGrandTotal();
         }
 
         private void calculateRowTotal(int rowIndex)
@@ -279,6 +282,17 @@ namespace CS6232_G2_Furniture_Rental.View
             int days = (dueDateTimePicker.Value - DateTime.Today).Days;
 
             return total * days;
+        }
+
+        private void updateGrandTotal()
+        {
+            grandTotalLabel.Text = getCartTotal().ToString("C2");
+            daysTotalLabel.Text = "total for " + (dueDateTimePicker.Value - DateTime.Today).Days.ToString() + " days";
+        }
+
+        private void dueDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            updateGrandTotal();
         }
     }
 }
