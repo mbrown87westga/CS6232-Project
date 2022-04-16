@@ -5,12 +5,19 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// Form for confirming a rental transaction
+    /// </summary>
     public partial class RentalTransactionConfirmationForm : Form
     {
         private static LoginBusiness _loginBusiness;
         private static Employee _employee;
         private static decimal _cartTotal;
 
+        /// <summary>
+        /// Rental transaction confirmation form
+        /// </summary>
+        /// <param name="cartTotal">The rental total for all rental items in the cart</param>
         public RentalTransactionConfirmationForm(decimal cartTotal)
         {
             _loginBusiness = new LoginBusiness();

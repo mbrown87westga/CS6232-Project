@@ -7,6 +7,9 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// Form for renting furniture
+    /// </summary>
     public partial class RentalForm : Form
     {
         private static LoginBusiness _loginBusiness;
@@ -17,11 +20,9 @@ namespace CS6232_G2_Furniture_Rental.View
         private List<RentalItem> _cart;
         private static RentalTransactionBusiness _rentalTransactionBusiness;
 
-        public decimal cartTotal
-        {
-            get { return getCartTotal(); }
-        }
-
+        /// <summary>
+        /// Rental form constructor
+        /// </summary>
         public RentalForm()
         {
             _loginBusiness = new LoginBusiness();
@@ -91,7 +92,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void rentalItemDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            calculateTotal(rentalItemDataGridView.Rows.Count - 1);
+            calculateRowTotal(rentalItemDataGridView.Rows.Count - 1);
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -244,7 +245,7 @@ namespace CS6232_G2_Furniture_Rental.View
             rentalItemDataGridView.DataSource = _cart;
         }
 
-        private void calculateTotal(int rowIndex)
+        private void calculateRowTotal(int rowIndex)
         {
             DataGridViewRow row = rentalItemDataGridView.Rows[rowIndex];
             var rentalItem = row.DataBoundItem as RentalItem;
