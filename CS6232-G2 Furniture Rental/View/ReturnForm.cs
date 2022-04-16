@@ -78,6 +78,8 @@ namespace CS6232_G2_Furniture_Return.View
                 _returnItems.Clear();
                 _returnItems.AddRange(rentals);
                 ResetGridSource();
+                returnButton.Enabled = true;
+                clearButton.Enabled = true;
             }
         }
         
@@ -105,7 +107,9 @@ namespace CS6232_G2_Furniture_Return.View
                             ReturnTimestamp = DateTime.Now
                         };
 
-                        if (_returnTransactionBusiness.Add(newReturn, _returnItems.Select(item => new ReturnItem
+                        if (_returnTransactionBusiness.Add(newReturn, _returnItems
+                                .Where(item => item.QuantityToReturn > 0)
+                                .Select(item => new ReturnItem
                         {
                             RentalTransactionID = item.RentalTransactionID,
                             FurnitureID = item.FurnitureID,
@@ -113,8 +117,14 @@ namespace CS6232_G2_Furniture_Return.View
                         })) > 0)
                         {
                             MessageBox.Show("Transaction complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            var rentals = _returnTransactionBusiness.GetCurrentReturnGridItemsForMember(_member.MemberID);
+
+                            _returnItems.Clear();
+                            _returnItems.AddRange(rentals);
+                            ResetGridSource();
                             returnButton.Enabled = true;
-                            clearButton.Enabled = false;
+                            clearButton.Enabled = true;
                         }
                     }
 
