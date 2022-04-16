@@ -53,6 +53,11 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                     DateTime begin = beginDateDateTimePicker.Value;
                     DateTime end = endDateDateTimePicker.Value;
                     _transactionList = _memberBusiness.GetMemberTransactionsByDateRange(memberId, begin, end).ToList();
+
+                    if (_transactionList.Count <= 0)
+                    {
+                        MessageBox.Show("No results found!", "No results found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
 
                 this.resultsDataGridView.DataSource = _transactionList;
@@ -65,7 +70,24 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         
         private void searchButton_Click(object sender, EventArgs e)
         {
-            this.GetMemberData();
+            if (beginDateDateTimePicker.Value.Equals(DateTime.MinValue) ||
+                beginDateDateTimePicker.Value.Equals(DateTime.MaxValue))
+            {
+                MessageBox.Show("Invalid begin date!", "Invalid date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (endDateDateTimePicker.Value.Equals(DateTime.MinValue) ||
+                     endDateDateTimePicker.Value.Equals(DateTime.MaxValue))
+            {
+                MessageBox.Show("Invalid end date!", "Invalid date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (beginDateDateTimePicker.Value.Date > endDateDateTimePicker.Value.Date)
+            {
+                MessageBox.Show("End date cannot be prior to begin date!", "Date error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                this.GetMemberData();
+            }
         }
 
         private void clearButton_Click(object sender, EventArgs e)
