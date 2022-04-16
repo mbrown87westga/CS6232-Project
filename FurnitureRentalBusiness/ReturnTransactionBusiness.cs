@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FurnitureRentalData;
 using FurnitureRentalDomain;
 
@@ -7,11 +8,17 @@ namespace FurnitureRentalBusiness
 {
     public class ReturnTransactionBusiness
     {
-        private readonly ReturnTransactionDal _dal;
+        private readonly FurnitureDal _furnitureDal;
+        private readonly MemberDal _memberDal;
+        private readonly ReturnTransactionDal _returnDal;
+        private readonly RentalTransactionDal _rentalDal;
 
         public ReturnTransactionBusiness()
         {
-            _dal = new ReturnTransactionDal();
+            _returnDal = new ReturnTransactionDal();
+            _rentalDal = new RentalTransactionDal();
+            _memberDal = new MemberDal();
+            _furnitureDal = new FurnitureDal();
         }
 
         public int Add(ReturnTransaction newReturn, IEnumerable<ReturnItem> cart)
@@ -67,6 +74,51 @@ namespace FurnitureRentalBusiness
 
             //return this._dal.AddReturnTransaction(newReturn, cart);
             return 0;
+        }
+        
+        public IEnumerable<ReturnGridItem> GetCurrentReturnGridItemsForMember(int memberID)
+        {
+            if (memberID <= 0)
+            {
+                throw new ArgumentException("Member ID must be > 0");
+            }
+
+            var furnitures = _furnitureDal.GetAllFurniture().ToDictionary(furniture => furniture.FurnitureID);
+            List<ReturnGridItem> returns = new List<ReturnGridItem>();
+
+            var transactions = _rentalDal.GetRentalTransactions(memberID);
+            foreach (var transaction in transactions)
+            {
+                var items = _rentalDal.GetRentalItems(transaction.RentalTransactionID);
+                foreach (var item in items)
+                {
+                    var returneds = _returnDal.GetReturnItems(item.RentalTransactionID, item.FurnitureID);
+
+                    int quantityUnreturned = item.Quantity - returneds.Sum(i => i.Quantity);
+
+                    if (quantityUnreturned > 0)
+                    {
+                        returns.Add(new ReturnGridItem
+                        {
+                            QuantityToReturn = 0,
+                            Employee = transaction.Employee,
+                            QuantityOut = quantityUnreturned,
+                            DueDate = transaction.DueDateTime,
+                            FurnitureID = item.FurnitureID,
+                            DailyRefundRate = item.DailyRentalRate,
+                            Description =
+                                furnitures.ContainsKey(item.FurnitureID)
+                                    ? furnitures[item.FurnitureID].Description
+                                    : "An unknown item",
+                            DailyFineRate = item.DailyRentalRate * 1.5m,
+                            RentalDate = transaction.RentalTimestamp,
+                            RentalTransactionID = transaction.RentalTransactionID,
+                        });
+                    }
+                }
+            }
+
+            return returns;
         }
     }
 }

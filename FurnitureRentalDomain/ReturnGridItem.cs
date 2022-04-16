@@ -47,10 +47,10 @@ namespace FurnitureRentalDomain
         /// <summary>
         /// The daily fine rate
         /// </summary>
-        public double DailyFineRate { get; set; }
+        public decimal DailyFineRate { get; set; }
         /// <summary>
         /// The daily refund rate
         /// </summary>
-        public double DailyRefundRate { get; set; }
+        public decimal DailyRefundRate { get; set; }
     }
 }

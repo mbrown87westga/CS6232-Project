@@ -74,5 +74,44 @@ namespace FurnitureRentalData
             //    return transactionID;
             return 0;
         }
+
+        public IEnumerable<ReturnItem> GetReturnItems(int rentalTransactionId, int furnitureId)
+        {
+
+            List<ReturnItem> returnItemList = new List<ReturnItem>();
+
+            string selectStatement = @"SELECT i.[rentalTransactionID], i.[furnitureID], i.[quantity], i.[returnTransactionID]
+                                       FROM [ReturnItem] i
+                                       WHERE i.[rentalTransactionID] = @rentalTransactionId
+                                         AND i.[furnitureID] = @furnitureId;";
+
+            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@rentalTransactionId", rentalTransactionId);
+                    selectCommand.Parameters.AddWithValue("@furnitureId", furnitureId);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ReturnItem item = new ReturnItem
+                            {
+                                FurnitureID = (int)reader["furnitureID"],
+                                ReturnTransactionID = (int)reader["returnTransactionID"],
+                                Quantity = (int)reader["quantity"],
+                                RentalTransactionID = (int)reader["rentalTransactionID"],
+                            };
+
+                            returnItemList.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return returnItemList;
+        }
     }
 }

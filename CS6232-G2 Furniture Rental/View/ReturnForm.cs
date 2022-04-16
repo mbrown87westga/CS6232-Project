@@ -73,7 +73,7 @@ namespace CS6232_G2_Furniture_Return.View
                 this.memberBindingSource.DataSource = _member;
                 this.memberNameLabel.Text = _member.FirstName + " " + _member.LastName; //TODO: make a method that build member's fullname
 
-                var rentals = _rentalBusiness.GetCurrentReturnGridItemsForMember(_member.MemberID);
+                var rentals = _returnTransactionBusiness.GetCurrentReturnGridItemsForMember(_member.MemberID);
 
                 _returnItems.Clear();
                 _returnItems.AddRange(rentals);
@@ -139,12 +139,29 @@ namespace CS6232_G2_Furniture_Return.View
             }
             if (_returnItems.Count <= 0)
             {
-                return ("Cart is empty!");
+                return ("Return list is empty!");
             }
-            //check to see if they returned at least one item
+
+            var returnedCount = 0;
             foreach(var item in _returnItems)
             {
-                //Check to see if the quantity returned is a valid amount (>0, < rented amount)
+                if (item.QuantityToReturn < 0)
+                {
+                    return "Quantity returned mut be at least 0!";
+                }
+                if (item.QuantityToReturn > item.QuantityOut)
+                {
+                    return "Cannot return more than the quantity rented!";
+                }
+                if (item.QuantityToReturn > 0)
+                {
+                    returnedCount++;
+                }
+            }
+
+            if (returnedCount == 0)
+            {
+                return "You must return at least one item.";
             }
 
             return "";
@@ -206,23 +223,25 @@ namespace CS6232_G2_Furniture_Return.View
             int returnCount = 0;
             int overdueCount = 0;
             int earlyCount = 0;
-            double overdueFine = 0.0;
-            double earlyRefund = 0.0;
+            decimal overdueFine = 0.0m;
+            decimal earlyRefund = 0.0m;
 
             foreach (var item in _returnItems)
             {
                 if (item.QuantityToReturn > 0)
                 {
-                    returnCount++;
+                    returnCount += item.QuantityToReturn;
                     if (item.DueDate.Date < DateTime.Today)
                     {
-                        overdueCount++;
-                        overdueFine += item.DailyFineRate;
+                        overdueCount += item.QuantityToReturn;
+                        var daysOverdue = (DateTime.Today.Subtract(item.DueDate).Days);
+                        overdueFine += item.DailyFineRate * daysOverdue * item.QuantityToReturn;
                     }
                     else if (item.DueDate.Date > DateTime.Today)
                     {
-                        earlyCount++;
-                        earlyRefund += item.DailyRefundRate;
+                        earlyCount += item.QuantityToReturn;
+                        var daysEarly = (item.DueDate.Subtract(DateTime.Today).Days);
+                        earlyRefund += item.DailyRefundRate * daysEarly * item.QuantityToReturn;
                     }
                 }
             }
@@ -277,7 +296,7 @@ namespace CS6232_G2_Furniture_Return.View
         private void dataGridViewTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             var character = e.KeyChar;
-            if (character < '0' || character > '9')
+            if ((character < '0' || character > '9') && (character != '\b'))
             {
                 e.Handled = true;
             }
