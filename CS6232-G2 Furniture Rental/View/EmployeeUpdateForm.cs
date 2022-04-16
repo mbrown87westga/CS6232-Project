@@ -17,6 +17,7 @@ namespace CS6232_G2_Furniture_Rental.View
     {
         private static Employee _admin;
         private static Employee _employee;
+        private static Employee _oldEmployee;
         private static LoginBusiness _loginBusiness;
         private static EmployeeBusiness _employeeBusiness;
 
@@ -48,6 +49,7 @@ namespace CS6232_G2_Furniture_Rental.View
                 this.LoadGenderListBox();
                 this.LoadUSStatesListBox();
 
+                _oldEmployee = (Employee)new EmployeeMaintenanceForm().employee.ShallowCopy();
                 _employee = (Employee)new EmployeeMaintenanceForm().employee.ShallowCopy();
                 this.employeeBindingSource.DataSource = _employee;
                 this.PutIntoViewMode();
@@ -87,8 +89,32 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            var properties = _employee.GetType().GetProperties();
+            var changed = false;
+
+            foreach (var property in properties)
+            {
+                if (!object.Equals(property.GetValue(_employee), property.GetValue(_oldEmployee)))
+                {
+                    changed = true;
+                    break;
+                }
+            }
+
+            if (changed)
+            {
+                DialogResult result = MessageBox.Show("You have unsaved changes!\nDiscard changes and continue?", "Unsaved changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
         }
 
         private void deactivateButton_Click(object sender, EventArgs e)
@@ -96,7 +122,7 @@ namespace CS6232_G2_Furniture_Rental.View
             if (this.deactivateButton.Text == "&Deactivate")
             {
                 _employee.DeactivatedDate = DateTime.Today;
-                this.deactivatedLabel.Text = "Deactivated on " + ((DateTime)_employee.DeactivatedDate).ToShortDateString();
+                this.deactivatedLabel.Text = "Will be deactivated on " + ((DateTime)_employee.DeactivatedDate).ToShortDateString();
                 this.deactivatedLabel.Visible = true;
                 this.deactivateButton.Text = "&Reactivate";
             }
@@ -138,9 +164,10 @@ namespace CS6232_G2_Furniture_Rental.View
                             DeactivatedDate = _employee.DeactivatedDate
                         };
 
-                        if (_employeeBusiness.Update(new EmployeeMaintenanceForm().employee, newEmployee) > 0)
+                        if (_employeeBusiness.Update(_oldEmployee, newEmployee) > 0)
                         {
                             MessageBox.Show("Employee updated!", "Employee updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _oldEmployee = (Employee) _employee.ShallowCopy();
                             this.PutIntoViewMode();
                         }
                         else

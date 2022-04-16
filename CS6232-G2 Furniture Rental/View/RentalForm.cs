@@ -7,6 +7,9 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// Form for renting furniture
+    /// </summary>
     public partial class RentalForm : Form
     {
         private static LoginBusiness _loginBusiness;
@@ -17,11 +20,9 @@ namespace CS6232_G2_Furniture_Rental.View
         private List<RentalItem> _cart;
         private static RentalTransactionBusiness _rentalTransactionBusiness;
 
-        public decimal cartTotal
-        {
-            get { return getCartTotal(); }
-        }
-
+        /// <summary>
+        /// Rental form constructor
+        /// </summary>
         public RentalForm()
         {
             _loginBusiness = new LoginBusiness();
@@ -38,6 +39,7 @@ namespace CS6232_G2_Furniture_Rental.View
             initializeCart();
             _furniture = _furnitureBusiness.GetAllFurniture();
             newRentalButton.Enabled = false;
+            dueDateTimePicker.Value = DateTime.Now.AddHours(24);
         }
 
         private void RentalForm_Activated(object sender, EventArgs e)
@@ -98,7 +100,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void rentalItemDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            calculateTotal(rentalItemDataGridView.Rows.Count - 1);
+            calculateRowTotal(rentalItemDataGridView.Rows.Count - 1);
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -118,6 +120,7 @@ namespace CS6232_G2_Furniture_Rental.View
             newRentalButton.Enabled = false;
             clearButton.Enabled = true;
             checkoutButton.Enabled = true;
+            dueDateTimePicker.Value = DateTime.Now.AddHours(24);
         }
 
         private void checkoutButton_Click(object sender, EventArgs e)
@@ -128,7 +131,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
                 if (errorMessage == "")
                 {
-                    RentalTransactionConfirmationForm confirmationForm = new RentalTransactionConfirmationForm(getCartTotal());
+                    RentalTransactionConfirmationForm confirmationForm = new RentalTransactionConfirmationForm(getCartTotal(), (dueDateTimePicker.Value - DateTime.Today).Days);
 
                     if (confirmationForm.ShowDialog(this) == DialogResult.OK)
                     {
@@ -249,9 +252,10 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             rentalItemDataGridView.DataSource = null;
             rentalItemDataGridView.DataSource = _cart;
+            updateGrandTotal();
         }
 
-        private void calculateTotal(int rowIndex)
+        private void calculateRowTotal(int rowIndex)
         {
             DataGridViewRow row = rentalItemDataGridView.Rows[rowIndex];
             var rentalItem = row.DataBoundItem as RentalItem;
@@ -282,8 +286,20 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 total += rentalItem.Quantity * rentalItem.DailyRentalRate;    
             }
+            int days = (dueDateTimePicker.Value - DateTime.Today).Days;
 
-            return total;
+            return total * days;
+        }
+
+        private void updateGrandTotal()
+        {
+            grandTotalLabel.Text = getCartTotal().ToString("C2");
+            daysTotalLabel.Text = "total for " + (dueDateTimePicker.Value - DateTime.Today).Days.ToString() + " days";
+        }
+
+        private void dueDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            updateGrandTotal();
         }
     }
 }

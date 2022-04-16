@@ -43,7 +43,6 @@ namespace CS6232_G2_Furniture_Rental.View
             System.Windows.Forms.Label userNameLabel;
             System.Windows.Forms.Label zipcodeLabel;
             this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.zipcodeMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.updateButton = new System.Windows.Forms.Button();
             this.reenterPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -66,6 +65,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.modeLabel = new System.Windows.Forms.Label();
             this.deactivatedLabel = new System.Windows.Forms.Label();
             this.deactivateButton = new System.Windows.Forms.Button();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             address1Label = new System.Windows.Forms.Label();
             address2Label = new System.Windows.Forms.Label();
             birthdateLabel = new System.Windows.Forms.Label();
@@ -78,8 +78,8 @@ namespace CS6232_G2_Furniture_Rental.View
             stateLabel = new System.Windows.Forms.Label();
             userNameLabel = new System.Windows.Forms.Label();
             zipcodeLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // address1Label
@@ -212,10 +212,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.phoneMaskedTextBox.Size = new System.Drawing.Size(96, 23);
             this.phoneMaskedTextBox.TabIndex = 46;
             this.phoneMaskedTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
             // 
             // zipcodeMaskedTextBox
             // 
@@ -431,11 +427,16 @@ namespace CS6232_G2_Furniture_Rental.View
             this.deactivateButton.UseVisualStyleBackColor = true;
             this.deactivateButton.Click += new System.EventHandler(this.deactivateButton_Click);
             // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(FurnitureRentalDomain.Employee);
+            // 
             // EmployeeUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 551);
+            this.ControlBox = false;
             this.Controls.Add(this.deactivateButton);
             this.Controls.Add(this.deactivatedLabel);
             this.Controls.Add(this.modeLabel);
@@ -474,8 +475,8 @@ namespace CS6232_G2_Furniture_Rental.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Employee View/Update";
             this.Load += new System.EventHandler(this.EmployeeUpdateForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

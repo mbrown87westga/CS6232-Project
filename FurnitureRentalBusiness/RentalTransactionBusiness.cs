@@ -1,22 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FurnitureRentalData;
 using FurnitureRentalDomain;
 
 namespace FurnitureRentalBusiness
 {
+    /// <summary>
+    /// The rental transaction controller
+    /// </summary>
     public class RentalTransactionBusiness
     {
         private readonly RentalTransactionDal _dal;
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public RentalTransactionBusiness()
         {
             _dal = new RentalTransactionDal();
         }
 
+        /// <summary>
+        /// Adds a rental transaction and its rental items to the database
+        /// </summary>
+        /// <param name="newRental">the rental transaction details</param>
+        /// <param name="cart">a list of Rental Items for this transaction</param>
+        /// <returns>the rental transaction id</returns>
         public int Add(RentalTransaction newRental, List<RentalItem> cart)
         {            
             if (newRental is null)

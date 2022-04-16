@@ -5,15 +5,24 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// Form for confirming a rental item
+    /// </summary>
     public partial class RentalItemConfirmationForm : Form
     {
         private static Furniture _furniture;
 
+        /// <summary>
+        /// Rental item confirmation form constructor
+        /// </summary>
         public RentalItemConfirmationForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The item ready to add to cart after confirmation
+        /// </summary>
         public RentalItem Result { get; set; }
 
         private void cancelButton_Click(object sender, EventArgs e)

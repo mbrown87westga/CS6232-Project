@@ -31,11 +31,11 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             this.employeeMaintenanceTabControl = new System.Windows.Forms.TabControl();
             this.addEmployeeTabPage = new System.Windows.Forms.TabPage();
-            this.addEmployeeUserControl = new CS6232_G2_Furniture_Rental.User_Controls.AddEmployeeUserControl();
             this.viewEmployeeTabPage = new System.Windows.Forms.TabPage();
-            this.viewEmployeesUserControl = new CS6232_G2_Furniture_Rental.User_Controls.ViewEmployeesUserControl();
             this.employeeLabel = new System.Windows.Forms.Label();
             this.employeeIDLabel = new System.Windows.Forms.Label();
+            this.addEmployeeUserControl = new CS6232_G2_Furniture_Rental.User_Controls.AddEmployeeUserControl();
+            this.viewEmployeesUserControl = new CS6232_G2_Furniture_Rental.User_Controls.ViewEmployeesUserControl();
             this.employeeMaintenanceTabControl.SuspendLayout();
             this.addEmployeeTabPage.SuspendLayout();
             this.viewEmployeeTabPage.SuspendLayout();
@@ -49,7 +49,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.employeeMaintenanceTabControl.Location = new System.Drawing.Point(0, 40);
             this.employeeMaintenanceTabControl.Name = "employeeMaintenanceTabControl";
             this.employeeMaintenanceTabControl.SelectedIndex = 0;
-            this.employeeMaintenanceTabControl.Size = new System.Drawing.Size(641, 466);
+            this.employeeMaintenanceTabControl.Size = new System.Drawing.Size(646, 466);
             this.employeeMaintenanceTabControl.TabIndex = 0;
             // 
             // addEmployeeTabPage
@@ -58,18 +58,10 @@ namespace CS6232_G2_Furniture_Rental.View
             this.addEmployeeTabPage.Location = new System.Drawing.Point(4, 22);
             this.addEmployeeTabPage.Name = "addEmployeeTabPage";
             this.addEmployeeTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.addEmployeeTabPage.Size = new System.Drawing.Size(633, 440);
+            this.addEmployeeTabPage.Size = new System.Drawing.Size(638, 440);
             this.addEmployeeTabPage.TabIndex = 0;
             this.addEmployeeTabPage.Text = "Add Employee";
             this.addEmployeeTabPage.UseVisualStyleBackColor = true;
-            // 
-            // addEmployeeUserControl
-            // 
-            this.addEmployeeUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addEmployeeUserControl.Location = new System.Drawing.Point(3, 3);
-            this.addEmployeeUserControl.Name = "addEmployeeUserControl";
-            this.addEmployeeUserControl.Size = new System.Drawing.Size(627, 434);
-            this.addEmployeeUserControl.TabIndex = 0;
             // 
             // viewEmployeeTabPage
             // 
@@ -77,18 +69,10 @@ namespace CS6232_G2_Furniture_Rental.View
             this.viewEmployeeTabPage.Location = new System.Drawing.Point(4, 22);
             this.viewEmployeeTabPage.Name = "viewEmployeeTabPage";
             this.viewEmployeeTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.viewEmployeeTabPage.Size = new System.Drawing.Size(633, 440);
+            this.viewEmployeeTabPage.Size = new System.Drawing.Size(601, 440);
             this.viewEmployeeTabPage.TabIndex = 1;
             this.viewEmployeeTabPage.Text = "View Employees";
             this.viewEmployeeTabPage.UseVisualStyleBackColor = true;
-            // 
-            // viewEmployeesUserControl
-            // 
-            this.viewEmployeesUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewEmployeesUserControl.Location = new System.Drawing.Point(3, 3);
-            this.viewEmployeesUserControl.Name = "viewEmployeesUserControl";
-            this.viewEmployeesUserControl.Size = new System.Drawing.Size(627, 434);
-            this.viewEmployeesUserControl.TabIndex = 0;
             // 
             // employeeLabel
             // 
@@ -108,11 +92,27 @@ namespace CS6232_G2_Furniture_Rental.View
             this.employeeIDLabel.Size = new System.Drawing.Size(240, 23);
             this.employeeIDLabel.TabIndex = 2;
             // 
+            // addEmployeeUserControl
+            // 
+            this.addEmployeeUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addEmployeeUserControl.Location = new System.Drawing.Point(3, 3);
+            this.addEmployeeUserControl.Name = "addEmployeeUserControl";
+            this.addEmployeeUserControl.Size = new System.Drawing.Size(632, 434);
+            this.addEmployeeUserControl.TabIndex = 0;
+            // 
+            // viewEmployeesUserControl
+            // 
+            this.viewEmployeesUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewEmployeesUserControl.Location = new System.Drawing.Point(3, 3);
+            this.viewEmployeesUserControl.Name = "viewEmployeesUserControl";
+            this.viewEmployeesUserControl.Size = new System.Drawing.Size(595, 434);
+            this.viewEmployeesUserControl.TabIndex = 0;
+            // 
             // EmployeeMaintenanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 506);
+            this.ClientSize = new System.Drawing.Size(646, 506);
             this.Controls.Add(this.employeeIDLabel);
             this.Controls.Add(this.employeeLabel);
             this.Controls.Add(this.employeeMaintenanceTabControl);

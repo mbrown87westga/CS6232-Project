@@ -2,16 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FurnitureRentalDomain;
 
 namespace FurnitureRentalData
 {
+    /// <summary>
+    /// The data access layer used to access rental transaction data
+    /// </summary>
     public class RentalTransactionDal
     {
+        /// <summary>
+        /// Adds a rental transaction and its related rental items to the database
+        /// </summary>
+        /// <param name="newRental">the rental transaction details</param>
+        /// <param name="cart">a list of rental items for this transaction</param>
+        /// <returns>the transaction id</returns>
         public int AddRentalTransaction(RentalTransaction newRental, List<RentalItem> cart)
         {
             int transactionID = 0;
