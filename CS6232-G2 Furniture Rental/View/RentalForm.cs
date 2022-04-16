@@ -122,7 +122,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
                 if (errorMessage == "")
                 {
-                    RentalTransactionConfirmationForm confirmationForm = new RentalTransactionConfirmationForm(getCartTotal());
+                    RentalTransactionConfirmationForm confirmationForm = new RentalTransactionConfirmationForm(getCartTotal(), (dueDateTimePicker.Value - DateTime.Today).Days);
 
                     if (confirmationForm.ShowDialog(this) == DialogResult.OK)
                     {
@@ -276,8 +276,9 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 total += rentalItem.Quantity * rentalItem.DailyRentalRate;    
             }
+            int days = (dueDateTimePicker.Value - DateTime.Today).Days;
 
-            return total;
+            return total * days;
         }
     }
 }
