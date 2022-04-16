@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CS6232_G2_Furniture_Rental.Helpers;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
 
@@ -24,6 +25,13 @@ namespace CS6232_G2_Furniture_Rental.View
             try
             {
                 _employee = _loginBusiness.GetLoggedInUser();
+
+                if (_employee == null)
+                {
+                    _loginBusiness.Logout();
+                    this.HideThisAndShowForm<LoginForm>();
+                    return;
+                }
 
                 this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
 
