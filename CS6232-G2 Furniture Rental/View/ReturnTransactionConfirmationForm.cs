@@ -41,7 +41,7 @@ namespace CS6232_G2_Furniture_Return.View
                 this.ReturnedEarlyCountTextBox.Text = Summary.EarlyCount.ToString();
                 this.OverdueMoneyTextBox.Text = Summary.OverdueFine.ToString("C2");
                 this.RefundMoneyTextBox.Text = Summary.EarlyRefund.ToString("C2");
-                this.TotalMoneyTextBox.Text = (Summary.OverdueFine + Summary.EarlyRefund).ToString("C2");
+                this.TotalMoneyTextBox.Text = (Summary.OverdueFine - Summary.EarlyRefund).ToString("C2");
             }
             catch (Exception ex)
             {

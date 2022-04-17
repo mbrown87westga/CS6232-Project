@@ -33,6 +33,8 @@ namespace CS6232_G2_Furniture_Return.View
       System.Windows.Forms.Label address1Label;
       System.Windows.Forms.Label phoneLabel;
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       this.returnItemDataGridView = new System.Windows.Forms.DataGridView();
       this.returnItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
       this.memberLabel = new System.Windows.Forms.Label();
@@ -279,6 +281,9 @@ namespace CS6232_G2_Furniture_Return.View
       // RentalDate
       // 
       this.RentalDate.DataPropertyName = "RentalDate";
+      dataGridViewCellStyle1.Format = "d";
+      dataGridViewCellStyle1.NullValue = null;
+      this.RentalDate.DefaultCellStyle = dataGridViewCellStyle1;
       this.RentalDate.HeaderText = "Rental Date";
       this.RentalDate.Name = "RentalDate";
       this.RentalDate.ReadOnly = true;
@@ -286,6 +291,9 @@ namespace CS6232_G2_Furniture_Return.View
       // DueDate
       // 
       this.DueDate.DataPropertyName = "DueDate";
+      dataGridViewCellStyle2.Format = "d";
+      dataGridViewCellStyle2.NullValue = null;
+      this.DueDate.DefaultCellStyle = dataGridViewCellStyle2;
       this.DueDate.HeaderText = "Due Date";
       this.DueDate.Name = "DueDate";
       this.DueDate.ReadOnly = true;
@@ -314,9 +322,9 @@ namespace CS6232_G2_Furniture_Return.View
       // QuantityToReturn
       // 
       this.QuantityToReturn.DataPropertyName = "QuantityToReturn";
-      dataGridViewCellStyle1.Format = "D";
-      dataGridViewCellStyle1.NullValue = null;
-      this.QuantityToReturn.DefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle3.Format = "D";
+      dataGridViewCellStyle3.NullValue = null;
+      this.QuantityToReturn.DefaultCellStyle = dataGridViewCellStyle3;
       this.QuantityToReturn.HeaderText = "Qty To Return";
       this.QuantityToReturn.Name = "QuantityToReturn";
       // 

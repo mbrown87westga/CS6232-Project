@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace CS6232_G2_Furniture_Return.View
         private static Employee _employee;
         private static Member _member;
         private static RentalTransactionBusiness _rentalBusiness;
-        private List<ReturnGridItem> _returnItems;
+        private BindingList<ReturnGridItem> _returnItems;
         private static ReturnTransactionBusiness _returnTransactionBusiness;
 
         public ReturnForm()
@@ -26,7 +27,7 @@ namespace CS6232_G2_Furniture_Return.View
             _rentalBusiness = new RentalTransactionBusiness();
             _returnTransactionBusiness = new ReturnTransactionBusiness();
             _member = new Member();
-            _returnItems = new List<ReturnGridItem>();
+            _returnItems = new BindingList<ReturnGridItem>();
 
             InitializeComponent();
         }
@@ -76,17 +77,24 @@ namespace CS6232_G2_Furniture_Return.View
                 var rentals = _returnTransactionBusiness.GetCurrentReturnGridItemsForMember(_member.MemberID);
 
                 _returnItems.Clear();
-                _returnItems.AddRange(rentals);
+                foreach (var rental in rentals)
+                {
+                    _returnItems.Add(rental);
+                }
                 ResetGridSource();
                 returnButton.Enabled = true;
                 clearButton.Enabled = true;
             }
         }
-        
+
         private void ClearButton_Click(object sender, EventArgs e)
         {
             InitializeReturnList();
             ResetGridSource();
+            _member = new Member();
+            memberBindingSource.Clear();
+            this.memberBindingSource.DataSource = _member;
+            this.memberNameLabel.Text = _member.FirstName + " " + _member.LastName; //TODO: make a method that build member's fullname
         }
 
         private void ReturnButton_Click(object sender, EventArgs e)
@@ -110,18 +118,21 @@ namespace CS6232_G2_Furniture_Return.View
                         if (_returnTransactionBusiness.Add(newReturn, _returnItems
                                 .Where(item => item.QuantityToReturn > 0)
                                 .Select(item => new ReturnItem
-                        {
-                            RentalTransactionID = item.RentalTransactionID,
-                            FurnitureID = item.FurnitureID,
-                            Quantity = item.QuantityToReturn
-                        })) > 0)
+                                {
+                                    RentalTransactionID = item.RentalTransactionID,
+                                    FurnitureID = item.FurnitureID,
+                                    Quantity = item.QuantityToReturn
+                                })) > 0)
                         {
                             MessageBox.Show("Transaction complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             var rentals = _returnTransactionBusiness.GetCurrentReturnGridItemsForMember(_member.MemberID);
 
                             _returnItems.Clear();
-                            _returnItems.AddRange(rentals);
+                            foreach (var rental in rentals)
+                            {
+                                _returnItems.Add(rental);
+                            }
                             ResetGridSource();
                             returnButton.Enabled = true;
                             clearButton.Enabled = true;
@@ -153,7 +164,7 @@ namespace CS6232_G2_Furniture_Return.View
             }
 
             var returnedCount = 0;
-            foreach(var item in _returnItems)
+            foreach (var item in _returnItems)
             {
                 if (item.QuantityToReturn < 0)
                 {
@@ -219,7 +230,7 @@ namespace CS6232_G2_Furniture_Return.View
 
         private void InitializeReturnList()
         {
-            _returnItems = new List<ReturnGridItem>();
+            _returnItems = new BindingList<ReturnGridItem>();
         }
 
         private void ResetGridSource()
