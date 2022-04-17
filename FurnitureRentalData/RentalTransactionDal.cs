@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -69,11 +68,8 @@ namespace FurnitureRentalData
                     }
                     catch (Exception ex)
                     {
-                        using (transaction)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        transaction.Rollback();
+                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
@@ -85,6 +81,71 @@ namespace FurnitureRentalData
             }
         }
 
+        /// <summary>
+        /// Gets the rental and return item details for a rental transaction
+        /// </summary>
+        /// <param name="transactionID">the rental transaction id</param>
+        /// <returns>a list of rental and return item details</returns>
+        public IEnumerable<TransactionDetailGridItem> GetTransactionDetails(int transactionID)
+        {
+            List<TransactionDetailGridItem> transactionDetailsList = new List<TransactionDetailGridItem>();
+
+            string selectStatement = @"SELECT RI.[furnitureID], f.[description], RI.[quantity] AS QtyRented, RtnI.[quantity] AS QtyReturned, RT.[returnTimestamp]
+                                       FROM RentalItem RI LEFT JOIN ReturnItem RtnI ON (RI.RentalTransactionID = RtnI.rentalTransactionID 
+                                                                                        AND RI.furnitureID = RtnI.furnitureID)
+				                                          LEFT JOIN ReturnTransaction RT ON RtnI.returnTransactionID = RT.returnTransactionID
+				                                          JOIN Furniture f on f.furnitureID = RI.furnitureID
+                                       WHERE RI.rentalTransactionID = @transactionID
+                                       ORDER BY RI.furnitureID";
+
+            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@transactionId", transactionID );
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        int qtyReturnedIdx = reader.GetOrdinal("QtyReturned");
+                        int returnDateIdx = reader.GetOrdinal("returnTimestamp");
+
+                        while (reader.Read())
+                        {
+                            TransactionDetailGridItem transaction = new TransactionDetailGridItem();
+                            //{
+                            //  FurnitureID = (int)reader["furnitureID"],
+                            //FurnitureDescription = reader["description"].ToString(),
+                            //QtyRented = (int)reader["QtyRented"],
+                            //QtyReturned = (int?)reader["QtyReturned"],
+                            //ReturnDate = (DateTime?)reader["returnTimestamp"]
+                            //};
+                            transaction.FurnitureID = (int)reader["furnitureID"];
+                            transaction.FurnitureDescription = reader["description"].ToString();
+                            transaction.QtyRented = (int)reader["QtyRented"];
+                            transaction.QtyReturned = reader.IsDBNull(qtyReturnedIdx) ? 0 : (int)reader["QtyReturned"];
+                            //transaction.ReturnDate = reader.IsDBNull(returnDateIdx) ? null : (DateTime)reader["returnTimestamp"];
+                            if (reader.IsDBNull(returnDateIdx))
+                            {
+                                transaction.ReturnDate = null;
+                            }
+                            else
+                            {
+                                transaction.ReturnDate = (DateTime)reader["returnTimestamp"];
+                            }
+                            transactionDetailsList.Add(transaction);
+                        }
+                    }
+                }
+            }
+
+            return transactionDetailsList;
+        }
+
+        /// <summary>
+        /// Gets all rental transactions for the member
+        /// </summary>
+        /// <param name="memberId">the member id</param>
+        /// <returns>a list of rental transactions for the member</returns>
         public IEnumerable<RentalTransaction> GetRentalTransactions(int memberId)
         {
             List<RentalTransaction> rentalTransactionList = new List<RentalTransaction>();
@@ -124,6 +185,11 @@ namespace FurnitureRentalData
             return rentalTransactionList;
         }
 
+        /// <summary>
+        /// Gets all rental items in a rental transaction
+        /// </summary>
+        /// <param name="rentalTransactionId">the rental transaction ID</param>
+        /// <returns>a list of rental items in the rental transaction</returns>
         public IEnumerable<RentalItem> GetRentalItems(int rentalTransactionId)
         {
             List<RentalItem> rentalItemList = new List<RentalItem>();

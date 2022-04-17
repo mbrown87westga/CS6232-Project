@@ -29,9 +29,9 @@ namespace CS6232_G2_Furniture_Rental.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.EmployeeLabel = new System.Windows.Forms.Label();
             this.employeeNameIdLabel = new System.Windows.Forms.Label();
             this.memberIDLabel = new System.Windows.Forms.Label();
@@ -44,13 +44,13 @@ namespace CS6232_G2_Furniture_Rental.View
             this.dueDateTextBox = new System.Windows.Forms.TextBox();
             this.rentalEmployeeLabel = new System.Windows.Forms.Label();
             this.rentalEmployeeTextBox = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.transactionDetailsDataGridView = new System.Windows.Forms.DataGridView();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtyReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OKButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionDetailsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // EmployeeLabel
@@ -167,21 +167,21 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalEmployeeTextBox.Size = new System.Drawing.Size(188, 23);
             this.rentalEmployeeTextBox.TabIndex = 12;
             // 
-            // dataGridView1
+            // transactionDetailsDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.transactionDetailsDataGridView.AllowUserToAddRows = false;
+            this.transactionDetailsDataGridView.AllowUserToDeleteRows = false;
+            this.transactionDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.transactionDetailsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
-            this.QtyReturned,
             this.QtyRented,
+            this.QtyReturned,
             this.DateReturned});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 177);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(472, 189);
-            this.dataGridView1.TabIndex = 13;
+            this.transactionDetailsDataGridView.Location = new System.Drawing.Point(15, 177);
+            this.transactionDetailsDataGridView.Name = "transactionDetailsDataGridView";
+            this.transactionDetailsDataGridView.ReadOnly = true;
+            this.transactionDetailsDataGridView.Size = new System.Drawing.Size(472, 189);
+            this.transactionDetailsDataGridView.TabIndex = 13;
             // 
             // Description
             // 
@@ -189,32 +189,32 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
             // 
-            // QtyReturned
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.QtyReturned.DefaultCellStyle = dataGridViewCellStyle4;
-            this.QtyReturned.HeaderText = "Qty Returned";
-            this.QtyReturned.Name = "QtyReturned";
-            this.QtyReturned.ReadOnly = true;
-            // 
             // QtyRented
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.QtyRented.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.QtyRented.DefaultCellStyle = dataGridViewCellStyle1;
             this.QtyRented.HeaderText = "Qty Rented";
             this.QtyRented.Name = "QtyRented";
             this.QtyRented.ReadOnly = true;
             // 
+            // QtyReturned
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.QtyReturned.DefaultCellStyle = dataGridViewCellStyle2;
+            this.QtyReturned.HeaderText = "Qty Returned";
+            this.QtyReturned.Name = "QtyReturned";
+            this.QtyReturned.ReadOnly = true;
+            // 
             // DateReturned
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.DateReturned.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.DateReturned.DefaultCellStyle = dataGridViewCellStyle3;
             this.DateReturned.HeaderText = "Date Returned";
             this.DateReturned.Name = "DateReturned";
             this.DateReturned.ReadOnly = true;
@@ -237,7 +237,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 450);
             this.Controls.Add(this.OKButton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.transactionDetailsDataGridView);
             this.Controls.Add(this.rentalEmployeeTextBox);
             this.Controls.Add(this.rentalEmployeeLabel);
             this.Controls.Add(this.dueDateTextBox);
@@ -255,7 +255,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.Text = "Transaction Details";
             this.Activated += new System.EventHandler(this.TransactionDetailsForm_Activated);
             this.Load += new System.EventHandler(this.TransactionDetailsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionDetailsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,11 +275,11 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.TextBox dueDateTextBox;
         private System.Windows.Forms.Label rentalEmployeeLabel;
         private System.Windows.Forms.TextBox rentalEmployeeTextBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtyReturned;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtyRented;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateReturned;
+        private System.Windows.Forms.DataGridView transactionDetailsDataGridView;
         private System.Windows.Forms.Button OKButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtyRented;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtyReturned;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateReturned;
     }
 }

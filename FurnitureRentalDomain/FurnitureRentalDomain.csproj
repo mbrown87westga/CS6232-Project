@@ -55,6 +55,7 @@
     <Compile Include="ReturnItem.cs" />
     <Compile Include="ReturnSummary.cs" />
     <Compile Include="ReturnTransaction.cs" />
+    <Compile Include="TransactionDetailGridItem.cs" />
     <Compile Include="USStates.cs" />
   </ItemGroup>
   <ItemGroup />
