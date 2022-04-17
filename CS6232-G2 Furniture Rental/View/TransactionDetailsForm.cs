@@ -47,7 +47,8 @@ namespace CS6232_G2_Furniture_Rental.View
 
             foreach (var gridItem in gridItems)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                int rowIdx = transactionDetailsDataGridView.Rows.Add(new DataGridViewRow());
+                DataGridViewRow row = transactionDetailsDataGridView.Rows[rowIdx];
 
                 if (gridItem.FurnitureID != prevFurnitureID)
                 {
@@ -56,7 +57,7 @@ namespace CS6232_G2_Furniture_Rental.View
                 }
                 row.Cells["QtyReturned"].Value = gridItem.QtyReturned;
                 row.Cells["DateReturned"].Value = gridItem.ReturnDate;
-                transactionDetailsDataGridView.Rows.Add(row);
+                prevFurnitureID = gridItem.FurnitureID;
             }
         }
 
