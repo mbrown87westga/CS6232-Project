@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using CS6232_G2_Furniture_Rental.Helpers;
+using CS6232_G2_Furniture_Rental.View;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
 
@@ -15,6 +17,12 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private readonly MemberBusiness _memberBusiness;
         private IEnumerable<Member> _memberList;
         private List<RentalTransaction> _transactionList;
+        private RentalTransaction _rentalTransaction;
+
+        public RentalTransaction rentalTransaction 
+        {
+            get { return _rentalTransaction; }
+        }
 
         /// <summary>
         /// The default constructor
@@ -28,6 +36,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private void SearchTransactionUserControl_Load(object sender, EventArgs e)
         {
             this.GetMemberList();
+            ShowDetailsButton.Enabled = false;
         }
 
         private void GetMemberList()
@@ -53,14 +62,11 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                     DateTime begin = beginDateDateTimePicker.Value;
                     DateTime end = endDateDateTimePicker.Value;
                     _transactionList = _memberBusiness.GetMemberTransactionsByDateRange(memberId, begin, end).ToList();
-
-                    if (_transactionList.Count <= 0)
-                    {
-                        MessageBox.Show("No results found!", "No results found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
                 }
 
                 this.resultsDataGridView.DataSource = _transactionList;
+
+                ShowDetailsButton.Enabled = _transactionList.Count <= 0 ? false : true;
             }
             catch (Exception ex)
             {
@@ -87,6 +93,11 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             else
             {
                 this.GetMemberData();
+
+                if (_transactionList.Count <= 0)
+                {
+                    MessageBox.Show("No results found!", "No results found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -98,7 +109,28 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
         private void ShowDetailsButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not Implemented Yet", "Info");
+            TransactionDetailsForm detailsForm = new TransactionDetailsForm(_rentalTransaction);
+            detailsForm.ShowDialog(this);
+            //this.GetEmployeeList();
+        }
+
+        private void resultsDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (resultsDataGridView.SelectedCells.Count > 0)
+            {
+                int selectedRowIndex = resultsDataGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = resultsDataGridView.Rows[selectedRowIndex];
+                _rentalTransaction = selectedRow.DataBoundItem as RentalTransaction;
+                if (_rentalTransaction != null)
+                {
+                    this.ShowDetailsButton.Enabled = true;
+                }
+                else
+                {
+                    this.ShowDetailsButton.Enabled = false;
+                }
+            }
+
         }
     }
 }
