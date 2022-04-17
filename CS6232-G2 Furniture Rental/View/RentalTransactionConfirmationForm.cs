@@ -15,16 +15,18 @@ namespace CS6232_G2_Furniture_Rental.View
         private static Employee _employee;
         private static decimal _cartTotal;
         private static int _days;
+        private static DateTime _dueDate;
 
         /// <summary>
         /// Rental transaction confirmation form
         /// </summary>
         /// <param name="cartTotal">The rental total for all rental items in the cart</param>
-        public RentalTransactionConfirmationForm(decimal cartTotal, int days)
+        public RentalTransactionConfirmationForm(decimal cartTotal, int days, DateTime dueDate)
         {
             _loginBusiness = new LoginBusiness();
             _cartTotal = cartTotal;
             _days = days;
+            _dueDate = dueDate;
 
             InitializeComponent();
         }
@@ -46,6 +48,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
                 this.orderTotalTextBox.Text = _cartTotal.ToString("C2");
                 this.daysTextBox.Text = _days.ToString();
+                this.dueDateTextBox.Text = _dueDate.ToString("MM/dd/yyyy");
             }
             catch (Exception ex)
             {
