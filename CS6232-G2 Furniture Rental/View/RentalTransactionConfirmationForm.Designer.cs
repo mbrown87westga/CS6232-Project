@@ -38,6 +38,8 @@ namespace CS6232_G2_Furniture_Rental.View
             this.orderTotalTextBox = new System.Windows.Forms.TextBox();
             this.daysLabel = new System.Windows.Forms.Label();
             this.daysTextBox = new System.Windows.Forms.TextBox();
+            this.dueDateLabel = new System.Windows.Forms.Label();
+            this.dueDateTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // employeeIDLabel
@@ -62,11 +64,11 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.orderTotalLabel.AutoSize = true;
             this.orderTotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderTotalLabel.Location = new System.Drawing.Point(12, 114);
+            this.orderTotalLabel.Location = new System.Drawing.Point(12, 97);
             this.orderTotalLabel.Name = "orderTotalLabel";
-            this.orderTotalLabel.Size = new System.Drawing.Size(85, 17);
+            this.orderTotalLabel.Size = new System.Drawing.Size(80, 17);
             this.orderTotalLabel.TabIndex = 25;
-            this.orderTotalLabel.Text = "Order Total:";
+            this.orderTotalLabel.Text = "Order total:";
             // 
             // instructionsTextBox
             // 
@@ -108,18 +110,19 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // orderTotalTextBox
             // 
+            this.orderTotalTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.orderTotalTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderTotalTextBox.Location = new System.Drawing.Point(109, 111);
+            this.orderTotalTextBox.Location = new System.Drawing.Point(109, 94);
             this.orderTotalTextBox.Name = "orderTotalTextBox";
             this.orderTotalTextBox.ReadOnly = true;
-            this.orderTotalTextBox.Size = new System.Drawing.Size(100, 23);
+            this.orderTotalTextBox.Size = new System.Drawing.Size(100, 16);
             this.orderTotalTextBox.TabIndex = 31;
             // 
             // daysLabel
             // 
             this.daysLabel.AutoSize = true;
             this.daysLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.daysLabel.Location = new System.Drawing.Point(12, 74);
+            this.daysLabel.Location = new System.Drawing.Point(12, 57);
             this.daysLabel.Name = "daysLabel";
             this.daysLabel.Size = new System.Drawing.Size(87, 17);
             this.daysLabel.TabIndex = 32;
@@ -127,12 +130,33 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // daysTextBox
             // 
+            this.daysTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.daysTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.daysTextBox.Location = new System.Drawing.Point(109, 71);
+            this.daysTextBox.Location = new System.Drawing.Point(109, 54);
             this.daysTextBox.Name = "daysTextBox";
             this.daysTextBox.ReadOnly = true;
-            this.daysTextBox.Size = new System.Drawing.Size(52, 23);
+            this.daysTextBox.Size = new System.Drawing.Size(52, 16);
             this.daysTextBox.TabIndex = 33;
+            // 
+            // dueDateLabel
+            // 
+            this.dueDateLabel.AutoSize = true;
+            this.dueDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dueDateLabel.Location = new System.Drawing.Point(12, 137);
+            this.dueDateLabel.Name = "dueDateLabel";
+            this.dueDateLabel.Size = new System.Drawing.Size(70, 17);
+            this.dueDateLabel.TabIndex = 34;
+            this.dueDateLabel.Text = "Due date:";
+            // 
+            // dueDateTextBox
+            // 
+            this.dueDateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dueDateTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dueDateTextBox.Location = new System.Drawing.Point(109, 134);
+            this.dueDateTextBox.Name = "dueDateTextBox";
+            this.dueDateTextBox.ReadOnly = true;
+            this.dueDateTextBox.Size = new System.Drawing.Size(100, 16);
+            this.dueDateTextBox.TabIndex = 35;
             // 
             // RentalTransactionConfirmationForm
             // 
@@ -140,6 +164,8 @@ namespace CS6232_G2_Furniture_Rental.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(247, 323);
             this.ControlBox = false;
+            this.Controls.Add(this.dueDateTextBox);
+            this.Controls.Add(this.dueDateLabel);
             this.Controls.Add(this.daysTextBox);
             this.Controls.Add(this.daysLabel);
             this.Controls.Add(this.orderTotalTextBox);
@@ -170,5 +196,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.TextBox orderTotalTextBox;
         private System.Windows.Forms.Label daysLabel;
         private System.Windows.Forms.TextBox daysTextBox;
+        private System.Windows.Forms.Label dueDateLabel;
+        private System.Windows.Forms.TextBox dueDateTextBox;
     }
 }
