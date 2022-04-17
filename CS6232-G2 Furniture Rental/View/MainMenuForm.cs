@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
+using CS6232_G2_Furniture_Return.View;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
 
@@ -41,6 +42,13 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 _employee = _business.GetLoggedInUser();
 
+                if (_employee == null)
+                {
+                    _business.Logout();
+                    this.HideThisAndShowForm<LoginForm>();
+                    return;
+                }
+
                 this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
 
                 if (_employee.IsAdmin)
@@ -78,6 +86,11 @@ namespace CS6232_G2_Furniture_Rental.View
         private void rentalsButton_Click(object sender, EventArgs e)
         {
             this.HideThisAndShowForm<RentalForm>();
+        }
+
+        private void returnsButton_Click(object sender, EventArgs e)
+        {
+            this.HideThisAndShowForm<ReturnForm>();
         }
     }
 }

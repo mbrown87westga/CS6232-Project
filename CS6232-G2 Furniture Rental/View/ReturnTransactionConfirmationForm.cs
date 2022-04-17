@@ -1,35 +1,27 @@
 ﻿using System;
 using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
+using CS6232_G2_Furniture_Rental.View;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
 
-namespace CS6232_G2_Furniture_Rental.View
+namespace CS6232_G2_Furniture_Return.View
 {
-    /// <summary>
-    /// Form for confirming a rental transaction
-    /// </summary>
-    public partial class RentalTransactionConfirmationForm : Form
+    public partial class ReturnTransactionConfirmationForm : Form
     {
         private static LoginBusiness _loginBusiness;
         private static Employee _employee;
-        private static decimal _cartTotal;
-        private static int _days;
+        private static ReturnSummary Summary;
 
-        /// <summary>
-        /// Rental transaction confirmation form
-        /// </summary>
-        /// <param name="cartTotal">The rental total for all rental items in the cart</param>
-        public RentalTransactionConfirmationForm(decimal cartTotal, int days)
+        public ReturnTransactionConfirmationForm(ReturnSummary summary)
         {
             _loginBusiness = new LoginBusiness();
-            _cartTotal = cartTotal;
-            _days = days;
+            Summary = summary;
 
             InitializeComponent();
         }
 
-        private void RentalTransactionConfirmationForm_Load(object sender, EventArgs e)
+        private void ReturnTransactionConfirmationForm_Load(object sender, EventArgs e)
         {
             try
             {
@@ -44,8 +36,12 @@ namespace CS6232_G2_Furniture_Rental.View
 
                 this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
 
-                this.orderTotalTextBox.Text = _cartTotal.ToString("C2");
-                this.daysTextBox.Text = _days.ToString();
+                this.ItemsCountTextBox.Text = Summary.TotalCount.ToString();
+                this.OverdueCountTextBox.Text = Summary.OverdueCount.ToString();
+                this.ReturnedEarlyCountTextBox.Text = Summary.EarlyCount.ToString();
+                this.OverdueMoneyTextBox.Text = Summary.OverdueFine.ToString("C2");
+                this.RefundMoneyTextBox.Text = Summary.EarlyRefund.ToString("C2");
+                this.TotalMoneyTextBox.Text = (Summary.OverdueFine + Summary.EarlyRefund).ToString("C2");
             }
             catch (Exception ex)
             {

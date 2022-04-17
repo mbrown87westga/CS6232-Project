@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
@@ -30,9 +31,23 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void MembersManagementForm_Activated(object sender, System.EventArgs e)
         {
-            _employee = _business.GetLoggedInUser();
+            try
+            {
+                _employee = _business.GetLoggedInUser();
 
-            this.employeeNameIdLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+                if (_employee == null)
+                {
+                    _business.Logout();
+                    this.HideThisAndShowForm<LoginForm>();
+                    return;
+                }
+
+                employeeNameIdLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }

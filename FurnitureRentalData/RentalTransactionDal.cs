@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -82,6 +83,81 @@ namespace FurnitureRentalData
 
                 return transactionID;
             }
+        }
+
+        public IEnumerable<RentalTransaction> GetRentalTransactions(int memberId)
+        {
+            List<RentalTransaction> rentalTransactionList = new List<RentalTransaction>();
+
+            string selectStatement = @"SELECT t.[rentalTransactionID], t.[rentalTimestamp], t.[dueDateTime], t.[memberID], t.[employeeID], e.[firstName] + ' ' + e.[lastName] as Employee
+                                       FROM [RentalTransaction] t
+                                       JOIN [Employee] e on e.[employeeID] = t.[employeeID]
+                                       WHERE t.[memberID] = @memberId;";
+
+            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@memberId", memberId);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RentalTransaction transaction = new RentalTransaction
+                            {
+                                MemberID = (int)reader["memberID"],
+                                Employee = reader["Employee"].ToString(),
+                                RentalTimestamp = (DateTime)reader["rentalTimestamp"],
+                                RentalTransactionID = (int)reader["rentalTransactionID"],
+                                EmployeeID = (int)reader["employeeID"],
+                                DueDateTime = (DateTime)reader["dueDateTime"],
+                            };
+
+                            rentalTransactionList.Add(transaction);
+                        }
+                    }
+                }
+            }
+
+            return rentalTransactionList;
+        }
+
+        public IEnumerable<RentalItem> GetRentalItems(int rentalTransactionId)
+        {
+            List<RentalItem> rentalItemList = new List<RentalItem>();
+
+            string selectStatement = @"SELECT i.[rentalTransactionID], i.[furnitureID], i.[quantity], i.[dailyRentalRate]
+                                       FROM [RentalItem] i
+                                       WHERE i.[rentalTransactionID] = @rentalTransactionId;";
+
+            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@rentalTransactionId", rentalTransactionId);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RentalItem item = new RentalItem
+                            {
+                                FurnitureID = (int)reader["furnitureID"],
+                                DailyRentalRate = (decimal)reader["dailyRentalRate"],
+                                Quantity = (int)reader["quantity"],
+                                RentalTransactionID = (int)reader["rentalTransactionID"],
+                            };
+
+                            rentalItemList.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return rentalItemList;
         }
     }
 }

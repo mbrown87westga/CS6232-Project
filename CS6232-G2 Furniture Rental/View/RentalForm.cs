@@ -48,6 +48,13 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 _employee = _loginBusiness.GetLoggedInUser();
 
+                if (_employee == null)
+                {
+                    _loginBusiness.Logout();
+                    this.HideThisAndShowForm<LoginForm>();
+                    return;
+                }
+
                 this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
             }
             catch (Exception ex)

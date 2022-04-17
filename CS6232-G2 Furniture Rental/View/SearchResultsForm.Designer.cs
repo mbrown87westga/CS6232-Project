@@ -146,6 +146,7 @@
       this.Controls.Add(this.EmployeeLabel);
       this.Controls.Add(this.resultsDataGrid);
       this.Name = "SearchResultsForm";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Search Results";
       ((System.ComponentModel.ISupportInitialize)(this.resultsDataGrid)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();

@@ -135,6 +135,18 @@
     <Compile Include="View\MembersManagementForm.Designer.cs">
       <DependentUpon>MembersManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReturnTransactionConfirmationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnTransactionConfirmationForm.Designer.cs">
+      <DependentUpon>ReturnTransactionConfirmationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnForm.Designer.cs">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RentalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +228,12 @@
     <EmbeddedResource Include="View\MembersManagementForm.resx">
       <DependentUpon>MembersManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnTransactionConfirmationForm.resx">
+      <DependentUpon>ReturnTransactionConfirmationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnForm.resx">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\RentalForm.resx">
       <DependentUpon>RentalForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +254,7 @@
     <None Include="Properties\DataSources\FurnitureRentalDomain.Member.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.RentalItem.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.RentalTransaction.datasource" />
+    <None Include="Properties\DataSources\FurnitureRentalDomain.ReturnGridItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

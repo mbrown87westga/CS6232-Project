@@ -37,9 +37,23 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void MemberSearchForm_Activated(object sender, EventArgs e)
         {
-            _employee = _loginBusiness.GetLoggedInUser();
+            try
+            {
+                _employee = _loginBusiness.GetLoggedInUser();
 
-            employeeNameIdLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+                if (_employee == null)
+                {
+                    _loginBusiness.Logout();
+                    this.HideThisAndShowForm<LoginForm>();
+                    return;
+                }
+
+                employeeNameIdLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -67,7 +81,7 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             this.GetMemberList();
         }
-        
+
         private void GetMemberList()
         {
             try

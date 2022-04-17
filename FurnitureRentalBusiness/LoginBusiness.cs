@@ -60,7 +60,12 @@ namespace FurnitureRentalBusiness
         /// <returns>the user</returns>
         public Employee GetLoggedInUser()
         {
-            return _dal.GetEmployee(_loggedInUser);
+            if (!string.IsNullOrWhiteSpace(_loggedInUser))
+            {
+                return _dal.GetEmployee(_loggedInUser);
+            }
+
+            return null;
         }
     }
 }
