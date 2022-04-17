@@ -32,6 +32,7 @@ namespace CS6232_G2_Furniture_Rental.View
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.EmployeeLabel = new System.Windows.Forms.Label();
             this.employeeNameIdLabel = new System.Windows.Forms.Label();
             this.memberIDLabel = new System.Windows.Forms.Label();
@@ -45,11 +46,11 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalEmployeeLabel = new System.Windows.Forms.Label();
             this.rentalEmployeeTextBox = new System.Windows.Forms.TextBox();
             this.transactionDetailsDataGridView = new System.Windows.Forms.DataGridView();
+            this.OKButton = new System.Windows.Forms.Button();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OKButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.transactionDetailsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,6 +172,14 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.transactionDetailsDataGridView.AllowUserToAddRows = false;
             this.transactionDetailsDataGridView.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.transactionDetailsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.transactionDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.transactionDetailsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Description,
@@ -180,44 +189,8 @@ namespace CS6232_G2_Furniture_Rental.View
             this.transactionDetailsDataGridView.Location = new System.Drawing.Point(15, 177);
             this.transactionDetailsDataGridView.Name = "transactionDetailsDataGridView";
             this.transactionDetailsDataGridView.ReadOnly = true;
-            this.transactionDetailsDataGridView.Size = new System.Drawing.Size(472, 189);
+            this.transactionDetailsDataGridView.Size = new System.Drawing.Size(523, 189);
             this.transactionDetailsDataGridView.TabIndex = 13;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // QtyRented
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.QtyRented.DefaultCellStyle = dataGridViewCellStyle1;
-            this.QtyRented.HeaderText = "Qty Rented";
-            this.QtyRented.Name = "QtyRented";
-            this.QtyRented.ReadOnly = true;
-            // 
-            // QtyReturned
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.QtyReturned.DefaultCellStyle = dataGridViewCellStyle2;
-            this.QtyReturned.HeaderText = "Qty Returned";
-            this.QtyReturned.Name = "QtyReturned";
-            this.QtyReturned.ReadOnly = true;
-            // 
-            // DateReturned
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.DateReturned.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DateReturned.HeaderText = "Date Returned";
-            this.DateReturned.Name = "DateReturned";
-            this.DateReturned.ReadOnly = true;
             // 
             // OKButton
             // 
@@ -230,6 +203,46 @@ namespace CS6232_G2_Furniture_Rental.View
             this.OKButton.Text = "&OK";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 250;
+            // 
+            // QtyRented
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.QtyRented.DefaultCellStyle = dataGridViewCellStyle2;
+            this.QtyRented.HeaderText = "Qty Rented";
+            this.QtyRented.Name = "QtyRented";
+            this.QtyRented.ReadOnly = true;
+            this.QtyRented.Width = 75;
+            // 
+            // QtyReturned
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.QtyReturned.DefaultCellStyle = dataGridViewCellStyle3;
+            this.QtyReturned.HeaderText = "Qty Returned";
+            this.QtyReturned.Name = "QtyReturned";
+            this.QtyReturned.ReadOnly = true;
+            this.QtyReturned.Width = 75;
+            // 
+            // DateReturned
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.DateReturned.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DateReturned.HeaderText = "Date Returned";
+            this.DateReturned.Name = "DateReturned";
+            this.DateReturned.ReadOnly = true;
+            this.DateReturned.Width = 75;
             // 
             // TransactionDetailsForm
             // 
