@@ -17,7 +17,7 @@ namespace FurnitureRentalData
         /// <param name="username">the username to test</param>
         /// <param name="password">the password to test</param>
         /// <returns>true if they are correct</returns>
-        public bool CheckCredentials(string username, string password)
+        public bool CheckCredentials(string username, string passwordHash)
         {
             string selectStatement = @"SELECT deactivatedDate
                                    FROM [cs6232-g2].[dbo].[Employee]
@@ -31,7 +31,7 @@ namespace FurnitureRentalData
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
                     selectCommand.Parameters.AddWithValue("@username", username);
-                    selectCommand.Parameters.AddWithValue("@password", password);
+                    selectCommand.Parameters.AddWithValue("@password", passwordHash);
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         if (reader.Read())
