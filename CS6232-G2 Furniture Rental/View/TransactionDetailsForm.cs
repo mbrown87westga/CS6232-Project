@@ -6,6 +6,9 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
 {
+    /// <summary>
+    /// A form for displaying transaction rental and return details
+    /// </summary>
     public partial class TransactionDetailsForm : Form
     {
         private static Employee _employee;
@@ -13,6 +16,10 @@ namespace CS6232_G2_Furniture_Rental.View
         private static RentalTransactionBusiness _rentalTransactionBusiness;
         private static RentalTransaction _rentalTransaction;
 
+        /// <summary>
+        /// Constructor for the transaction details form
+        /// </summary>
+        /// <param name="rentalTransaction">the rental transaction these details belong to</param>
         public TransactionDetailsForm(RentalTransaction rentalTransaction)
         {
             _loginBusiness = new LoginBusiness();

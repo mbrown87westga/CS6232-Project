@@ -20,6 +20,9 @@ namespace CS6232_G2_Furniture_Rental.View
         private static Employee _admin;
         private static Furniture _furniture;
 
+        /// <summary>
+        /// accessor for the currently selected furniture item
+        /// </summary>
         public Furniture furniture
         {
             get { return _furniture; }

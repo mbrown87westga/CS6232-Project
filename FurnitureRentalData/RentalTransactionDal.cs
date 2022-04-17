@@ -111,19 +111,14 @@ namespace FurnitureRentalData
 
                         while (reader.Read())
                         {
-                            TransactionDetailGridItem transaction = new TransactionDetailGridItem();
-                            //{
-                            //  FurnitureID = (int)reader["furnitureID"],
-                            //FurnitureDescription = reader["description"].ToString(),
-                            //QtyRented = (int)reader["QtyRented"],
-                            //QtyReturned = (int?)reader["QtyReturned"],
-                            //ReturnDate = (DateTime?)reader["returnTimestamp"]
-                            //};
-                            transaction.FurnitureID = (int)reader["furnitureID"];
-                            transaction.FurnitureDescription = reader["description"].ToString();
-                            transaction.QtyRented = (int)reader["QtyRented"];
-                            transaction.QtyReturned = reader.IsDBNull(qtyReturnedIdx) ? 0 : (int)reader["QtyReturned"];
-                            //transaction.ReturnDate = reader.IsDBNull(returnDateIdx) ? null : (DateTime)reader["returnTimestamp"];
+                            TransactionDetailGridItem transaction = new TransactionDetailGridItem
+                            {
+                                FurnitureID = (int)reader["furnitureID"],
+                                FurnitureDescription = reader["description"].ToString(),
+                                QtyRented = (int)reader["QtyRented"],
+                                QtyReturned = reader.IsDBNull(qtyReturnedIdx) ? 0 : (int)reader["QtyReturned"]
+                            };
+
                             if (reader.IsDBNull(returnDateIdx))
                             {
                                 transaction.ReturnDate = null;
@@ -132,6 +127,7 @@ namespace FurnitureRentalData
                             {
                                 transaction.ReturnDate = (DateTime)reader["returnTimestamp"];
                             }
+
                             transactionDetailsList.Add(transaction);
                         }
                     }

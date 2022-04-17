@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using CS6232_G2_Furniture_Rental.Helpers;
 using CS6232_G2_Furniture_Rental.View;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
@@ -10,7 +9,7 @@ using FurnitureRentalDomain;
 namespace CS6232_G2_Furniture_Rental.User_Controls
 {
     /// <summary>
-    /// The user control used to search for transactions - Unused as of right now, I accidentally started it early.
+    /// The user control used to search for transactions
     /// </summary>
     public partial class SearchTransactionsUserControl : UserControl
     {
@@ -18,11 +17,6 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private IEnumerable<Member> _memberList;
         private List<RentalTransaction> _transactionList;
         private RentalTransaction _rentalTransaction;
-
-        public RentalTransaction rentalTransaction 
-        {
-            get { return _rentalTransaction; }
-        }
 
         /// <summary>
         /// The default constructor
