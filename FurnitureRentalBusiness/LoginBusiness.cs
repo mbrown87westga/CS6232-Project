@@ -1,4 +1,5 @@
 ﻿using System;
+using FurnitureRentalBusiness.Helpers;
 using FurnitureRentalData;
 using FurnitureRentalDomain;
 
@@ -37,7 +38,9 @@ namespace FurnitureRentalBusiness
                 throw new ArgumentNullException(nameof(password));
             }
 
-            if (_dal.CheckCredentials(username, password))
+            var passwordHash = EncryptionHelper.Hash(password);
+            
+            if (_dal.CheckCredentials(username, passwordHash))
             {
                 _loggedInUser = username;
                 return true;
@@ -60,7 +63,12 @@ namespace FurnitureRentalBusiness
         /// <returns>the user</returns>
         public Employee GetLoggedInUser()
         {
-            return _dal.GetEmployee(_loggedInUser);
+            if (!string.IsNullOrWhiteSpace(_loggedInUser))
+            {
+                return _dal.GetEmployee(_loggedInUser);
+            }
+
+            return null;
         }
     }
 }

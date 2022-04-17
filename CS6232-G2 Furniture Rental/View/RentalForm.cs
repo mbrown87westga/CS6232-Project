@@ -39,7 +39,7 @@ namespace CS6232_G2_Furniture_Rental.View
             initializeCart();
             _furniture = _furnitureBusiness.GetAllFurniture();
             newRentalButton.Enabled = false;
-            dueDateTimePicker.Value = DateTime.Now.AddHours(24);
+            dueDateTimePicker.Value = DateTime.Now.AddDays(1);
         }
 
         private void RentalForm_Activated(object sender, EventArgs e)
@@ -47,6 +47,13 @@ namespace CS6232_G2_Furniture_Rental.View
             try
             {
                 _employee = _loginBusiness.GetLoggedInUser();
+
+                if (_employee == null)
+                {
+                    _loginBusiness.Logout();
+                    this.HideThisAndShowForm<LoginForm>();
+                    return;
+                }
 
                 this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
             }
@@ -113,7 +120,7 @@ namespace CS6232_G2_Furniture_Rental.View
             newRentalButton.Enabled = false;
             clearButton.Enabled = true;
             checkoutButton.Enabled = true;
-            dueDateTimePicker.Value = DateTime.Now.AddHours(24);
+            dueDateTimePicker.Value = DateTime.Now.AddDays(1);
         }
 
         private void checkoutButton_Click(object sender, EventArgs e)
@@ -124,16 +131,16 @@ namespace CS6232_G2_Furniture_Rental.View
 
                 if (errorMessage == "")
                 {
-                    RentalTransactionConfirmationForm confirmationForm = new RentalTransactionConfirmationForm(getCartTotal(), (dueDateTimePicker.Value - DateTime.Today).Days);
+                    RentalTransactionConfirmationForm confirmationForm = new RentalTransactionConfirmationForm(getCartTotal(), (dueDateTimePicker.Value - DateTime.Today).Days, dueDateTimePicker.Value.Date);
 
                     if (confirmationForm.ShowDialog(this) == DialogResult.OK)
                     {
                         RentalTransaction newRental = new RentalTransaction
                         {
-                            DueDateTime = dueDateTimePicker.Value,
+                            DueDateTime = dueDateTimePicker.Value.Date,
                             MemberID = _member.MemberID,
                             EmployeeID = _employee.EmployeeId,
-                            RentalTimestamp = DateTime.Now
+                            RentalTimestamp = DateTime.Now.Date
                         };
 
                         if (_rentalTransactionBusiness.Add(newRental, _cart) > 0)

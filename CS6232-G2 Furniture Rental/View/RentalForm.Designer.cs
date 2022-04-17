@@ -34,10 +34,13 @@ namespace CS6232_G2_Furniture_Rental.View
             System.Windows.Forms.Label phoneLabel;
             System.Windows.Forms.Label rentalTimestampLabel;
             System.Windows.Forms.Label dueDateTimeLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
+            this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberLabel = new System.Windows.Forms.Label();
             this.address1DataLabel = new System.Windows.Forms.Label();
             this.memberNameLabel = new System.Windows.Forms.Label();
@@ -55,8 +58,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipcodeMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grandTotalLabel = new System.Windows.Forms.Label();
             this.daysTotalLabel = new System.Windows.Forms.Label();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -123,6 +124,14 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalItemDataGridView.AllowUserToAddRows = false;
             this.rentalItemDataGridView.AllowUserToDeleteRows = false;
             this.rentalItemDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rentalItemDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.rentalItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rentalItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.furnitureIDDataGridViewTextBoxColumn,
@@ -134,10 +143,27 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalItemDataGridView.DataSource = this.rentalItemBindingSource;
             this.rentalItemDataGridView.Location = new System.Drawing.Point(16, 209);
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
-            this.rentalItemDataGridView.Size = new System.Drawing.Size(544, 174);
+            this.rentalItemDataGridView.Size = new System.Drawing.Size(629, 174);
             this.rentalItemDataGridView.TabIndex = 1;
             this.rentalItemDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.rentalItemDataGridView_CellEndEdit);
             this.rentalItemDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.rentalItemDataGridView_RowsAdded);
+            // 
+            // FurnitureName
+            // 
+            this.FurnitureName.HeaderText = "Name";
+            this.FurnitureName.Name = "FurnitureName";
+            this.FurnitureName.ReadOnly = true;
+            this.FurnitureName.Width = 250;
+            // 
+            // Total
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "C2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.Total.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Total.HeaderText = "Daily Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             // 
             // memberLabel
             // 
@@ -204,7 +230,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // dueDateTimePicker
             // 
-            this.dueDateTimePicker.CustomFormat = "M/d/yyyy hh:mmtt";
+            this.dueDateTimePicker.CustomFormat = "M/d/yyyy";
             this.dueDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.rentalTransactionBindingSource, "DueDateTime", true));
             this.dueDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dueDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -322,22 +348,6 @@ namespace CS6232_G2_Furniture_Rental.View
             this.phoneMaskedTextBox.Size = new System.Drawing.Size(100, 16);
             this.phoneMaskedTextBox.TabIndex = 33;
             // 
-            // FurnitureName
-            // 
-            this.FurnitureName.HeaderText = "Name";
-            this.FurnitureName.Name = "FurnitureName";
-            this.FurnitureName.ReadOnly = true;
-            // 
-            // Total
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Total.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Total.HeaderText = "Daily Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
             // grandTotalLabel
             // 
             this.grandTotalLabel.AutoSize = true;
@@ -346,7 +356,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.grandTotalLabel.Name = "grandTotalLabel";
             this.grandTotalLabel.Size = new System.Drawing.Size(0, 17);
             this.grandTotalLabel.TabIndex = 34;
-            this.grandTotalLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.grandTotalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // daysTotalLabel
             // 
@@ -356,6 +366,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.daysTotalLabel.Name = "daysTotalLabel";
             this.daysTotalLabel.Size = new System.Drawing.Size(0, 17);
             this.daysTotalLabel.TabIndex = 35;
+            this.daysTotalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // memberBindingSource
             // 
@@ -371,24 +382,26 @@ namespace CS6232_G2_Furniture_Rental.View
             this.furnitureIDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.furnitureIDDataGridViewTextBoxColumn.Name = "furnitureIDDataGridViewTextBoxColumn";
             this.furnitureIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.furnitureIDDataGridViewTextBoxColumn.Width = 50;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.Width = 75;
             // 
             // dailyRentalRateDataGridViewTextBoxColumn
             // 
             this.dailyRentalRateDataGridViewTextBoxColumn.DataPropertyName = "DailyRentalRate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dailyRentalRateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.dailyRentalRateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.dailyRentalRateDataGridViewTextBoxColumn.HeaderText = "Daily Rate";
             this.dailyRentalRateDataGridViewTextBoxColumn.Name = "dailyRentalRateDataGridViewTextBoxColumn";
             this.dailyRentalRateDataGridViewTextBoxColumn.ReadOnly = true;
@@ -478,13 +491,13 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.MaskedTextBox zipcodeMaskedTextBox;
         private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
+        private System.Windows.Forms.Label grandTotalLabel;
+        private System.Windows.Forms.Label daysTotalLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyRentalRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalTransactionIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label grandTotalLabel;
-        private System.Windows.Forms.Label daysTotalLabel;
     }
 }

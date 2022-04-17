@@ -3,6 +3,7 @@ using FurnitureRentalDomain;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using FurnitureRentalBusiness.Helpers;
 
 namespace FurnitureRentalBusiness
 {
@@ -72,6 +73,8 @@ namespace FurnitureRentalBusiness
             {
                 throw new ArgumentOutOfRangeException("The password must be set");
             }
+            
+            newEmployee.Password = EncryptionHelper.Hash(newEmployee.Password);
 
             return this._dal.AddEmployee(newEmployee);
         }
@@ -93,6 +96,8 @@ namespace FurnitureRentalBusiness
             {
                 throw new ArgumentNullException(nameof(newEmployee));
             }
+
+            newEmployee.Password = EncryptionHelper.Hash(newEmployee.Password);
 
             return this._dal.UpdateEmployee(oldEmployee, newEmployee);
         }

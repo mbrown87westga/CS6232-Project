@@ -20,6 +20,9 @@ namespace CS6232_G2_Furniture_Rental.View
         private static Employee _admin;
         private static Furniture _furniture;
 
+        /// <summary>
+        /// accessor for the currently selected furniture item
+        /// </summary>
         public Furniture furniture
         {
             get { return _furniture; }
@@ -46,6 +49,13 @@ namespace CS6232_G2_Furniture_Rental.View
             try
             {
                 _admin = _loginBusiness.GetLoggedInUser();
+
+                if (_admin == null)
+                {
+                    _loginBusiness.Logout();
+                    this.HideThisAndShowForm<LoginForm>();
+                    return;
+                }
 
                 this.adminIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
             }

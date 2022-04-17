@@ -21,6 +21,21 @@ namespace FurnitureRentalBusiness
         }
 
         /// <summary>
+        /// Gets the rental and return item details for a rental transaction
+        /// </summary>
+        /// <param name="transactionID">the rental transaction id</param>
+        /// <returns>a list of rental and return item details</returns>
+        public IEnumerable<TransactionDetailGridItem> GetTransactionDetails(int transactionID)
+        {
+            if (transactionID <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Transaction ID must be > 0");
+            }
+
+            return _dal.GetTransactionDetails(transactionID);
+        }
+
+        /// <summary>
         /// Adds a rental transaction and its rental items to the database
         /// </summary>
         /// <param name="newRental">the rental transaction details</param>

@@ -51,6 +51,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalItem.cs" />
     <Compile Include="RentalTransaction.cs" />
+    <Compile Include="ReturnGridItem.cs" />
+    <Compile Include="ReturnItem.cs" />
+    <Compile Include="ReturnSummary.cs" />
+    <Compile Include="ReturnTransaction.cs" />
+    <Compile Include="TransactionDetailGridItem.cs" />
     <Compile Include="USStates.cs" />
   </ItemGroup>
   <ItemGroup />

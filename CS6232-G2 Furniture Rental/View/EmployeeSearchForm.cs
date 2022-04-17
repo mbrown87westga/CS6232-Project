@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using CS6232_G2_Furniture_Rental.Helpers;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
 using FurnitureRentalDomain.Helpers;
@@ -39,6 +40,13 @@ namespace CS6232_G2_Furniture_Rental.View
             try
             {
                 _admin = _loginBusiness.GetLoggedInUser();
+
+                if (_admin == null)
+                {
+                    _loginBusiness.Logout();
+                    this.HideThisAndShowForm<LoginForm>();
+                    return;
+                }
 
                 this.employeeIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
             }

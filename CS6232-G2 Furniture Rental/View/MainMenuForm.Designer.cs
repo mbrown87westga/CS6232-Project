@@ -62,7 +62,7 @@
             // rentalsButton
             // 
             this.rentalsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rentalsButton.Location = new System.Drawing.Point(154, 267);
+            this.rentalsButton.Location = new System.Drawing.Point(154, 212);
             this.rentalsButton.Name = "rentalsButton";
             this.rentalsButton.Size = new System.Drawing.Size(100, 35);
             this.rentalsButton.TabIndex = 5;
@@ -73,12 +73,13 @@
             // returnsButton
             // 
             this.returnsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnsButton.Location = new System.Drawing.Point(154, 322);
+            this.returnsButton.Location = new System.Drawing.Point(154, 267);
             this.returnsButton.Name = "returnsButton";
             this.returnsButton.Size = new System.Drawing.Size(100, 35);
             this.returnsButton.TabIndex = 6;
             this.returnsButton.Text = "Re&turns";
             this.returnsButton.UseVisualStyleBackColor = true;
+            this.returnsButton.Click += new System.EventHandler(this.returnsButton_Click);
             // 
             // adminButton
             // 
@@ -113,7 +114,7 @@
             // furnitureButton
             // 
             this.furnitureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.furnitureButton.Location = new System.Drawing.Point(154, 212);
+            this.furnitureButton.Location = new System.Drawing.Point(154, 322);
             this.furnitureButton.Name = "furnitureButton";
             this.furnitureButton.Size = new System.Drawing.Size(100, 35);
             this.furnitureButton.TabIndex = 4;

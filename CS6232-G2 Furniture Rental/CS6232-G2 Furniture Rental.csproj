@@ -141,6 +141,18 @@
     <Compile Include="View\MembersManagementForm.Designer.cs">
       <DependentUpon>MembersManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReturnTransactionConfirmationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnTransactionConfirmationForm.Designer.cs">
+      <DependentUpon>ReturnTransactionConfirmationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnForm.Designer.cs">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RentalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +176,12 @@
     </Compile>
     <Compile Include="View\SearchResultsForm.Designer.cs">
       <DependentUpon>SearchResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransactionDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TransactionDetailsForm.Designer.cs">
+      <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -219,6 +237,12 @@
     <EmbeddedResource Include="View\MembersManagementForm.resx">
       <DependentUpon>MembersManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnTransactionConfirmationForm.resx">
+      <DependentUpon>ReturnTransactionConfirmationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnForm.resx">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\RentalForm.resx">
       <DependentUpon>RentalForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,11 +255,15 @@
     <EmbeddedResource Include="View\SearchResultsForm.resx">
       <DependentUpon>SearchResultsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TransactionDetailsForm.resx">
+      <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\FurnitureRentalDomain.Employee.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.Furniture.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.Member.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.RentalItem.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.RentalTransaction.datasource" />
+    <None Include="Properties\DataSources\FurnitureRentalDomain.ReturnGridItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
