@@ -37,14 +37,14 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 _employee = _loginBusiness.GetLoggedInUser();
 
-                if (_employee == null)
+
+                if (!_loginBusiness.IsLoggedIn())
                 {
-                    _loginBusiness.Logout();
                     this.HideThisAndShowForm<LoginForm>();
                     return;
                 }
 
-                this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+                this.employeeIDLabel.Text = DisplayTextHelper.GetNameAndUserName(_employee);
 
                 this.orderTotalTextBox.Text = _cartTotal.ToString("C2");
                 this.daysTextBox.Text = _days.ToString();

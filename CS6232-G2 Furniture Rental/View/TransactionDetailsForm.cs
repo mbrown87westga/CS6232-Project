@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CS6232_G2_Furniture_Rental.Helpers;
 using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
 
@@ -33,7 +34,13 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             _employee = _loginBusiness.GetLoggedInUser();
 
-            this.employeeNameIdLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+            if (!_loginBusiness.IsLoggedIn())
+            {
+                this.HideThisAndShowForm<LoginForm>();
+                return;
+            }
+
+            this.employeeNameIdLabel.Text = DisplayTextHelper.GetNameAndUserName(_employee);
         }
 
         private void TransactionDetailsForm_Load(object sender, EventArgs e)

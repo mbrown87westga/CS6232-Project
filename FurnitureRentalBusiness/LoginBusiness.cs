@@ -70,5 +70,14 @@ namespace FurnitureRentalBusiness
 
             return null;
         }
+
+        /// <summary>
+        /// returns true if the user is logged in, false otherwise.
+        /// </summary>
+        /// <returns>true if the user is logged in.</returns>
+        public bool IsLoggedIn()
+        {
+            return !string.IsNullOrWhiteSpace(_loggedInUser);
+        }
     }
 }

@@ -43,14 +43,13 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 _admin = _business.GetLoggedInUser();
 
-                if (_admin == null)
+                if (!_business.IsLoggedIn())
                 {
-                    _business.Logout();
                     this.HideThisAndShowForm<LoginForm>();
                     return;
                 }
 
-                this.employeeIDLabel.Text = _admin.FirstName + " " + _admin.LastName + " (" + _admin.UserName + ")";
+                this.employeeIDLabel.Text = DisplayTextHelper.GetNameAndUserName(_admin);
             }
             catch (Exception ex)
             {
