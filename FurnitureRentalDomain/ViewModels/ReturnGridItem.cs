@@ -4,7 +4,6 @@ namespace FurnitureRentalDomain
 {
     /// <summary>
     /// A view model representing an item in the return datagrid view
-    /// TODO: refactor to move db models into one folder, and view models into different folder.
     /// </summary>
     public class ReturnGridItem
     {
