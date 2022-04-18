@@ -68,6 +68,12 @@
     <Compile Include="User Controls\AddMemberUserControl.Designer.cs">
       <DependentUpon>AddMemberUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\PopularFurnitureReportUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\PopularFurnitureReportUserControl.Designer.cs">
+      <DependentUpon>PopularFurnitureReportUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\SearchTransactionsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

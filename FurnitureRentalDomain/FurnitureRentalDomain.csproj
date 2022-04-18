@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DBModels\RentalItem.cs" />
     <Compile Include="DBModels\RentalTransaction.cs" />
+    <Compile Include="ViewModels\GetMostPopularDuringDateReport.cs" />
     <Compile Include="ViewModels\ReturnGridItem.cs" />
     <Compile Include="DBModels\ReturnItem.cs" />
     <Compile Include="ViewModels\ReturnSummary.cs" />
