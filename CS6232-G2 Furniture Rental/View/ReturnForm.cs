@@ -41,17 +41,15 @@ namespace CS6232_G2_Furniture_Return.View
         {
             try
             {
-                //TODO: refactor this further to only build the employee name in one place, and to have isLoggedIn
                 _employee = _loginBusiness.GetLoggedInUser();
 
-                if (_employee == null)
+                if (!_loginBusiness.IsLoggedIn())
                 {
-                    _loginBusiness.Logout();
                     this.HideThisAndShowForm<LoginForm>();
                     return;
                 }
 
-                this.employeeIDLabel.Text = _employee.FirstName + " " + _employee.LastName + " (" + _employee.UserName + ")";
+                this.employeeIDLabel.Text = DisplayTextHelper.GetNameAndUserName(_employee);
             }
             catch (Exception ex)
             {

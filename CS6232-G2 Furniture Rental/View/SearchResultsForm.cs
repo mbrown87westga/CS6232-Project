@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using CS6232_G2_Furniture_Rental.Helpers;
+using FurnitureRentalBusiness;
 using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Rental.View
@@ -11,6 +13,8 @@ namespace CS6232_G2_Furniture_Rental.View
     /// </summary>
     public partial class SearchResultsForm : Form
     {
+        private static Employee _employee;
+        private static LoginBusiness _loginBusiness;
         private IEnumerable<Member> _members;
         /// <summary>
         /// The search results
@@ -35,6 +39,7 @@ namespace CS6232_G2_Furniture_Rental.View
         /// </summary>
         public SearchResultsForm()
         {
+            _loginBusiness = new LoginBusiness();
             InitializeComponent();
         }
 
@@ -76,6 +81,19 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             Result = null;
             Close();
+        }
+
+        private void SearchResultsForm_Activated(object sender, EventArgs e)
+        {
+            _employee = _loginBusiness.GetLoggedInUser();
+
+            if (!_loginBusiness.IsLoggedIn())
+            {
+                this.HideThisAndShowForm<LoginForm>();
+                return;
+            }
+
+            this.employeeNameIdLabel.Text = DisplayTextHelper.GetNameAndUserName(_employee);
         }
     }
 }

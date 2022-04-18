@@ -43,21 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employee.cs" />
-    <Compile Include="Furniture.cs" />
-    <Compile Include="Gender.cs" />
-    <Compile Include="GetMostPopularDuringDateReport.cs" />
+    <Compile Include="DBModels\Employee.cs" />
+    <Compile Include="DBModels\Furniture.cs" />
+    <Compile Include="DBModels\Gender.cs" />
     <Compile Include="Helpers\GenderHelper.cs" />
-    <Compile Include="Member.cs" />
+    <Compile Include="DBModels\Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentalItem.cs" />
-    <Compile Include="RentalTransaction.cs" />
-    <Compile Include="ReturnGridItem.cs" />
-    <Compile Include="ReturnItem.cs" />
-    <Compile Include="ReturnSummary.cs" />
-    <Compile Include="ReturnTransaction.cs" />
-    <Compile Include="TransactionDetailGridItem.cs" />
-    <Compile Include="USStates.cs" />
+    <Compile Include="DBModels\RentalItem.cs" />
+    <Compile Include="DBModels\RentalTransaction.cs" />
+    <Compile Include="ViewModels\ReturnGridItem.cs" />
+    <Compile Include="DBModels\ReturnItem.cs" />
+    <Compile Include="ViewModels\ReturnSummary.cs" />
+    <Compile Include="DBModels\ReturnTransaction.cs" />
+    <Compile Include="ViewModels\TransactionDetailGridItem.cs" />
+    <Compile Include="DBModels\USStates.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
