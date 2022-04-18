@@ -100,7 +100,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void rentalItemDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            calculateRowTotal(rentalItemDataGridView.Rows.Count - 1);
+            //calculateRowTotal(rentalItemDataGridView.Rows.Count - 1);
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -255,9 +255,9 @@ namespace CS6232_G2_Furniture_Rental.View
             updateGrandTotal();
         }
 
-        private void calculateRowTotal(int rowIndex)
+        private void calculateRowTotal(DataGridViewRow row)
         {
-            DataGridViewRow row = rentalItemDataGridView.Rows[rowIndex];
+            //DataGridViewRow row = rentalItemDataGridView.Rows[rowIndex];
             var rentalItem = row.DataBoundItem as RentalItem;
             if (rentalItem != null)
             {
@@ -294,12 +294,21 @@ namespace CS6232_G2_Furniture_Rental.View
         private void updateGrandTotal()
         {
             grandTotalLabel.Text = getCartTotal().ToString("C2");
-            daysTotalLabel.Text = "total for " + (dueDateTimePicker.Value - DateTime.Today).Days.ToString() + " days";
+            daysTotalLabel.Text = "total for " + (dueDateTimePicker.Value - DateTime.Today).Days.ToString();
+            daysTotalLabel.Text += (dueDateTimePicker.Value - DateTime.Today).Days > 1 ? " days" : " day";
         }
 
         private void dueDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             updateGrandTotal();
+        }
+
+        private void rentalItemDataGridView_DataSourceChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in rentalItemDataGridView.Rows)
+            {
+                calculateRowTotal(row);
+            }
         }
     }
 }
