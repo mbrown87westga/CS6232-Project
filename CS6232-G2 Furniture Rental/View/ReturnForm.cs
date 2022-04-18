@@ -12,6 +12,9 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Return.View
 {
+    /// <summary>
+    /// The return form
+    /// </summary>
     public partial class ReturnForm : Form
     {
         private static LoginBusiness _loginBusiness;
@@ -21,6 +24,9 @@ namespace CS6232_G2_Furniture_Return.View
         private BindingList<ReturnGridItem> _returnItems;
         private static ReturnTransactionBusiness _returnTransactionBusiness;
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public ReturnForm()
         {
             _loginBusiness = new LoginBusiness();
@@ -219,7 +225,7 @@ namespace CS6232_G2_Furniture_Return.View
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Quantity returned mut be a number", "Invalid quantity",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

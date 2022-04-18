@@ -15,7 +15,7 @@ namespace FurnitureRentalData
         /// Checks to see if the given username and password are a correct combination
         /// </summary>
         /// <param name="username">the username to test</param>
-        /// <param name="password">the password to test</param>
+        /// <param name="passwordHash">the password to test</param>
         /// <returns>true if they are correct</returns>
         public bool CheckCredentials(string username, string passwordHash)
         {

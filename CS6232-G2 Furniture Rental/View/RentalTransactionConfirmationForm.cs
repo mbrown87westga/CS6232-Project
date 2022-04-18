@@ -18,9 +18,11 @@ namespace CS6232_G2_Furniture_Rental.View
         private static DateTime _dueDate;
 
         /// <summary>
-        /// Rental transaction confirmation form
+        /// Rental transaction confirmation form default constructor
         /// </summary>
         /// <param name="cartTotal">The rental total for all rental items in the cart</param>
+        /// <param name="days">the number of days that the rental is for</param>
+        /// <param name="dueDate">when it is due.</param>
         public RentalTransactionConfirmationForm(decimal cartTotal, int days, DateTime dueDate)
         {
             _loginBusiness = new LoginBusiness();

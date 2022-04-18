@@ -6,6 +6,9 @@ using FurnitureRentalDomain;
 
 namespace FurnitureRentalBusiness
 {
+    /// <summary>
+    /// The return transaction business
+    /// </summary>
     public class ReturnTransactionBusiness
     {
         private readonly FurnitureDal _furnitureDal;
@@ -13,6 +16,9 @@ namespace FurnitureRentalBusiness
         private readonly ReturnTransactionDal _returnDal;
         private readonly RentalTransactionDal _rentalDal;
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public ReturnTransactionBusiness()
         {
             _returnDal = new ReturnTransactionDal();
@@ -21,6 +27,12 @@ namespace FurnitureRentalBusiness
             _furnitureDal = new FurnitureDal();
         }
 
+        /// <summary>
+        /// Adds a transaction and its items to the database
+        /// </summary>
+        /// <param name="transaction">the transaction to add</param>
+        /// <param name="items">the transaction items</param>
+        /// <returns></returns>
         public int Add(ReturnTransaction transaction, IEnumerable<ReturnItem> items)
         {
             if (transaction is null)
@@ -63,6 +75,11 @@ namespace FurnitureRentalBusiness
             return this._returnDal.AddReturnTransaction(transaction, items);
         }
         
+        /// <summary>
+        /// Gets the current return grid items for a specific member
+        /// </summary>
+        /// <param name="memberID"></param>
+        /// <returns></returns>
         public IEnumerable<ReturnGridItem> GetCurrentReturnGridItemsForMember(int memberID)
         {
             if (memberID <= 0)

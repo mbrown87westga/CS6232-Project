@@ -16,6 +16,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private static Employee _employee;
         private static LoginBusiness _loginBusiness;
         private IEnumerable<Member> _members;
+
         /// <summary>
         /// The search results
         /// </summary>

@@ -6,8 +6,17 @@ using FurnitureRentalDomain;
 
 namespace FurnitureRentalData
 {
+    /// <summary>
+    /// The return transaction DAL
+    /// </summary>
     public class ReturnTransactionDal
     {
+        /// <summary>
+        /// Adds a return transaction (and all of its items) to the db
+        /// </summary>
+        /// <param name="returnTransaction">the transaction to add</param>
+        /// <param name="items">the items to add</param>
+        /// <returns>the id of the transaction</returns>
         public int AddReturnTransaction(ReturnTransaction returnTransaction, IEnumerable<ReturnItem> items)
         {
             int transactionID = 0;
@@ -73,6 +82,12 @@ namespace FurnitureRentalData
             }
         }
 
+        /// <summary>
+        /// Gets the return items from a rental transaction of a specific furniture id
+        /// </summary>
+        /// <param name="rentalTransactionId">the id of the transaction</param>
+        /// <param name="furnitureId">the furniture's id</param>
+        /// <returns></returns>
         public IEnumerable<ReturnItem> GetReturnItems(int rentalTransactionId, int furnitureId)
         {
 

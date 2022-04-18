@@ -119,7 +119,6 @@ namespace FurnitureRentalData
         /// <summary>
         /// Searches for furniture matching the given criteria
         /// </summary>
-        /// <param name="furnitureID">id to search for, or null to not include in search criteria</param>
         /// <param name="name">furniture name to search for, or null to not include in search criteria</param>
         /// <param name="description">furniture description to search for, or null to not include in search criteria</param>
         /// <param name="category">furniture category description to search for, or null to not include in search criteria</param>

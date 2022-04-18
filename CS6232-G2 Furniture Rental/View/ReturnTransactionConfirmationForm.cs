@@ -7,12 +7,18 @@ using FurnitureRentalDomain;
 
 namespace CS6232_G2_Furniture_Return.View
 {
+    /// <summary>
+    /// the Return Transaction Confirmation form
+    /// </summary>
     public partial class ReturnTransactionConfirmationForm : Form
     {
         private static LoginBusiness _loginBusiness;
         private static Employee _employee;
         private static ReturnSummary Summary;
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public ReturnTransactionConfirmationForm(ReturnSummary summary)
         {
             _loginBusiness = new LoginBusiness();

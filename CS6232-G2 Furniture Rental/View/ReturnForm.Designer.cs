@@ -385,7 +385,6 @@ namespace CS6232_G2_Furniture_Return.View
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.MaskedTextBox zipcodeMaskedTextBox;
         private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dailyReturnRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalTransactionID;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
