@@ -1,6 +1,7 @@
 ﻿using FurnitureRentalDomain;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace FurnitureRentalData
@@ -10,11 +11,51 @@ namespace FurnitureRentalData
     /// </summary>
     public class FurnitureDal
     {
-        /// <summary>
-        /// Retrieves all furniture items from the database
-        /// </summary>
-        /// <returns>a list of Furniture items</returns>
-        public List<Furniture> GetAllFurniture()
+        public List<GetMostPopularDuringDateReport> GetMostPopularDuringDates(DateTime startDate, DateTime endDate)
+        {
+            List<GetMostPopularDuringDateReport> _furnitureList = new List<GetMostPopularDuringDateReport>();
+
+            using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand("[dbo].[getMostPopularFurnitureDuringDates]", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@start_date_param", startDate));
+                cmd.Parameters.Add(new SqlParameter("@end_date_param", endDate));
+
+                using (cmd)
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            GetMostPopularDuringDateReport furniture = new GetMostPopularDuringDateReport
+                            {
+                                FurnitureID = (int)reader["furnitureID"],
+                                Category = reader["category"].ToString(),
+                                FurnitureName = reader["furnitureName"].ToString(),
+                                TotalTrans = (int)reader["TotTrans"],
+                                TotalFurnitureTrans = (int)reader["TotFurnTrans"],
+                                PctOfTotal = reader["PctOfTot"].ToString(),
+                                PctNotOfAgeMembers = reader["PctNotOfAgeMbrs"].ToString(),
+                                PctOfAgeMembers = reader["PctOfAgeMbrs"].ToString()
+                            };
+
+                            _furnitureList.Add(furniture);
+                        }
+                    }
+                }
+
+                return _furnitureList;
+            }
+        }
+
+            /// <summary>
+            /// Retrieves all furniture items from the database
+            /// </summary>
+            /// <returns>a list of Furniture items</returns>
+            public List<Furniture> GetAllFurniture()
         {
             List<Furniture> furnitureList = new List<Furniture>();
 

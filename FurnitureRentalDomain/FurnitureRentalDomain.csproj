@@ -46,6 +46,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Furniture.cs" />
     <Compile Include="Gender.cs" />
+    <Compile Include="GetMostPopularDuringDateReport.cs" />
     <Compile Include="Helpers\GenderHelper.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
