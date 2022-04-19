@@ -26,7 +26,7 @@ BEGIN
 	END
 
 	-- Get total # of rentals for time period
-	DECLARE @totalRentals FLOAT
+	DECLARE @totalRentals INT
 	SELECT @totalRentals = COUNT(rt.rentalTransactionID)
 	  FROM RentalTransaction rt
 	 WHERE rt.rentalTimestamp >= @start_date_param

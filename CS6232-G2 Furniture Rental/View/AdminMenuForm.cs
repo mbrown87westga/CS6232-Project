@@ -58,5 +58,10 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             this.HideThisAndShowForm<EmployeeMaintenanceForm>();
         }
+
+        private void reportsButton_Click(object sender, EventArgs e)
+        {
+            this.HideThisAndShowForm<AdminReportsForm>();
+        }
     }
 }

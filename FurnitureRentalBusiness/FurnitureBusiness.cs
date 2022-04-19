@@ -30,6 +30,30 @@ namespace FurnitureRentalBusiness
         }
 
         /// <summary>
+        /// Retrieves all furniture items from the database
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns>a list of furniture items</returns>
+        public List<GetMostPopularDuringDateReport> GetMostPopularDuringDates(DateTime startDate, DateTime endDate)
+        {
+            if (startDate.Equals(DateTime.MinValue) || startDate.Equals(DateTime.MaxValue))
+            {
+                throw new ArgumentOutOfRangeException("The start date must be set.");
+            }
+            if (endDate.Equals(DateTime.MinValue) || endDate.Equals(DateTime.MaxValue))
+            {
+                throw new ArgumentOutOfRangeException("The end date must be set.");
+            }
+            if (startDate > endDate)
+            {
+                throw new ArgumentOutOfRangeException("The start date must be <= end date");
+            }
+
+            return this._dal.GetMostPopularDuringDates(startDate, endDate);
+        }
+
+        /// <summary>
         /// Retrieves all furniture category descriptions from the database
         /// </summary>
         /// <returns>a list of furniture category descriptions</returns>
