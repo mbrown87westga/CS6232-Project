@@ -118,7 +118,7 @@ namespace FurnitureRentalData
                                        FROM [RentalTransaction] t
                                        join [Employee] e on e.[employeeID] = t.[employeeID]
                                        where memberID = @memberId
-                                       and [rentalTimestamp] between @begin and @end";
+                                       and [rentalTimestamp] between dateadd(dd, -1, @begin) and @end";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
             {
