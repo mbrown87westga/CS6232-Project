@@ -74,6 +74,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.reportsButton.TabIndex = 5;
             this.reportsButton.Text = "&Reports";
             this.reportsButton.UseVisualStyleBackColor = true;
+            this.reportsButton.Click += new System.EventHandler(this.reportsButton_Click);
             // 
             // mainMenuButton
             // 
