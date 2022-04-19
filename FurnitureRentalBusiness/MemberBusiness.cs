@@ -34,35 +34,35 @@ namespace FurnitureRentalBusiness
             }
             if (newMember.Birthdate.Equals(DateTime.MinValue) || newMember.Birthdate.Equals(DateTime.MaxValue))
             {
-                throw new ArgumentOutOfRangeException("The birthdate must be set");
+                throw new ArgumentOutOfRangeException(nameof(newMember.Birthdate));
             }
             if (string.IsNullOrWhiteSpace(newMember.FirstName))
             {
-                throw new ArgumentOutOfRangeException("The first name must be set");
+                throw new ArgumentOutOfRangeException(nameof(newMember.FirstName));
             }
             if (string.IsNullOrWhiteSpace(newMember.LastName))
             {
-                throw new ArgumentOutOfRangeException("The last name must be set");
+                throw new ArgumentOutOfRangeException(nameof(newMember.LastName));
             }
             if (string.IsNullOrWhiteSpace(newMember.Phone))
             {
-                throw new ArgumentOutOfRangeException("The phone number must be set");
+                throw new ArgumentOutOfRangeException(nameof(newMember.Phone));
             }
             if (string.IsNullOrWhiteSpace(newMember.Address1))
             {
-                throw new ArgumentOutOfRangeException("The address must be set");
+                throw new ArgumentOutOfRangeException(nameof(newMember.Address1));
             }
             if (string.IsNullOrWhiteSpace(newMember.City))
             {
-                throw new ArgumentOutOfRangeException("The city must be set");
+                throw new ArgumentOutOfRangeException(nameof(newMember.City));
             }
             if (string.IsNullOrWhiteSpace(newMember.State))
             {
-                throw new ArgumentOutOfRangeException("The state must be set");
+                throw new ArgumentOutOfRangeException(nameof(newMember.State));
             }
             if (string.IsNullOrWhiteSpace(newMember.Zipcode))
             {
-                throw new ArgumentOutOfRangeException("The zipcode must be set");
+                throw new ArgumentOutOfRangeException(nameof(newMember.Zipcode));
             }
 
             return _dal.AddMember(newMember);
@@ -144,35 +144,35 @@ namespace FurnitureRentalBusiness
             }
             if (member.Birthdate.Equals(DateTime.MinValue) || member.Birthdate.Equals(DateTime.MaxValue))
             {
-                throw new ArgumentOutOfRangeException("The birthdate must be set");
+                throw new ArgumentOutOfRangeException(nameof(member.Birthdate));
             }
             if (string.IsNullOrWhiteSpace(member.FirstName))
             {
-                throw new ArgumentOutOfRangeException("The first name must be set");
+                throw new ArgumentOutOfRangeException(nameof(member.FirstName));
             }
             if (string.IsNullOrWhiteSpace(member.LastName))
             {
-                throw new ArgumentOutOfRangeException("The last name must be set");
+                throw new ArgumentOutOfRangeException(nameof(member.LastName));
             }
             if (string.IsNullOrWhiteSpace(member.Phone))
             {
-                throw new ArgumentOutOfRangeException("The phone number must be set");
+                throw new ArgumentOutOfRangeException(nameof(member.Phone));
             }
             if (string.IsNullOrWhiteSpace(member.Address1))
             {
-                throw new ArgumentOutOfRangeException("The address must be set");
+                throw new ArgumentOutOfRangeException(nameof(member.Address1));
             }
             if (string.IsNullOrWhiteSpace(member.City))
             {
-                throw new ArgumentOutOfRangeException("The city must be set");
+                throw new ArgumentOutOfRangeException(nameof(member.City));
             }
             if (string.IsNullOrWhiteSpace(member.State))
             {
-                throw new ArgumentOutOfRangeException("The state must be set");
+                throw new ArgumentOutOfRangeException(nameof(member.State));
             }
             if (string.IsNullOrWhiteSpace(member.Zipcode))
             {
-                throw new ArgumentOutOfRangeException("The zipcode must be set");
+                throw new ArgumentOutOfRangeException(nameof(member.Zipcode));
             }
 
 

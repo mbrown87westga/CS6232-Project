@@ -35,43 +35,43 @@ namespace FurnitureRentalBusiness
             }
             if (newEmployee.Birthdate.Equals(DateTime.MinValue) || newEmployee.Birthdate.Equals(DateTime.MaxValue))
             {
-                throw new ArgumentOutOfRangeException("The birthdate must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.Birthdate));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.FirstName))
             {
-                throw new ArgumentOutOfRangeException("The first name must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.FirstName));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.LastName))
             {
-                throw new ArgumentOutOfRangeException("The last name must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.LastName));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.Phone))
             {
-                throw new ArgumentOutOfRangeException("The phone number must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.Phone));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.Address1))
             {
-                throw new ArgumentOutOfRangeException("The address must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.Address1));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.City))
             {
-                throw new ArgumentOutOfRangeException("The city must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.City));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.State))
             {
-                throw new ArgumentOutOfRangeException("The state must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.State));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.Zipcode))
             {
-                throw new ArgumentOutOfRangeException("The zipcode must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.Zipcode));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.UserName))
             {
-                throw new ArgumentOutOfRangeException("The username must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.UserName));
             }
             if (string.IsNullOrWhiteSpace(newEmployee.Password))
             {
-                throw new ArgumentOutOfRangeException("The password must be set");
+                throw new ArgumentOutOfRangeException(nameof(newEmployee.Password));
             }
             
             newEmployee.Password = EncryptionHelper.Hash(newEmployee.Password);

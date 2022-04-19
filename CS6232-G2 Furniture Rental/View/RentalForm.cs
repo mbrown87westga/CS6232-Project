@@ -68,7 +68,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.HideThisAndShowForm<MainMenuForm>();
         }
 
-        private void memberSearchButton_Click(object sender, System.EventArgs e)
+        private void memberSearchButton_Click(object sender, EventArgs e)
         {
             var form = this.ParentForm.ShowFormAsDialog<MemberSearchForm>();
             _member = form.Result;
@@ -213,9 +213,9 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             int? rowIdx = e?.RowIndex;
             int? colIdx = e?.ColumnIndex;
-            if (rowIdx.HasValue && colIdx.HasValue)
+            if (rowIdx.HasValue)
             {
-                var cell = rentalItemDataGridView.Rows?[rowIdx.Value]?.Cells?[colIdx.Value]?.Value;
+                var cell = rentalItemDataGridView.Rows[rowIdx.Value].Cells[colIdx.Value]?.Value;
                 if (rentalItemDataGridView.Columns[colIdx.Value].HeaderText == "Quantity")
                 {
                     if (!string.IsNullOrEmpty(cell?.ToString()))

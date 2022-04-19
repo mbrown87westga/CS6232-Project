@@ -29,7 +29,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.HideThisAndShowForm<MainMenuForm>();
         }
 
-        private void MembersManagementForm_Activated(object sender, System.EventArgs e)
+        private void MembersManagementForm_Activated(object sender, EventArgs e)
         {
             try
             {

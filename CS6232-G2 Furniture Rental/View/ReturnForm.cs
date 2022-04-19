@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
 using CS6232_G2_Furniture_Rental.View;
@@ -20,7 +17,6 @@ namespace CS6232_G2_Furniture_Return.View
         private static LoginBusiness _loginBusiness;
         private static Employee _employee;
         private static Member _member;
-        private static RentalTransactionBusiness _rentalBusiness;
         private BindingList<ReturnGridItem> _returnItems;
         private static ReturnTransactionBusiness _returnTransactionBusiness;
 
@@ -30,7 +26,6 @@ namespace CS6232_G2_Furniture_Return.View
         public ReturnForm()
         {
             _loginBusiness = new LoginBusiness();
-            _rentalBusiness = new RentalTransactionBusiness();
             _returnTransactionBusiness = new ReturnTransactionBusiness();
             _member = new Member();
             _returnItems = new BindingList<ReturnGridItem>();
@@ -68,7 +63,7 @@ namespace CS6232_G2_Furniture_Return.View
             this.HideThisAndShowForm<MainMenuForm>();
         }
 
-        private void MemberSearchButton_Click(object sender, System.EventArgs e)
+        private void MemberSearchButton_Click(object sender, EventArgs e)
         {
             var form = this.ParentForm.ShowFormAsDialog<MemberSearchForm>();
             _member = form.Result;
@@ -195,31 +190,28 @@ namespace CS6232_G2_Furniture_Return.View
         private void ReturnItemDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             returnItemDataGridView.Rows[e.RowIndex].ErrorText = "";
-            int? rowIdx = e?.RowIndex;
-            int? colIdx = e?.ColumnIndex;
+            int? rowIdx = e.RowIndex;
+            int? colIdx = e.ColumnIndex;
             try
             {
-                if (rowIdx.HasValue && colIdx.HasValue)
+                var cell = returnItemDataGridView.Rows[rowIdx.Value].Cells[colIdx.Value]?.Value;
+                if (colIdx.Value == returnItemDataGridView.ColumnCount - 1)
                 {
-                    var cell = returnItemDataGridView.Rows?[rowIdx.Value]?.Cells?[colIdx.Value]?.Value;
-                    if (colIdx.Value == returnItemDataGridView.ColumnCount - 1)
+                    if (!string.IsNullOrEmpty(cell?.ToString()))
                     {
-                        if (!string.IsNullOrEmpty(cell?.ToString()))
+                        DataGridViewRow row = returnItemDataGridView.Rows[rowIdx.Value];
+                        var returnItem = row.DataBoundItem as ReturnGridItem;
+                        if (returnItem != null)
                         {
-                            DataGridViewRow row = returnItemDataGridView.Rows[rowIdx.Value];
-                            var returnItem = row.DataBoundItem as ReturnGridItem;
-                            if (returnItem != null)
+                            if (returnItem.QuantityToReturn < 0)
                             {
-                                if (returnItem.QuantityToReturn < 0)
-                                {
-                                    MessageBox.Show("Quantity returned mut be at least 0!", "Invalid quantity",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                                else if (returnItem.QuantityToReturn > returnItem.QuantityOut)
-                                {
-                                    MessageBox.Show("Cannot return more than the quantity rented!", "Invalid quantity",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+                                MessageBox.Show("Quantity returned mut be at least 0!", "Invalid quantity",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else if (returnItem.QuantityToReturn > returnItem.QuantityOut)
+                            {
+                                MessageBox.Show("Cannot return more than the quantity rented!", "Invalid quantity",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -284,7 +276,7 @@ namespace CS6232_G2_Furniture_Return.View
         private void returnItemDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             int? colIdx = e?.ColumnIndex;
-            if (colIdx.Value == returnItemDataGridView.ColumnCount - 1)
+            if (colIdx != null && colIdx.Value == returnItemDataGridView.ColumnCount - 1)
             {
                 int count;
                 if (!int.TryParse(e.FormattedValue.ToString(), out count))
@@ -314,8 +306,8 @@ namespace CS6232_G2_Furniture_Return.View
         private void returnItemDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             DataGridViewTextBoxEditingControl tb = (DataGridViewTextBoxEditingControl)e.Control;
-            tb.KeyPress += new KeyPressEventHandler(dataGridViewTextBox_KeyPress);
-            e.Control.KeyPress += new KeyPressEventHandler(dataGridViewTextBox_KeyPress);
+            tb.KeyPress += dataGridViewTextBox_KeyPress;
+            e.Control.KeyPress += dataGridViewTextBox_KeyPress;
         }
 
         private void dataGridViewTextBox_KeyPress(object sender, KeyPressEventArgs e)

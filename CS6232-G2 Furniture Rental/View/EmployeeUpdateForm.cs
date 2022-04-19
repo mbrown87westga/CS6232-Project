@@ -94,7 +94,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
             foreach (var property in properties)
             {
-                if (!object.Equals(property.GetValue(_employee), property.GetValue(_oldEmployee)))
+                if (!Equals(property.GetValue(_employee), property.GetValue(_oldEmployee)))
                 {
                     changed = true;
                     break;

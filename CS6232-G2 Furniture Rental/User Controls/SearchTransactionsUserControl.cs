@@ -60,7 +60,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
                 this.resultsDataGridView.DataSource = _transactionList;
 
-                ShowDetailsButton.Enabled = _transactionList.Count <= 0 ? false : true;
+                ShowDetailsButton.Enabled = _transactionList.Count > 0;
             }
             catch (Exception ex)
             {

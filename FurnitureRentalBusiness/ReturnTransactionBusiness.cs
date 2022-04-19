@@ -12,7 +12,6 @@ namespace FurnitureRentalBusiness
     public class ReturnTransactionBusiness
     {
         private readonly FurnitureDal _furnitureDal;
-        private readonly MemberDal _memberDal;
         private readonly ReturnTransactionDal _returnDal;
         private readonly RentalTransactionDal _rentalDal;
 
@@ -23,7 +22,6 @@ namespace FurnitureRentalBusiness
         {
             _returnDal = new ReturnTransactionDal();
             _rentalDal = new RentalTransactionDal();
-            _memberDal = new MemberDal();
             _furnitureDal = new FurnitureDal();
         }
 
@@ -52,7 +50,8 @@ namespace FurnitureRentalBusiness
                 throw new ArgumentOutOfRangeException("Employee must be selected");
             }
 
-            foreach (ReturnItem returnItem in items)
+            var returnItems = items as ReturnItem[] ?? items.ToArray();
+            foreach (ReturnItem returnItem in returnItems)
             {
                 if (returnItem is null)
                 {
@@ -72,7 +71,7 @@ namespace FurnitureRentalBusiness
                 }
             }
 
-            return this._returnDal.AddReturnTransaction(transaction, items);
+            return this._returnDal.AddReturnTransaction(transaction, returnItems);
         }
         
         /// <summary>
