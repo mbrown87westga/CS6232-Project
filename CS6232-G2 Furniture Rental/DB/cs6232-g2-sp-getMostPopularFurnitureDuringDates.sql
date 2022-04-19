@@ -26,8 +26,8 @@ BEGIN
 	END
 
 	-- Get total # of rentals for time period
-	DECLARE @total_rentals FLOAT
-	SELECT @total_rentals = COUNT(rt.rentalTransactionID)
+	DECLARE @totalRentals INT
+	SELECT @totalRentals = COUNT(rt.rentalTransactionID)
 	  FROM RentalTransaction rt
 	 WHERE rt.rentalTimestamp >= @start_date_param
 	   AND rt.rentalTimestamp <= @end_date_param
@@ -57,11 +57,10 @@ BEGIN
 	  ON QualifiedFurniture.furnitureID = FurnitureRentals.furnitureID
 	  WHERE nbrRentals > 1
 
-	SELECT f.furnitureID, f.categoryDescription, f.[name], irr.nbrRentals AS 'Nbr of Rentals',
-		   irr.qualifiedRentals AS 'Qualified Rentals', @total_rentals AS 'Total Rentals',
-		   CONCAT(ROUND(CAST(irr.nbrRentals AS FLOAT) / CAST(@total_rentals AS FLOAT) * 100, 2), '%') AS '% of Total Rentals',
-		   CONCAT(ROUND(CAST(irr.qualifiedRentals AS FLOAT) / CAST(irr.nbrRentals AS FLOAT) * 100, 2), '%') AS '% 18-29',
-		   CONCAT(ROUND((irr.nbrRentals - irr.qualifiedRentals) / CAST(irr.nbrRentals AS FLOAT) * 100, 2), '%') AS '% Not 18-29'
+	SELECT f.furnitureID, f.categoryDescription AS category, f.[name], irr.nbrRentals, @totalRentals AS totalRentals,
+		   CONCAT(ROUND(CAST(irr.nbrRentals AS FLOAT) / CAST(@totalRentals AS FLOAT) * 100, 2), '%') AS 'PctOfTotal',
+		   CONCAT(ROUND(CAST(irr.qualifiedRentals AS FLOAT) / CAST(irr.nbrRentals AS FLOAT) * 100, 2), '%') AS 'PctInAgeRange',
+		   CONCAT(ROUND((irr.nbrRentals - irr.qualifiedRentals) / CAST(irr.nbrRentals AS FLOAT) * 100, 2), '%') AS 'PctNotInAgeRange'
 	 FROM Furniture f, #in_range_rentals irr
 	WHERE f.furnitureID = irr.furnitureID
 	ORDER BY f.furnitureID

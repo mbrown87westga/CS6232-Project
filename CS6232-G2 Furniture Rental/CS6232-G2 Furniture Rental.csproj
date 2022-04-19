@@ -68,11 +68,6 @@
   <ItemGroup>
     <Compile Include="Helpers\DisplayTextHelper.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
-    <Compile Include="PopularFurnitureDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PopularFurnitureDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="User Controls\AddEmployeeUserControl.cs">
       <SubType>UserControl</SubType>
@@ -223,6 +218,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\PopularFurnitureReport.rdlc" />
     <EmbeddedResource Include="User Controls\AddEmployeeUserControl.resx">
       <DependentUpon>AddEmployeeUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,17 +289,6 @@
       <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="PopularFurnitureDataSet.xsc">
-      <DependentUpon>PopularFurnitureDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="PopularFurnitureDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PopularFurnitureDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PopularFurnitureDataSet.xss">
-      <DependentUpon>PopularFurnitureDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\DataSources\FurnitureRentalDomain.Employee.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.Furniture.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.GetMostPopularDuringDateReport.datasource" />
@@ -324,9 +309,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\cs6232-g2_creation_script.sql" />
     <Content Include="SqlServerTypes\readme.htm" />

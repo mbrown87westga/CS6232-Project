@@ -30,7 +30,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.startDateLabel = new System.Windows.Forms.Label();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.endDateLabel = new System.Windows.Forms.Label();
@@ -94,9 +94,9 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // popularFurnitureReportViewer
             // 
             this.popularFurnitureReportViewer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            reportDataSource1.Name = "PopularFurnitureDataSet";
-            reportDataSource1.Value = this.GetMostPopularDuringDateReportBindingSource;
-            this.popularFurnitureReportViewer.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "PopularFurnitureDataSet";
+            reportDataSource2.Value = this.GetMostPopularDuringDateReportBindingSource;
+            this.popularFurnitureReportViewer.LocalReport.DataSources.Add(reportDataSource2);
             this.popularFurnitureReportViewer.LocalReport.ReportEmbeddedResource = "CS6232_G2_Furniture_Rental.Reports.PopularFurnitureReport.rdlc";
             this.popularFurnitureReportViewer.Location = new System.Drawing.Point(0, 111);
             this.popularFurnitureReportViewer.Name = "popularFurnitureReportViewer";

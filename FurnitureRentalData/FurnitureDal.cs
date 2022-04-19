@@ -11,6 +11,12 @@ namespace FurnitureRentalData
     /// </summary>
     public class FurnitureDal
     {
+        /// <summary>
+        /// Retrieves most popular furniture for the given date range
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns>list of popular furniture</returns>
         public List<GetMostPopularDuringDateReport> GetMostPopularDuringDates(DateTime startDate, DateTime endDate)
         {
             List<GetMostPopularDuringDateReport> _furnitureList = new List<GetMostPopularDuringDateReport>();
@@ -51,11 +57,11 @@ namespace FurnitureRentalData
             }
         }
 
-            /// <summary>
-            /// Retrieves all furniture items from the database
-            /// </summary>
-            /// <returns>a list of Furniture items</returns>
-            public List<Furniture> GetAllFurniture()
+        /// <summary>
+        /// Retrieves all furniture items from the database
+        /// </summary>
+        /// <returns>a list of Furniture items</returns>
+        public List<Furniture> GetAllFurniture()
         {
             List<Furniture> furnitureList = new List<Furniture>();
 
