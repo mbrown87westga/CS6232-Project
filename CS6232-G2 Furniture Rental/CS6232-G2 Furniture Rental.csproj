@@ -68,6 +68,11 @@
   <ItemGroup>
     <Compile Include="Helpers\DisplayTextHelper.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="PopularFurnitureDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PopularFurnitureDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="User Controls\AddEmployeeUserControl.cs">
       <SubType>UserControl</SubType>
@@ -209,11 +214,6 @@
     <Compile Include="View\TransactionDetailsForm.Designer.cs">
       <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_cs6232_g2DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_cs6232_g2DataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -293,6 +293,17 @@
       <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="PopularFurnitureDataSet.xsc">
+      <DependentUpon>PopularFurnitureDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PopularFurnitureDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PopularFurnitureDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PopularFurnitureDataSet.xss">
+      <DependentUpon>PopularFurnitureDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\FurnitureRentalDomain.Employee.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.Furniture.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalDomain.GetMostPopularDuringDateReport.datasource" />
@@ -309,17 +320,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="_cs6232_g2DataSet.xsc">
-      <DependentUpon>_cs6232_g2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_cs6232_g2DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_cs6232_g2DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_cs6232_g2DataSet.xss">
-      <DependentUpon>_cs6232_g2DataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -19,5 +19,9 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             InitializeComponent();
         }
 
+        private void reportButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

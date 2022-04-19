@@ -34,12 +34,12 @@ namespace FurnitureRentalData
                             {
                                 FurnitureID = (int)reader["furnitureID"],
                                 Category = reader["category"].ToString(),
-                                FurnitureName = reader["furnitureName"].ToString(),
-                                TotalTrans = (int)reader["TotTrans"],
-                                TotalFurnitureTrans = (int)reader["TotFurnTrans"],
-                                PctOfTotal = reader["PctOfTot"].ToString(),
-                                PctNotOfAgeMembers = reader["PctNotOfAgeMbrs"].ToString(),
-                                PctOfAgeMembers = reader["PctOfAgeMbrs"].ToString()
+                                FurnitureName = reader["name"].ToString(),
+                                NbrRentals = (int)reader["nbrRentals"],
+                                TotalRentals = (int)reader["totalRentals"],
+                                PctOfTotal = reader["PctOfTotal"].ToString(),
+                                PctInAgeRange = reader["PctInAgeRange"].ToString(),
+                                PctNotInAgeRange = reader["PctNotInAgeRange"].ToString()
                             };
 
                             _furnitureList.Add(furniture);

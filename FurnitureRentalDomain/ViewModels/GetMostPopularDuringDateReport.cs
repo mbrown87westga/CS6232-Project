@@ -14,14 +14,14 @@ namespace FurnitureRentalDomain
 
         public string FurnitureName { get; set; }
 
-        public int TotalTrans { get; set; }
+        public int NbrRentals { get; set; }
 
-        public int TotalFurnitureTrans { get; set; }
+        public int TotalRentals { get; set; }
 
         public string PctOfTotal { get; set; }
 
-        public string PctOfAgeMembers { get; set; }
+        public string PctInAgeRange { get; set; }
 
-        public string PctNotOfAgeMembers { get; set; }
+        public string PctNotInAgeRange { get; set; }
     }
 }
