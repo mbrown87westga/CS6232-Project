@@ -26,7 +26,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
         private void reportButton_Click(object sender, EventArgs e)
         {
-            _data = _business.GetMostPopularDuringDates(startDateTimePicker.Value.Date, endDateTimePicker.Value.Date);
+            _data = _business.GetMostPopularDuringDates(startDateTimePicker.Value, endDateTimePicker.Value);
             if (_data.Count <= 0)
             {
                 MessageBox.Show("No results found.", "No results", MessageBoxButtons.OK, MessageBoxIcon.Information);
