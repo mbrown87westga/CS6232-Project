@@ -33,7 +33,9 @@ namespace CS6232_G2_Furniture_Rental.View
             this.employeeLabel = new System.Windows.Forms.Label();
             this.adminReportsTabControl = new System.Windows.Forms.TabControl();
             this.PopularFurniture = new System.Windows.Forms.TabPage();
+            this.popularFurnitureReportUserControl = new CS6232_G2_Furniture_Rental.User_Controls.PopularFurnitureReportUserControl();
             this.adminReportsTabControl.SuspendLayout();
+            this.PopularFurniture.SuspendLayout();
             this.SuspendLayout();
             // 
             // employeeIDLabel
@@ -66,6 +68,7 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // PopularFurniture
             // 
+            this.PopularFurniture.Controls.Add(this.popularFurnitureReportUserControl);
             this.PopularFurniture.Location = new System.Drawing.Point(4, 22);
             this.PopularFurniture.Name = "PopularFurniture";
             this.PopularFurniture.Padding = new System.Windows.Forms.Padding(3);
@@ -73,6 +76,14 @@ namespace CS6232_G2_Furniture_Rental.View
             this.PopularFurniture.TabIndex = 0;
             this.PopularFurniture.Text = "Popular Furniture";
             this.PopularFurniture.UseVisualStyleBackColor = true;
+            // 
+            // popularFurnitureReportUserControl
+            // 
+            this.popularFurnitureReportUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.popularFurnitureReportUserControl.Location = new System.Drawing.Point(3, 3);
+            this.popularFurnitureReportUserControl.Name = "popularFurnitureReportUserControl";
+            this.popularFurnitureReportUserControl.Size = new System.Drawing.Size(786, 354);
+            this.popularFurnitureReportUserControl.TabIndex = 0;
             // 
             // AdminReportsForm
             // 
@@ -86,6 +97,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Reports";
             this.adminReportsTabControl.ResumeLayout(false);
+            this.PopularFurniture.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,5 +109,6 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.Label employeeLabel;
         private System.Windows.Forms.TabControl adminReportsTabControl;
         private System.Windows.Forms.TabPage PopularFurniture;
+        private User_Controls.PopularFurnitureReportUserControl popularFurnitureReportUserControl;
     }
 }
