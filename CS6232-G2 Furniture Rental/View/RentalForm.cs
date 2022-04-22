@@ -97,11 +97,6 @@ namespace CS6232_G2_Furniture_Rental.View
             }
         }
 
-        private void rentalItemDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            //calculateRowTotal(rentalItemDataGridView.Rows.Count - 1);
-        }
-
         private void clearButton_Click(object sender, EventArgs e)
         {
             initializeCart();
@@ -162,7 +157,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
                         if (_rentalTransactionBusiness.Add(newRental, _cart) > 0)
                         {
-                            rentalTimestampDataLabel.Text = newRental.RentalTimestamp.ToString();
+                            rentalTimestampDataLabel.Text = newRental.RentalTimestamp.ToShortDateString();
                             MessageBox.Show("Transaction complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             setEnabled(false);
                         }
@@ -226,32 +221,32 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void rentalItemDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            int? rowIdx = e?.RowIndex;
-            int? colIdx = e?.ColumnIndex;
-            if (rowIdx.HasValue)
+            var cell = rentalItemDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+            if (rentalItemDataGridView.Columns[e.ColumnIndex].HeaderText == "Quantity")
             {
-                var cell = rentalItemDataGridView.Rows[rowIdx.Value].Cells[colIdx.Value]?.Value;
-                if (rentalItemDataGridView.Columns[colIdx.Value].HeaderText == "Quantity")
+                if (!string.IsNullOrEmpty(cell.ToString()))
                 {
-                    if (!string.IsNullOrEmpty(cell?.ToString()))
+                    DataGridViewRow row = rentalItemDataGridView.Rows[e.RowIndex];
+                    RentalItem rentalItem = row.DataBoundItem as RentalItem;
+                    if (rentalItem != null)
                     {
-                        DataGridViewRow row = rentalItemDataGridView.Rows[rowIdx.Value];
-                        var rentalItem = row.DataBoundItem as RentalItem;
-                        if (rentalItem != null)
+                        if (rentalItem.Quantity <= 0)
                         {
-                            if (rentalItem.Quantity <= 0)
+                            DialogResult result = MessageBox.Show("Remove " + row.Cells["FurnitureName"].Value + " from cart?", "Remove item?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                            if (result.Equals(DialogResult.OK))
                             {
-                                DialogResult result = MessageBox.Show("Remove " + row.Cells["FurnitureName"].Value + " from cart?", "Remove item?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                                if (result.Equals(DialogResult.OK))
-                                {
-                                    _cart.Remove(rentalItem);
-                                    updateCart();
-                                }
+                                _cart.Remove(rentalItem);
+                                updateCart();
                             }
-                            else if (rentalItem.Quantity > _furniture.Find(f => f.FurnitureID == rentalItem.FurnitureID).QuantityAvailable)
-                            {
-                                MessageBox.Show("Cannot rent more than the quantity available!", "Invalid quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                        }
+                        else if (rentalItem.Quantity > _furniture.Find(f => f.FurnitureID == rentalItem.FurnitureID).QuantityAvailable)
+                        {
+                            MessageBox.Show("Cannot rent more than the quantity available!", "Invalid quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            calculateRowTotal(row);
+                            updateGrandTotal();
                         }
                     }
                 }
@@ -272,7 +267,6 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void calculateRowTotal(DataGridViewRow row)
         {
-            //DataGridViewRow row = rentalItemDataGridView.Rows[rowIndex];
             var rentalItem = row.DataBoundItem as RentalItem;
             if (rentalItem != null)
             {
