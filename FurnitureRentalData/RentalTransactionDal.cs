@@ -69,7 +69,7 @@ namespace FurnitureRentalData
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        throw ex;
                     }
                     finally
                     {
