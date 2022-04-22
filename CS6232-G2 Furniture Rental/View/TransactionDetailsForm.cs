@@ -66,6 +66,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
                 if (gridItem.FurnitureID != prevFurnitureID)
                 {
+                    row.Cells["FurnitureID"].Value = gridItem.FurnitureID;
                     row.Cells["Description"].Value = gridItem.FurnitureDescription;
                     row.Cells["QtyRented"].Value = gridItem.QtyRented;
                 }

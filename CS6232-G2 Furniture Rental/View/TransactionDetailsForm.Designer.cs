@@ -47,6 +47,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalEmployeeTextBox = new System.Windows.Forms.TextBox();
             this.transactionDetailsDataGridView = new System.Windows.Forms.DataGridView();
             this.OKButton = new System.Windows.Forms.Button();
+            this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -182,6 +183,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.transactionDetailsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.transactionDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.transactionDetailsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FurnitureID,
             this.Description,
             this.QtyRented,
             this.QtyReturned,
@@ -189,7 +191,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.transactionDetailsDataGridView.Location = new System.Drawing.Point(15, 177);
             this.transactionDetailsDataGridView.Name = "transactionDetailsDataGridView";
             this.transactionDetailsDataGridView.ReadOnly = true;
-            this.transactionDetailsDataGridView.Size = new System.Drawing.Size(523, 189);
+            this.transactionDetailsDataGridView.Size = new System.Drawing.Size(577, 189);
             this.transactionDetailsDataGridView.TabIndex = 13;
             // 
             // OKButton
@@ -203,6 +205,13 @@ namespace CS6232_G2_Furniture_Rental.View
             this.OKButton.Text = "&OK";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // FurnitureID
+            // 
+            this.FurnitureID.HeaderText = "ID";
+            this.FurnitureID.Name = "FurnitureID";
+            this.FurnitureID.ReadOnly = true;
+            this.FurnitureID.Width = 50;
             // 
             // Description
             // 
@@ -290,6 +299,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.TextBox rentalEmployeeTextBox;
         private System.Windows.Forms.DataGridView transactionDetailsDataGridView;
         private System.Windows.Forms.Button OKButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyRented;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyReturned;
