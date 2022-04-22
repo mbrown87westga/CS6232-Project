@@ -38,8 +38,7 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             initializeCart();
             _furniture = _furnitureBusiness.GetAllFurniture();
-            newRentalButton.Enabled = false;
-            dueDateTimePicker.Value = DateTime.Now.AddDays(1);
+            setEnabled(true);
         }
 
         private void RentalForm_Activated(object sender, EventArgs e)
@@ -109,6 +108,27 @@ namespace CS6232_G2_Furniture_Rental.View
             updateCart();
         }
 
+        private void setEnabled(bool enable)
+        {
+            newRentalButton.Enabled = !enable;
+            clearButton.Enabled = enable;
+            checkoutButton.Enabled = enable;
+            memberSearchButton.Enabled = enable;
+            furnitureSearchButton.Enabled = enable;
+            rentalItemDataGridView.Enabled = enable;
+            if (enable)
+            {
+                dueDateTimePicker.Enabled = true;
+                dueDateTimePicker.Value = DateTime.Now.AddDays(1);
+                memberSearchButton.Select();
+            }
+            else
+            {
+                dueDateTimePicker.Enabled = false;
+                newRentalButton.Select();
+            }
+        }
+
         private void newRentalButton_Click(object sender, EventArgs e)
         {
             initializeCart();
@@ -117,10 +137,7 @@ namespace CS6232_G2_Furniture_Rental.View
             memberBindingSource.Clear();
             this.memberBindingSource.DataSource = _member;
             this.memberNameLabel.Text = "";
-            newRentalButton.Enabled = false;
-            clearButton.Enabled = true;
-            checkoutButton.Enabled = true;
-            dueDateTimePicker.Value = DateTime.Now.AddDays(1);
+            setEnabled(true);
         }
 
         private void checkoutButton_Click(object sender, EventArgs e)
@@ -147,9 +164,7 @@ namespace CS6232_G2_Furniture_Rental.View
                         {
                             rentalTimestampDataLabel.Text = newRental.RentalTimestamp.ToString();
                             MessageBox.Show("Transaction complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            newRentalButton.Enabled = true;
-                            clearButton.Enabled = false;
-                            checkoutButton.Enabled = false;
+                            setEnabled(false);
                         }
                     }
 
