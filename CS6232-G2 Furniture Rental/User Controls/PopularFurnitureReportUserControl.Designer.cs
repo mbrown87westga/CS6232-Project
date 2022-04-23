@@ -30,7 +30,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.startDateLabel = new System.Windows.Forms.Label();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.endDateLabel = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // 
             this.startDateLabel.AutoSize = true;
             this.startDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startDateLabel.Location = new System.Drawing.Point(13, 16);
+            this.startDateLabel.Location = new System.Drawing.Point(8, 23);
             this.startDateLabel.Name = "startDateLabel";
             this.startDateLabel.Size = new System.Drawing.Size(76, 17);
             this.startDateLabel.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // 
             this.startDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.startDateTimePicker.Location = new System.Drawing.Point(95, 11);
+            this.startDateTimePicker.Location = new System.Drawing.Point(95, 18);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(115, 23);
             this.startDateTimePicker.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // 
             this.endDateLabel.AutoSize = true;
             this.endDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDateLabel.Location = new System.Drawing.Point(246, 16);
+            this.endDateLabel.Location = new System.Drawing.Point(221, 22);
             this.endDateLabel.Name = "endDateLabel";
             this.endDateLabel.Size = new System.Drawing.Size(71, 17);
             this.endDateLabel.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // 
             this.endDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.endDateTimePicker.Location = new System.Drawing.Point(323, 10);
+            this.endDateTimePicker.Location = new System.Drawing.Point(303, 17);
             this.endDateTimePicker.Name = "endDateTimePicker";
             this.endDateTimePicker.Size = new System.Drawing.Size(115, 23);
             this.endDateTimePicker.TabIndex = 3;
@@ -83,7 +83,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // 
             this.reportButton.AutoSize = true;
             this.reportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportButton.Location = new System.Drawing.Point(495, 11);
+            this.reportButton.Location = new System.Drawing.Point(429, 13);
             this.reportButton.Name = "reportButton";
             this.reportButton.Size = new System.Drawing.Size(75, 27);
             this.reportButton.TabIndex = 4;
@@ -93,15 +93,14 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // 
             // popularFurnitureReportViewer
             // 
-            this.popularFurnitureReportViewer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            reportDataSource2.Name = "PopularFurnitureDataSet";
-            reportDataSource2.Value = this.GetMostPopularDuringDateReportBindingSource;
-            this.popularFurnitureReportViewer.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "PopularFurnitureDataSet";
+            reportDataSource1.Value = this.GetMostPopularDuringDateReportBindingSource;
+            this.popularFurnitureReportViewer.LocalReport.DataSources.Add(reportDataSource1);
             this.popularFurnitureReportViewer.LocalReport.ReportEmbeddedResource = "CS6232_G2_Furniture_Rental.Reports.PopularFurnitureReport.rdlc";
-            this.popularFurnitureReportViewer.Location = new System.Drawing.Point(0, 111);
+            this.popularFurnitureReportViewer.Location = new System.Drawing.Point(0, 47);
             this.popularFurnitureReportViewer.Name = "popularFurnitureReportViewer";
             this.popularFurnitureReportViewer.ServerReport.BearerToken = null;
-            this.popularFurnitureReportViewer.Size = new System.Drawing.Size(716, 246);
+            this.popularFurnitureReportViewer.Size = new System.Drawing.Size(1136, 453);
             this.popularFurnitureReportViewer.TabIndex = 5;
             // 
             // GetMostPopularDuringDateReportBindingSource
@@ -119,7 +118,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.Controls.Add(this.startDateTimePicker);
             this.Controls.Add(this.startDateLabel);
             this.Name = "PopularFurnitureReportUserControl";
-            this.Size = new System.Drawing.Size(716, 357);
+            this.Size = new System.Drawing.Size(1144, 500);
             ((System.ComponentModel.ISupportInitialize)(this.GetMostPopularDuringDateReportBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
