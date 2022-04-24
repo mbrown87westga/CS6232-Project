@@ -41,7 +41,7 @@ namespace FurnitureRentalBusiness
         /// <param name="newRental">the rental transaction details</param>
         /// <param name="cart">a list of Rental Items for this transaction</param>
         /// <returns>the rental transaction id</returns>
-        public int Add(RentalTransaction newRental, List<RentalItem> cart)
+        public int Add(RentalTransaction newRental, IEnumerable<RentalItem> cart)
         {            
             if (newRental is null)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using CS6232_G2_Furniture_Rental.Helpers;
 using FurnitureRentalBusiness;
@@ -17,7 +18,7 @@ namespace CS6232_G2_Furniture_Rental.View
         private static Member _member;
         private static FurnitureBusiness _furnitureBusiness;
         private List<Furniture> _furniture;
-        private List<RentalItem> _cart;
+        private BindingList<RentalItem> _cart;
         private static RentalTransactionBusiness _rentalTransactionBusiness;
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace CS6232_G2_Furniture_Rental.View
             _furnitureBusiness = new FurnitureBusiness();
             _rentalTransactionBusiness = new RentalTransactionBusiness();
             _member = new Member();
-            _cart = new List<RentalItem>();
+            _cart = new BindingList<RentalItem>();
 
             InitializeComponent();
         }
@@ -85,7 +86,7 @@ namespace CS6232_G2_Furniture_Rental.View
             RentalItem result = form.Result;
             if (result != null)
             {
-                if (_cart.FindIndex(f => f.FurnitureID == result.FurnitureID) >= 0)
+                if (itemInCart(result.FurnitureID))
                 {
                     MessageBox.Show("Item already added, update quantity in cart!", "Item already added", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -95,6 +96,19 @@ namespace CS6232_G2_Furniture_Rental.View
                     updateCart();
                 }
             }
+        }
+
+        private bool itemInCart(int furnitureID)
+        {
+            foreach(var item in _cart)
+            {
+                if (item.FurnitureID == furnitureID)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -255,7 +269,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void initializeCart()
         {
-            _cart = new List<RentalItem>();
+            _cart = new BindingList<RentalItem>();
         }
 
         private void updateCart()

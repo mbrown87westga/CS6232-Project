@@ -17,7 +17,7 @@ namespace FurnitureRentalData
         /// <param name="newRental">the rental transaction details</param>
         /// <param name="cart">a list of rental items for this transaction</param>
         /// <returns>the transaction id</returns>
-        public int AddRentalTransaction(RentalTransaction newRental, List<RentalItem> cart)
+        public int AddRentalTransaction(RentalTransaction newRental, IEnumerable<RentalItem> cart)
         {
             int transactionID = 0;
 
