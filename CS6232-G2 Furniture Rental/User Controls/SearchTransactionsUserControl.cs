@@ -88,7 +88,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             {
                 this.GetMemberData();
 
-                if (_transactionList.Count <= 0)
+                if (_transactionList == null || _transactionList.Count <= 0)
                 {
                     MessageBox.Show("No results found!", "No results found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

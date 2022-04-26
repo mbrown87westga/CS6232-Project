@@ -24,6 +24,10 @@ namespace FurnitureRentalDomain
         /// </summary>
         public int MemberID { get; set; }
         /// <summary>
+        /// The name of the member who rented the item(s)
+        /// </summary>
+        public string Member { get; set; }
+        /// <summary>
         /// The employee who helped the member's id
         /// </summary>
         public int EmployeeID { get; set; }

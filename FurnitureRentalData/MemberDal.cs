@@ -114,10 +114,12 @@ namespace FurnitureRentalData
         {
             List<RentalTransaction> rentalTransactionList = new List<RentalTransaction>();
 
-            string selectStatement = @"SELECT [rentalTransactionID], [rentalTimestamp], [dueDateTime], [memberID], e.[employeeID], [userName] as [employeeUserName]
+            string selectStatement = @"SELECT t.[rentalTransactionID], t.[rentalTimestamp], t.[dueDateTime], t.[memberID], e.[employeeID],
+                                              e.[userName] as [employeeUserName], m.[firstName] + ' ' + m.[lastName] as memberName
                                        FROM [RentalTransaction] t
                                        join [Employee] e on e.[employeeID] = t.[employeeID]
-                                       where memberID = @memberId
+                                       join [Member] m on m.[memberID] = t.[memberID]
+                                       where t.memberID = @memberId
                                        and [rentalTimestamp] between dateadd(dd, -1, @begin) and @end";
 
             using (SqlConnection connection = FurnitureRentalDbConnection.GetConnection())
@@ -141,6 +143,7 @@ namespace FurnitureRentalData
                                 MemberID = (int)reader["memberID"],
                                 EmployeeID = (int)reader["employeeID"],
                                 Employee = reader["employeeUserName"].ToString(),
+                                Member = reader["memberName"].ToString(),
                             };
                             rentalTransactionList.Add(rentalTransaction);
                         }
