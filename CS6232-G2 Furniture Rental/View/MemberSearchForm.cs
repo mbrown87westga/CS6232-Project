@@ -57,7 +57,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            int? memberId = ((Member)(memberComboBox?.SelectedValue))?.MemberID;
+            int? memberId = ((Member)(memberComboBox?.SelectedValue))?.MemberID ?? memberComboBox.Items.OfType<Member>().SingleOrDefault(x => x.MemberID.ToString() == memberComboBox.Text)?.MemberID;
             _searchResults = _memberBusiness.FindMembers(memberId, phoneTextBox.Text.Trim(), nameTextBox.Text.Trim());
             if (_searchResults.Any())
             {
@@ -93,6 +93,11 @@ namespace CS6232_G2_Furniture_Rental.View
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
