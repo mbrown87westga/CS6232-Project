@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace CS6232_G2_Furniture_Rental.View
 {
     partial class RentalForm
@@ -68,6 +70,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.dailyRentalRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalTransactionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remove_column = new System.Windows.Forms.DataGridViewButtonColumn();
             address1Label = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
             rentalTimestampLabel = new System.Windows.Forms.Label();
@@ -123,6 +126,9 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.rentalItemDataGridView.AllowUserToAddRows = false;
             this.rentalItemDataGridView.AllowUserToDeleteRows = false;
+            this.rentalItemDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rentalItemDataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -139,13 +145,15 @@ namespace CS6232_G2_Furniture_Rental.View
             this.quantityDataGridViewTextBoxColumn,
             this.dailyRentalRateDataGridViewTextBoxColumn,
             this.Total,
-            this.rentalTransactionIDDataGridViewTextBoxColumn});
+            this.rentalTransactionIDDataGridViewTextBoxColumn,
+            this.remove_column});
             this.rentalItemDataGridView.DataSource = this.rentalItemBindingSource;
             this.rentalItemDataGridView.Location = new System.Drawing.Point(16, 209);
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
-            this.rentalItemDataGridView.Size = new System.Drawing.Size(629, 174);
+            this.rentalItemDataGridView.Size = new System.Drawing.Size(723, 174);
             this.rentalItemDataGridView.TabIndex = 1;
             this.rentalItemDataGridView.DataSourceChanged += new System.EventHandler(this.rentalItemDataGridView_DataSourceChanged);
+            this.rentalItemDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rentalItemDataGridView_CellClick);
             this.rentalItemDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.rentalItemDataGridView_CellEndEdit);
             // 
             // rentalItemBindingSource
@@ -422,11 +430,18 @@ namespace CS6232_G2_Furniture_Rental.View
             this.rentalTransactionIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.rentalTransactionIDDataGridViewTextBoxColumn.Visible = false;
             // 
+            // remove_column
+            // 
+            this.remove_column.HeaderText = "";
+            this.remove_column.Name = "remove_column";
+            this.remove_column.Text = "Remove";
+            this.remove_column.UseColumnTextForButtonValue = true;
+            // 
             // RentalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 461);
+            this.ClientSize = new System.Drawing.Size(752, 461);
             this.Controls.Add(this.daysTotalLabel);
             this.Controls.Add(this.grandTotalLabel);
             this.Controls.Add(this.phoneMaskedTextBox);
@@ -493,11 +508,13 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
         private System.Windows.Forms.Label grandTotalLabel;
         private System.Windows.Forms.Label daysTotalLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dailyRentalRateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rentalTransactionIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn removeButtonColumn;
+        private DataGridViewTextBoxColumn furnitureIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn FurnitureName;
+        private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dailyRentalRateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Total;
+        private DataGridViewTextBoxColumn rentalTransactionIDDataGridViewTextBoxColumn;
+        private DataGridViewButtonColumn remove_column;
     }
 }

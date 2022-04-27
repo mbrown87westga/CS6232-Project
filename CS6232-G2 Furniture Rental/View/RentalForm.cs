@@ -333,5 +333,14 @@ namespace CS6232_G2_Furniture_Rental.View
                 calculateRowTotal(row);
             }
         }
+
+        private void rentalItemDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == rentalItemDataGridView.Columns["remove_column"].Index)
+            {
+                _cart.RemoveAt(e.RowIndex);
+                updateGrandTotal();
+            }
+        }
     }
 }
