@@ -93,6 +93,9 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             // 
             // popularFurnitureReportViewer
             // 
+            this.popularFurnitureReportViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             reportDataSource1.Name = "PopularFurnitureDataSet";
             reportDataSource1.Value = this.GetMostPopularDuringDateReportBindingSource;
             this.popularFurnitureReportViewer.LocalReport.DataSources.Add(reportDataSource1);
@@ -100,8 +103,9 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.popularFurnitureReportViewer.Location = new System.Drawing.Point(0, 47);
             this.popularFurnitureReportViewer.Name = "popularFurnitureReportViewer";
             this.popularFurnitureReportViewer.ServerReport.BearerToken = null;
-            this.popularFurnitureReportViewer.Size = new System.Drawing.Size(1136, 453);
+            this.popularFurnitureReportViewer.Size = new System.Drawing.Size(1200, 533);
             this.popularFurnitureReportViewer.TabIndex = 5;
+            this.popularFurnitureReportViewer.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
             // GetMostPopularDuringDateReportBindingSource
             // 
@@ -118,7 +122,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             this.Controls.Add(this.startDateTimePicker);
             this.Controls.Add(this.startDateLabel);
             this.Name = "PopularFurnitureReportUserControl";
-            this.Size = new System.Drawing.Size(1144, 500);
+            this.Size = new System.Drawing.Size(1200, 580);
             ((System.ComponentModel.ISupportInitialize)(this.GetMostPopularDuringDateReportBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

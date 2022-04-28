@@ -27,19 +27,26 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
         private void reportButton_Click(object sender, EventArgs e)
         {
-            _data = _business.GetMostPopularDuringDates(startDateTimePicker.Value.Date, endDateTimePicker.Value.Date);
-            if (_data.Count <= 0)
+            try
             {
-                MessageBox.Show("No results found.", "No results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _data = _business.GetMostPopularDuringDates(startDateTimePicker.Value.Date, endDateTimePicker.Value.Date);
+                if (_data.Count <= 0)
+                {
+                    MessageBox.Show("No results found.", "No results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                this.GetMostPopularDuringDateReportBindingSource.DataSource = _data;
+
+                List<ReportParameter> paramList = new List<ReportParameter>();
+                paramList.Add(new ReportParameter("StartDate", startDateTimePicker.Value.ToShortDateString()));
+                paramList.Add(new ReportParameter("EndDate", endDateTimePicker.Value.ToShortTimeString()));
+                this.popularFurnitureReportViewer.LocalReport.SetParameters(paramList);
+
+                this.popularFurnitureReportViewer.RefreshReport();
             }
-            this.GetMostPopularDuringDateReportBindingSource.DataSource = _data;
-
-            List<ReportParameter> paramList = new List<ReportParameter>();
-            paramList.Add(new ReportParameter("StartDate", startDateTimePicker.Value.ToShortDateString()));
-            paramList.Add(new ReportParameter("EndDate", endDateTimePicker.Value.ToShortTimeString()));
-            this.popularFurnitureReportViewer.LocalReport.SetParameters(paramList);
-
-            this.popularFurnitureReportViewer.RefreshReport();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }

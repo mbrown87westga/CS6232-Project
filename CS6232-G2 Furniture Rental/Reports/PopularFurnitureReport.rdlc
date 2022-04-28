@@ -61,7 +61,7 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Textbox Name="Textbox1">
+          <Textbox Name="reportTitleTextbox">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -105,10 +105,9 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.25in</Top>
             <Height>0.25in</Height>
-            <Width>10.41667in</Width>
+            <Width>12in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -119,32 +118,32 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Tablix Name="Tablix2">
+          <Tablix Name="popularFurnitureReportTable">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.54556in</Width>
+                  <Width>0.76717in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.19139in</Width>
+                  <Width>1.413in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.74222in</Width>
+                  <Width>1.96383in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.22161in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.5in</Width>
+                  <Width>1.72161in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.28125in</Width>
+                  <Width>1.50286in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.5625in</Width>
+                  <Width>1.78411in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.35417in</Width>
+                  <Width>1.57578in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1029,9 +1028,9 @@
             </TablixRowHierarchy>
             <DataSetName>PopularFurnitureDataSet</DataSetName>
             <Top>0.76958in</Top>
-            <Left>0.23958in</Left>
+            <Left>0.05in</Left>
             <Height>1.30208in</Height>
-            <Width>10.17708in</Width>
+            <Width>11.95in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1040,19 +1039,19 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.07167in</Height>
+        <Height>2.19792in</Height>
         <Style>
           <BackgroundColor>#826251</BackgroundColor>
         </Style>
       </Body>
-      <Width>10.84375in</Width>
+      <Width>12.1in</Width>
       <Page>
         <PageFooter>
           <Height>0.57292in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="Textbox6">
+            <Textbox Name="pageFooterTextbox">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -1071,9 +1070,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Textbox6</rd:DefaultName>
               <Top>0.16542in</Top>
-              <Left>3.0625in</Left>
+              <Left>3.95833in</Left>
               <Height>0.25in</Height>
               <Width>4.10417in</Width>
               <Style>

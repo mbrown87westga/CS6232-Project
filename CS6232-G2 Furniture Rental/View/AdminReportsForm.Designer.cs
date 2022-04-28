@@ -60,10 +60,10 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             this.adminReportsTabControl.Controls.Add(this.PopularFurniture);
             this.adminReportsTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.adminReportsTabControl.Location = new System.Drawing.Point(0, 12);
+            this.adminReportsTabControl.Location = new System.Drawing.Point(0, 36);
             this.adminReportsTabControl.Name = "adminReportsTabControl";
             this.adminReportsTabControl.SelectedIndex = 0;
-            this.adminReportsTabControl.Size = new System.Drawing.Size(1028, 449);
+            this.adminReportsTabControl.Size = new System.Drawing.Size(1184, 425);
             this.adminReportsTabControl.TabIndex = 5;
             // 
             // PopularFurniture
@@ -72,23 +72,24 @@ namespace CS6232_G2_Furniture_Rental.View
             this.PopularFurniture.Location = new System.Drawing.Point(4, 22);
             this.PopularFurniture.Name = "PopularFurniture";
             this.PopularFurniture.Padding = new System.Windows.Forms.Padding(3);
-            this.PopularFurniture.Size = new System.Drawing.Size(1020, 423);
+            this.PopularFurniture.Size = new System.Drawing.Size(1176, 399);
             this.PopularFurniture.TabIndex = 0;
             this.PopularFurniture.Text = "Popular Furniture";
             this.PopularFurniture.UseVisualStyleBackColor = true;
             // 
             // popularFurnitureReportUserControl
             // 
-            this.popularFurnitureReportUserControl.Location = new System.Drawing.Point(-4, 2);
+            this.popularFurnitureReportUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.popularFurnitureReportUserControl.Location = new System.Drawing.Point(3, 3);
             this.popularFurnitureReportUserControl.Name = "popularFurnitureReportUserControl";
-            this.popularFurnitureReportUserControl.Size = new System.Drawing.Size(1018, 415);
+            this.popularFurnitureReportUserControl.Size = new System.Drawing.Size(1170, 393);
             this.popularFurnitureReportUserControl.TabIndex = 0;
             // 
             // AdminReportsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 461);
+            this.ClientSize = new System.Drawing.Size(1184, 461);
             this.Controls.Add(this.adminReportsTabControl);
             this.Controls.Add(this.employeeIDLabel);
             this.Controls.Add(this.employeeLabel);
