@@ -65,7 +65,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void RentalForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.HideThisAndShowForm<MainMenuForm>();
+            this.HideThisAndShowForm<EmployeeMenuForm>();
         }
 
         private void memberSearchButton_Click(object sender, EventArgs e)

@@ -24,14 +24,9 @@ namespace CS6232_G2_Furniture_Rental.View
             InitializeComponent();
         }
 
-        private void MainMenuButton_Click(object sender, EventArgs e)
-        {
-            this.HideThisAndShowForm<MainMenuForm>();
-        }
-
         private void AdminMenuForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.HideThisAndShowForm<MainMenuForm>();
+            this.HideThisAndShowForm<EmployeeMenuForm>();
         }
 
         private void AdminMenuForm_Activated(object sender, EventArgs e)
@@ -62,6 +57,12 @@ namespace CS6232_G2_Furniture_Rental.View
         private void reportsButton_Click(object sender, EventArgs e)
         {
             this.HideThisAndShowForm<AdminReportsForm>();
+        }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            _business.Logout();
+            this.HideThisAndShowForm<LoginForm>();
         }
     }
 }

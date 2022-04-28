@@ -10,7 +10,7 @@ namespace CS6232_G2_Furniture_Rental.View
     /// <summary>
     /// The Main Menu form
     /// </summary>
-    public partial class MainMenuForm : Form
+    public partial class EmployeeMenuForm : Form
     {
         private static LoginBusiness _business;
         private static Employee _employee;
@@ -18,7 +18,7 @@ namespace CS6232_G2_Furniture_Rental.View
         /// <summary>
         /// Main Menu form constructor
         /// </summary>
-        public MainMenuForm()
+        public EmployeeMenuForm()
         {
             _business = new LoginBusiness();
 
@@ -49,17 +49,7 @@ namespace CS6232_G2_Furniture_Rental.View
                 }
 
                 this.employeeIDLabel.Text = DisplayTextHelper.GetNameAndUserName(_employee);
-
-                if (_employee.IsAdmin)
-                {
-                    this.adminButton.Select();
-                }
-                else
-                {
-                    this.membersButton.Select();
-                }
-
-                this.adminButton.Enabled = _employee.IsAdmin;
+                this.membersButton.Select();
             }
             catch (Exception ex)
             {

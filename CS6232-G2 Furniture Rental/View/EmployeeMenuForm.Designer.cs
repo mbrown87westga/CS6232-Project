@@ -1,6 +1,6 @@
 ﻿namespace CS6232_G2_Furniture_Rental.View
 {
-    partial class MainMenuForm
+    partial class EmployeeMenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,6 @@
             this.membersButton = new System.Windows.Forms.Button();
             this.rentalsButton = new System.Windows.Forms.Button();
             this.returnsButton = new System.Windows.Forms.Button();
-            this.adminButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
             this.employeeIDLabel = new System.Windows.Forms.Label();
             this.furnitureButton = new System.Windows.Forms.Button();
@@ -51,7 +50,7 @@
             // membersButton
             // 
             this.membersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.membersButton.Location = new System.Drawing.Point(154, 157);
+            this.membersButton.Location = new System.Drawing.Point(154, 107);
             this.membersButton.Name = "membersButton";
             this.membersButton.Size = new System.Drawing.Size(100, 35);
             this.membersButton.TabIndex = 3;
@@ -62,7 +61,7 @@
             // rentalsButton
             // 
             this.rentalsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rentalsButton.Location = new System.Drawing.Point(154, 212);
+            this.rentalsButton.Location = new System.Drawing.Point(154, 162);
             this.rentalsButton.Name = "rentalsButton";
             this.rentalsButton.Size = new System.Drawing.Size(100, 35);
             this.rentalsButton.TabIndex = 5;
@@ -73,7 +72,7 @@
             // returnsButton
             // 
             this.returnsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnsButton.Location = new System.Drawing.Point(154, 267);
+            this.returnsButton.Location = new System.Drawing.Point(154, 217);
             this.returnsButton.Name = "returnsButton";
             this.returnsButton.Size = new System.Drawing.Size(100, 35);
             this.returnsButton.TabIndex = 6;
@@ -81,21 +80,10 @@
             this.returnsButton.UseVisualStyleBackColor = true;
             this.returnsButton.Click += new System.EventHandler(this.returnsButton_Click);
             // 
-            // adminButton
-            // 
-            this.adminButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminButton.Location = new System.Drawing.Point(154, 102);
-            this.adminButton.Name = "adminButton";
-            this.adminButton.Size = new System.Drawing.Size(100, 35);
-            this.adminButton.TabIndex = 2;
-            this.adminButton.Text = "&Admin";
-            this.adminButton.UseVisualStyleBackColor = true;
-            this.adminButton.Click += new System.EventHandler(this.AdminButton_Click);
-            // 
             // logoutButton
             // 
             this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutButton.Location = new System.Drawing.Point(154, 377);
+            this.logoutButton.Location = new System.Drawing.Point(154, 327);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(100, 35);
             this.logoutButton.TabIndex = 7;
@@ -114,7 +102,7 @@
             // furnitureButton
             // 
             this.furnitureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.furnitureButton.Location = new System.Drawing.Point(154, 322);
+            this.furnitureButton.Location = new System.Drawing.Point(154, 272);
             this.furnitureButton.Name = "furnitureButton";
             this.furnitureButton.Size = new System.Drawing.Size(100, 35);
             this.furnitureButton.TabIndex = 4;
@@ -126,11 +114,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 450);
+            this.ClientSize = new System.Drawing.Size(432, 390);
             this.Controls.Add(this.furnitureButton);
             this.Controls.Add(this.employeeIDLabel);
             this.Controls.Add(this.logoutButton);
-            this.Controls.Add(this.adminButton);
             this.Controls.Add(this.returnsButton);
             this.Controls.Add(this.rentalsButton);
             this.Controls.Add(this.membersButton);
@@ -151,7 +138,6 @@
         private System.Windows.Forms.Button membersButton;
         private System.Windows.Forms.Button rentalsButton;
         private System.Windows.Forms.Button returnsButton;
-        private System.Windows.Forms.Button adminButton;
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Label employeeIDLabel;
         private System.Windows.Forms.Button furnitureButton;

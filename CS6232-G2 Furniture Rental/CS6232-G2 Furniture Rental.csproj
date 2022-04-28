@@ -147,11 +147,11 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainMenuForm.cs">
+    <Compile Include="View\EmployeeMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainMenuForm.Designer.cs">
-      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    <Compile Include="View\EmployeeMenuForm.Designer.cs">
+      <DependentUpon>EmployeeMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -258,8 +258,8 @@
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainMenuForm.resx">
-      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\EmployeeMenuForm.resx">
+      <DependentUpon>EmployeeMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberSearchForm.resx">
       <DependentUpon>MemberSearchForm.cs</DependentUpon>

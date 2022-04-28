@@ -33,7 +33,7 @@ namespace CS6232_G2_Furniture_Rental.View
             this.employeeLabel = new System.Windows.Forms.Label();
             this.EmployeeMaintenanceButton = new System.Windows.Forms.Button();
             this.reportsButton = new System.Windows.Forms.Button();
-            this.mainMenuButton = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // employeeIDLabel
@@ -76,23 +76,23 @@ namespace CS6232_G2_Furniture_Rental.View
             this.reportsButton.UseVisualStyleBackColor = true;
             this.reportsButton.Click += new System.EventHandler(this.reportsButton_Click);
             // 
-            // mainMenuButton
+            // logoutButton
             // 
-            this.mainMenuButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainMenuButton.Location = new System.Drawing.Point(154, 237);
-            this.mainMenuButton.Name = "mainMenuButton";
-            this.mainMenuButton.Size = new System.Drawing.Size(120, 45);
-            this.mainMenuButton.TabIndex = 6;
-            this.mainMenuButton.Text = "&Main Menu";
-            this.mainMenuButton.UseVisualStyleBackColor = true;
-            this.mainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
+            this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutButton.Location = new System.Drawing.Point(154, 237);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(120, 45);
+            this.logoutButton.TabIndex = 6;
+            this.logoutButton.Text = "&Logout";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(432, 384);
-            this.Controls.Add(this.mainMenuButton);
+            this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.reportsButton);
             this.Controls.Add(this.EmployeeMaintenanceButton);
             this.Controls.Add(this.employeeIDLabel);
@@ -112,6 +112,6 @@ namespace CS6232_G2_Furniture_Rental.View
         private System.Windows.Forms.Label employeeLabel;
         private System.Windows.Forms.Button EmployeeMaintenanceButton;
         private System.Windows.Forms.Button reportsButton;
-        private System.Windows.Forms.Button mainMenuButton;
+        private System.Windows.Forms.Button logoutButton;
     }
 }

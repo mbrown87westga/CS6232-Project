@@ -60,7 +60,7 @@ namespace CS6232_G2_Furniture_Return.View
 
         private void ReturnForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.HideThisAndShowForm<MainMenuForm>();
+            this.HideThisAndShowForm<EmployeeMenuForm>();
         }
 
         private void MemberSearchButton_Click(object sender, EventArgs e)

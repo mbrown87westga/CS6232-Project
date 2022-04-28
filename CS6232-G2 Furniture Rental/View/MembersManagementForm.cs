@@ -26,7 +26,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void MembersManagementForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.HideThisAndShowForm<MainMenuForm>();
+            this.HideThisAndShowForm<EmployeeMenuForm>();
         }
 
         private void MembersManagementForm_Activated(object sender, EventArgs e)

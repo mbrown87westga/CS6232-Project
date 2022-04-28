@@ -11,6 +11,7 @@ namespace CS6232_G2_Furniture_Rental.View
   public partial class LoginForm : Form
   {
     private static LoginBusiness _business;
+    private static EmployeeBusiness _employeeBusiness;
 
     /// <summary>
     /// the default constructor
@@ -18,6 +19,7 @@ namespace CS6232_G2_Furniture_Rental.View
     public LoginForm()
     {
       _business = new LoginBusiness();
+      _employeeBusiness = new EmployeeBusiness();
 
       InitializeComponent();
     }
@@ -27,19 +29,33 @@ namespace CS6232_G2_Furniture_Rental.View
       var username = employeeIdTextBox.Text;
       var password = passwordTextBox.Text;
 
-      if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+      try 
       {
-        messageLabel.Text = "Username and password are both required.";
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+        {
+            messageLabel.Text = "Username and password are both required.";
+        }
+        else if (_business.Login(username, password))
+        {
+            employeeIdTextBox.Clear();
+            passwordTextBox.Clear();
+            if (_employeeBusiness.GetEmployee(username).IsAdmin)
+            {
+                this.HideThisAndShowForm<AdminMenuForm>();
+            }
+            else
+            {
+                this.HideThisAndShowForm<EmployeeMenuForm>();
+            }
+        }
+        else
+        {
+            messageLabel.Text = "Login unsuccessful. Check username and password.";
+        }
       }
-      else if (_business.Login(username, password))
+      catch (Exception ex)
       {
-        employeeIdTextBox.Clear();
-        passwordTextBox.Clear();
-        this.HideThisAndShowForm<MainMenuForm>();
-      }
-      else
-      {
-        messageLabel.Text = "Login unsuccessful. Check username and password.";
+        MessageBox.Show(ex.Message, ex.GetType().ToString());
       }
     }
 
