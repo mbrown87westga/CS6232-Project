@@ -76,7 +76,7 @@ namespace FurnitureRentalBusiness
             
             newEmployee.Password = EncryptionHelper.Hash(newEmployee.Password);
 
-            return this._dal.AddEmployee(newEmployee);
+            return _dal.AddEmployee(newEmployee);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace FurnitureRentalBusiness
         /// <param name="oldEmployee">The employee data as read from the database. Will make sure it hasn't changed elsewhere before it's updated.</param>
         /// <param name="newEmployee">The changes to the employee data</param>
         /// <returns></returns>
-        public int Update(Employee oldEmployee, Employee newEmployee)
+        public bool Update(Employee oldEmployee, Employee newEmployee)
         {
             if (oldEmployee == null)
             {
@@ -99,7 +99,7 @@ namespace FurnitureRentalBusiness
 
             newEmployee.Password = EncryptionHelper.Hash(newEmployee.Password);
 
-            return this._dal.UpdateEmployee(oldEmployee, newEmployee);
+            return _dal.UpdateEmployee(oldEmployee, newEmployee);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace FurnitureRentalBusiness
                 throw new ArgumentException("Username cannot be blank");
             }
 
-            return this._dal.GetEmployee(userName);
+            return _dal.GetEmployee(userName);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace FurnitureRentalBusiness
         /// <returns>list of employees who have not been deactivated</returns>
         public List<Employee> GetEmployees()
         {
-            List<Employee> employees = this._dal.GetEmployees();
+            List<Employee> employees = _dal.GetEmployees();
 
             return employees;
         }

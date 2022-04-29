@@ -69,7 +69,7 @@ namespace FurnitureRentalData
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        throw ex;
+                        throw new Exception("There was an error saving the transaction. Please try again.", ex);
                     }
                     finally
                     {

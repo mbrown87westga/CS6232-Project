@@ -234,7 +234,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
 
             if (!validatePassword())
             {
-                addErrorProvider.SetError(this.passwordTextBox, "Password does not meet complexity requirements");
+                addErrorProvider.SetError(this.passwordTextBox, "Password must contain at least 8 characters, an uppercase letter, a lowercase letter, a digit, and a special character");
                 return false;
             }
             else

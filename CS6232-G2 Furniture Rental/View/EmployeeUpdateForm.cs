@@ -148,6 +148,7 @@ namespace CS6232_G2_Furniture_Rental.View
                     {
                         var newEmployee = new Employee()
                         {
+                            EmployeeId = _employee.EmployeeId,
                             FirstName = this.firstNameTextBox.Text,
                             LastName = this.lastNameTextBox.Text,
                             Address1 = this.address1TextBox.Text,
@@ -164,10 +165,12 @@ namespace CS6232_G2_Furniture_Rental.View
                             DeactivatedDate = _employee.DeactivatedDate
                         };
 
-                        if (_employeeBusiness.Update(_oldEmployee, newEmployee) > 0)
+                        if (_employeeBusiness.Update(_oldEmployee, newEmployee))
                         {
                             MessageBox.Show("Employee updated!", "Employee updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            _oldEmployee = (Employee) _employee.ShallowCopy();
+                            
+                            _employee = (Employee)newEmployee.ShallowCopy();
+                            _oldEmployee = (Employee)newEmployee.ShallowCopy();
                             this.PutIntoViewMode();
                         }
                         else
@@ -355,7 +358,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
             if (!validatePassword())
             {
-                updateErrorProvider.SetError(this.passwordTextBox, "Password does not meet complexity requirements");
+                updateErrorProvider.SetError(this.passwordTextBox, "Password must contain at least 8 characters, an uppercase letter, a lowercase letter, a digit, and a special character");
                 return false;
             }
             else

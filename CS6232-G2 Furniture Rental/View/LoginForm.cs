@@ -11,7 +11,6 @@ namespace CS6232_G2_Furniture_Rental.View
   public partial class LoginForm : Form
   {
     private static LoginBusiness _business;
-    private static EmployeeBusiness _employeeBusiness;
 
     /// <summary>
     /// the default constructor
@@ -19,7 +18,6 @@ namespace CS6232_G2_Furniture_Rental.View
     public LoginForm()
     {
       _business = new LoginBusiness();
-      _employeeBusiness = new EmployeeBusiness();
 
       InitializeComponent();
     }
@@ -39,7 +37,7 @@ namespace CS6232_G2_Furniture_Rental.View
         {
             employeeIdTextBox.Clear();
             passwordTextBox.Clear();
-            if (_employeeBusiness.GetEmployee(username).IsAdmin)
+            if (_business.GetLoggedInUser().IsAdmin)
             {
                 this.HideThisAndShowForm<AdminMenuForm>();
             }

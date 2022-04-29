@@ -94,7 +94,7 @@ namespace FurnitureRentalData
         /// <param name="oldEmployee">The employee data as read from the database. Will make sure it hasn't changed elsewhere before it's updated.</param>
         /// <param name="newEmployee">The changes to the employee data</param>
         /// <returns></returns>
-        public int UpdateEmployee(Employee oldEmployee, Employee newEmployee)
+        public bool UpdateEmployee(Employee oldEmployee, Employee newEmployee)
         {
             string updateStatement =
                 "UPDATE Employee " +
@@ -174,7 +174,7 @@ namespace FurnitureRentalData
 
                 using (updateCommand)
                 {
-                    return updateCommand.ExecuteNonQuery();
+                    return updateCommand.ExecuteNonQuery() == 1;
                 }
             }
 
