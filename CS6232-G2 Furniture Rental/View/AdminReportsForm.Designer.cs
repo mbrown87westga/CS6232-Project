@@ -58,8 +58,10 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // adminReportsTabControl
             // 
+            this.adminReportsTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.adminReportsTabControl.Controls.Add(this.PopularFurniture);
-            this.adminReportsTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.adminReportsTabControl.Location = new System.Drawing.Point(0, 36);
             this.adminReportsTabControl.Name = "adminReportsTabControl";
             this.adminReportsTabControl.SelectedIndex = 0;
@@ -79,7 +81,9 @@ namespace CS6232_G2_Furniture_Rental.View
             // 
             // popularFurnitureReportUserControl
             // 
-            this.popularFurnitureReportUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.popularFurnitureReportUserControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.popularFurnitureReportUserControl.Location = new System.Drawing.Point(3, 3);
             this.popularFurnitureReportUserControl.Name = "popularFurnitureReportUserControl";
             this.popularFurnitureReportUserControl.Size = new System.Drawing.Size(1170, 393);

@@ -26,7 +26,7 @@ namespace CS6232_G2_Furniture_Rental.View
 
         private void AdminMenuForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.HideThisAndShowForm<EmployeeMenuForm>();
+            this.HideThisAndShowForm<LoginForm>();
         }
 
         private void AdminMenuForm_Activated(object sender, EventArgs e)

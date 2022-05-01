@@ -56,5 +56,12 @@ namespace CS6232_G2_Furniture_Rental.View
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
+        private void employeeMaintenanceTabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPageIndex == 1) {
+                viewEmployeesUserControl.GetEmployeeList();
+            }
+        }
     }
 }
