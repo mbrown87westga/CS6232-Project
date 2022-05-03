@@ -47,5 +47,13 @@ namespace FurnitureRentalDomain
         /// The member's birth date
         /// </summary>
         public DateTime Birthdate { get; set; }
+        /// <summary>
+        /// Shallow copies the member
+        /// </summary>
+        /// <returns>the copy</returns>
+        public object ShallowCopy()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }
