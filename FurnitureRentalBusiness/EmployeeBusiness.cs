@@ -97,7 +97,10 @@ namespace FurnitureRentalBusiness
                 throw new ArgumentNullException(nameof(newEmployee));
             }
 
-            newEmployee.Password = EncryptionHelper.Hash(newEmployee.Password);
+            if (newEmployee.Password != oldEmployee.Password)
+            {
+                newEmployee.Password = EncryptionHelper.Hash(newEmployee.Password);
+            }
 
             return _dal.UpdateEmployee(oldEmployee, newEmployee);
         }
