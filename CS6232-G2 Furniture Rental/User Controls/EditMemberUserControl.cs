@@ -13,6 +13,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
     /// </summary>
     public partial class EditMemberUserControl : UserControl
     {
+        private Member _oldMember;
         private static MemberBusiness _business;
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
                 {
                     Member update = this.memberBindingSource.DataSource as Member;
 
-                    bool result = _business.UpdateMember(update);
+                    bool result = _business.UpdateMember(update, _oldMember);
                     if (result)
                     {
                         MessageBox.Show("Member updated!", "Member updated", MessageBoxButtons.OK,
@@ -211,7 +212,9 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             if (result != null)
             {
                 this.EnableEdit();
-                this.memberBindingSource.DataSource = result;
+                _oldMember= (Member)result.ShallowCopy();
+                var _member = (Member)result.ShallowCopy();
+                this.memberBindingSource.DataSource = _member;
             }
         }
 

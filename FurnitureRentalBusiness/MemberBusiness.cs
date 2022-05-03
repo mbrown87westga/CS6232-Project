@@ -136,7 +136,7 @@ namespace FurnitureRentalBusiness
         /// </summary>
         /// <param name="member">The member with new values that should be changed. The only thing you cannot update is the users ID</param>
         /// <returns></returns>
-        public bool UpdateMember(Member member)
+        public bool UpdateMember(Member member, Member oldMember)
         {
             if (member is null)
             {
@@ -176,7 +176,7 @@ namespace FurnitureRentalBusiness
             }
 
 
-            return _dal.UpdateMember(member);
+            return _dal.UpdateMember(member, oldMember);
         }
     }
 }

@@ -263,9 +263,7 @@ namespace FurnitureRentalData
                                 Address2 = reader["address2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
-                                Zipcode = Int32.TryParse(reader["zipcode"].ToString(), out var value) ?
-                                            (value.ToString().Length == 9 ? value.ToString("#####-####") : reader["zipcode"].ToString())
-                                            : reader["zipcode"].ToString(),
+                                Zipcode = reader["zipcode"].ToString(),
                                 Phone = reader["phone"].ToString(),
                                 Birthdate = (DateTime)reader["birthdate"],
                                 Sex = GenderHelper.ParseGender(reader["sex"].ToString()),
@@ -347,9 +345,7 @@ namespace FurnitureRentalData
                                 Address2 = reader["address2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
-                                Zipcode = Int32.TryParse(reader["zipcode"].ToString(), out var value) ?
-                                            (value.ToString().Length == 9 ? value.ToString("#####-####") : reader["zipcode"].ToString())
-                                            : reader["zipcode"].ToString(),
+                                Zipcode = reader["zipcode"].ToString(),
                                 Phone = reader["phone"].ToString(),
                                 Birthdate = (DateTime)reader["birthdate"],
                                 Sex = GenderHelper.ParseGender(reader["sex"].ToString()),

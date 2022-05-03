@@ -216,33 +216,55 @@ namespace FurnitureRentalData
         /// </summary>
         /// <param name="updateMember">the member to update</param>
         /// <returns>true if the member was updated</returns>
-        public bool UpdateMember(Member updateMember)
+        public bool UpdateMember(Member updateMember, Member oldMember)
         {
             string insertStatement =
                 "UPDATE Member " +
-                "set birthdate = @birthdate, firstName = @firstName, lastName = @lastName, phone = @phone, address1 = @address1, address2 = @address2, city = @city, state = @state, zipcode = @zipcode " +
-                "where memberID = @memberID";
+                "set birthdate = @birthdateNew, firstName = @firstNameNew, lastName = @lastNameNew, phone = @phoneNew, " +
+                "address1 = @address1New, address2 = @address2New, city = @cityNew, state = @stateNew, zipcode = @zipcodeNew " +
+                "where memberID = @memberIDOld AND (birthdate = @birthdateOld) AND (firstName = @firstNameOld) " +
+                "AND (lastName = @lastNameOld) AND (phone = @phoneOld) AND (address1 = @address1Old) " +
+                "AND (address2 = @address2Old OR address2 IS NULL AND @address2Old IS NULL) " +
+                "AND (city = @cityOld) AND (state = @stateOld) AND (zipcode = @zipcodeOld)";
 
             using (var connection = FurnitureRentalDbConnection.GetConnection())
             {
                 var insertCommand = new SqlCommand(insertStatement, connection);
-                insertCommand.Parameters.AddWithValue("@birthdate", updateMember.Birthdate);
-                insertCommand.Parameters.AddWithValue("@firstName", updateMember.FirstName);
-                insertCommand.Parameters.AddWithValue("@lastName", updateMember.LastName);
-                insertCommand.Parameters.AddWithValue("@phone", updateMember.Phone);
-                insertCommand.Parameters.AddWithValue("@address1", updateMember.Address1);
-                if (updateMember.Address2 is null)
+                insertCommand.Parameters.AddWithValue("@birthdateNew", updateMember.Birthdate);
+                insertCommand.Parameters.AddWithValue("@firstNameNew", updateMember.FirstName);
+                insertCommand.Parameters.AddWithValue("@lastNameNew", updateMember.LastName);
+                insertCommand.Parameters.AddWithValue("@phoneNew", updateMember.Phone);
+                insertCommand.Parameters.AddWithValue("@address1New", updateMember.Address1);
+                if (string.IsNullOrEmpty(updateMember.Address2))
                 {
-                    insertCommand.Parameters.AddWithValue("@address2", DBNull.Value);
+                    insertCommand.Parameters.AddWithValue("@address2New", DBNull.Value);
                 }
                 else
                 {
-                    insertCommand.Parameters.AddWithValue("@address2", updateMember.Address2);
+                    insertCommand.Parameters.AddWithValue("@address2New", updateMember.Address2);
                 }
-                insertCommand.Parameters.AddWithValue("@city", updateMember.City);
-                insertCommand.Parameters.AddWithValue("@state", updateMember.State);
-                insertCommand.Parameters.AddWithValue("@zipcode", updateMember.Zipcode);
-                insertCommand.Parameters.AddWithValue("@memberID", updateMember.MemberID);
+                insertCommand.Parameters.AddWithValue("@cityNew", updateMember.City);
+                insertCommand.Parameters.AddWithValue("@stateNew", updateMember.State);
+                insertCommand.Parameters.AddWithValue("@zipcodeNew", updateMember.Zipcode);
+                insertCommand.Parameters.AddWithValue("@memberIDNew", updateMember.MemberID);
+
+                insertCommand.Parameters.AddWithValue("@birthdateOld", oldMember.Birthdate);
+                insertCommand.Parameters.AddWithValue("@firstNameOld", oldMember.FirstName);
+                insertCommand.Parameters.AddWithValue("@lastNameOld", oldMember.LastName);
+                insertCommand.Parameters.AddWithValue("@phoneOld", oldMember.Phone);
+                insertCommand.Parameters.AddWithValue("@address1Old", oldMember.Address1);
+                if (string.IsNullOrEmpty(oldMember.Address2))
+                {
+                    insertCommand.Parameters.AddWithValue("@address2Old", DBNull.Value);
+                }
+                else
+                {
+                    insertCommand.Parameters.AddWithValue("@address2Old", oldMember.Address2);
+                }
+                insertCommand.Parameters.AddWithValue("@cityOld", oldMember.City);
+                insertCommand.Parameters.AddWithValue("@stateOld", oldMember.State);
+                insertCommand.Parameters.AddWithValue("@zipcodeOld", oldMember.Zipcode);
+                insertCommand.Parameters.AddWithValue("@memberIDOld", oldMember.MemberID);
 
                 connection.Open();
 
