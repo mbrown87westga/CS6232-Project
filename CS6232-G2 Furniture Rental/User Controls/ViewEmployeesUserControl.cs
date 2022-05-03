@@ -35,6 +35,9 @@ namespace CS6232_G2_Furniture_Rental.User_Controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// gets the employee list
+        /// </summary>
         public void GetEmployeeList()
         {
             try

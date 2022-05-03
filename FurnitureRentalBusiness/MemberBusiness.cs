@@ -135,6 +135,7 @@ namespace FurnitureRentalBusiness
         /// Updates a member with new information
         /// </summary>
         /// <param name="member">The member with new values that should be changed. The only thing you cannot update is the users ID</param>
+        /// <param name="oldMember">the old version of the member</param>
         /// <returns></returns>
         public bool UpdateMember(Member member, Member oldMember)
         {
